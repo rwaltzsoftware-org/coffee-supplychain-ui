@@ -36,12 +36,7 @@
     <script src="plugins/bower_components/Magnific-Popup-master/dist/jquery.magnific-popup-init.js"></script>
 
     <script type="text/javascript">
-    $(document).ready(function() {
-        
-        $('#resetForm').click(function(){
-            $('.reset')[0].reset();
-  });
-    });
+
     </script>
     <!--Style Switcher -->
     <script src="plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>

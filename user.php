@@ -105,24 +105,24 @@
                                         <tr>
                                             <td>#85457898as234ca3fsafa3444234223first</td>
                                             <td>
-                                                <a  href=""><span class="label label-success font-weight-100">View</span></a>&nbsp;
-                                                <a class="popup-with-form" href="#farmInspectionForm" href=""><span class="label label-success font-weight-100">Update</span></a>
+                                                <a href="view-batch.php"><span class="label label-success font-weight-100">View</span></a>&nbsp;
+                                                <a class="popup-with-form" href="#farmInspectionForm" ><span class="label label-success font-weight-100">Update</span></a>
                                             </td>
                                             <td>
-                                                <a  href=""><span class="label label-success font-weight-100">View</span></a>&nbsp;
-                                                <a class="popup-with-form" href="#harvesterForm" href=""><span class="label label-success font-weight-100">Update</span></a>
+                                                <a  href="view-batch.php"><span class="label label-success font-weight-100">View</span></a>&nbsp;
+                                                <a class="popup-with-form" href="#harvesterForm"><span class="label label-success font-weight-100">Update</span></a>
                                             </td>
                                             <td>
-                                                <a  href=""><span class="label label-success font-weight-100">View</span></a>&nbsp;
-                                                <a class="popup-with-form" href="#exporterForm" href=""><span class="label label-success font-weight-100">Update</span></a>     
+                                                <a  href="view-batch.php"><span class="label label-success font-weight-100">View</span></a>&nbsp;
+                                                <a class="popup-with-form" href="#exporterForm" ><span class="label label-success font-weight-100">Update</span></a>     
                                             </td>
                                             <td>
-                                                <a  href=""><span class="label label-success font-weight-100">View</span></a>&nbsp;
-                                                <a class="popup-with-form" href="#farmInspectionForm" href=""><span class="label label-success font-weight-100">Update</span></a>                                      
+                                                <a  href="view-batch.php"><span class="label label-success font-weight-100">View</span></a>&nbsp;
+                                                <a class="popup-with-form" href="#importerForm" ><span class="label label-success font-weight-100">Update</span></a>                                      
                                             </td>
                                             <td>
-                                                <a  href=""><span class="label label-success font-weight-100">View</span></a>&nbsp;
-                                                <a class="popup-with-form" href="#farmInspectionForm" href=""><span class="label label-success font-weight-100">Update</span></a> 
+                                                <a  href="view-batch.php"><span class="label label-success font-weight-100">View</span></a>&nbsp;
+                                                <a class="popup-with-form" href="#processingForm" ><span class="label label-success font-weight-100">Update</span></a> 
                                             </td>
                                             <td><a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-marker-alt"></i></a></td>
                                         </tr>
@@ -148,7 +148,7 @@
                                 </table>
 
                             <!-- Farm Inspection Form -->
-                            <form id="farmInspectionForm" class="mfp-hide white-popup-block reset">
+                            <form id="farmInspectionForm" class="mfp-hide white-popup-block">
                                 <h1>Farm Inspection</h1><br>
                                 <fieldset style="border:0;">
                                     <div class="form-group">
@@ -173,14 +173,14 @@
                                         <textarea class="form-control" id="farmAddress" name="farmAddress" placeholder="farm address"></textarea>
                                     </div>
                                      <div class="form-group float-right">
-                                       <button type="button" class="btn btn-default waves-effect" id="resetForm">Reset</button>
+                                       <button type="reset" class="btn btn-default waves-effect" >Reset</button>
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </fieldset>
                             </form>
 
                              <!-- Harvesting Form -->
-                            <form id="harvesterForm" class="mfp-hide white-popup-block reset">
+                            <form id="harvesterForm" class="mfp-hide white-popup-block ">
                                 <h1>Harvesting</h1><br>
                                 <fieldset style="border:0;">
                                     <div class="form-group">
@@ -204,14 +204,14 @@
                                         <input type="text" class="form-control" id="humidity" name="humidity" placeholder="humidity" required="">
                                     </div>                                
                                      <div class="form-group float-right">
-                                       <button type="button" class="btn btn-default waves-effect" onclick="resetForm()">Reset</button>
+                                       <button type="reset" class="btn btn-default waves-effect">Reset</button>
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </fieldset>
                             </form>
 
                             <!-- Exporter Form -->
-                            <form id="exporterForm" class="mfp-hide white-popup-block reset">
+                            <form id="exporterForm" class="mfp-hide white-popup-block">
                                 <h1>Exporting</h1><br>
                                 <fieldset style="border:0;">
                                     <div class="form-group">
@@ -227,25 +227,83 @@
                                         <input type="text" class="form-control" id="dispatchDetails" name="dispatchDetails" placeholder="dispatch details" required="">
                                     </div>
                                      <div class="form-group float-right">
-                                       <button type="button" class="btn btn-default waves-effect" onclick="resetForm()">Reset</button>
+                                       <button type="reset" class="btn btn-default waves-effect">Reset</button>
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </fieldset>
                             </form>
 
+                            <!-- Importer Form -->
+                            <form id="importerForm" class="mfp-hide white-popup-block">
+                                <h1>Importing</h1><br>
+                                <fieldset style="border:0;">
+                                    <div class="form-group">
+                                        <label class="control-label" for="warehouse">Warehouse Information</label>
+                                        <input type="text" class="form-control" id="warehouse" name="warehouse" placeholder="warehouse information" required="">
+                                    </div> 
+                                    <div class="form-group">
+                                        <label class="control-label" for="processDispatch">Processing & Dispatch</label>
+                                        <input type="text" class="form-control" id="processDispatch" name="processDispatch" placeholder="processing & dispatch" required="">
+                                    </div>                              
+                                    <div class="form-group">
+                                        <label class="control-label" for="payment">Payment Confirmation</label>
+                                        <input type="text" class="form-control" id="payment" name="payment" placeholder="payment confirmation" required="">
+                                    </div>
+                                     <div class="form-group float-right">
+                                       <button type="reset" class="btn btn-default waves-effect">Reset</button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </fieldset>
+                            </form>
 
-
-
+                            <!-- Processor Form -->
+                            <form id="processingForm" class="mfp-hide white-popup-block">
+                                <h1>Processing</h1><br>
+                                <fieldset style="border:0;">
+                                    <h4>Roast Coffee</h4><br>
+                                    <div class="form-group">
+                                        <label class="control-label" for="quantity">Quantity</label>
+                                        <input type="text" class="form-control" id="quantity" name="quantity" placeholder="quantity" required="">
+                                    </div> 
+                                    <div class="form-group">
+                                        <label class="control-label" for="temperature">Temperature </label>
+                                        <input type="text" class="form-control" id="temperature" name="temperature" placeholder="temperature" required="">
+                                    </div>                              
+                                    <div class="form-group">
+                                        <label class="control-label" for="time">Time for Roasting</label>
+                                        <input type="text" class="form-control" id="time" name="time" placeholder="time for roasting" required="">
+                                    </div>
+                               
+                                    <h4>Grinding</h4><br>
+                                     <div class="form-group">
+                                        <label class="control-label" for="quantity">Grinding</label>
+                                        <input type="text" class="form-control" id="quantity" name="quantity" placeholder="quantity" required="">
+                                    </div>
+                           
+                                    <h4>Packaging</h4><br>
+                                    <div class="form-group">
+                                        <label class="control-label" for="quantity">Date</label>
+                                        <input type="text" class="form-control" id="quantity" name="quantity" placeholder="quantity" required="">
+                                    </div> 
+                                    <div class="form-group">
+                                        <label class="control-label" for="temperature">Time</label>
+                                        <input type="text" class="form-control" id="temperature" name="temperature" placeholder="temperature" required="">
+                                    </div>                              
+                                    <div class="form-group">
+                                        <label class="control-label" for="time">Place</label>
+                                        <input type="text" class="form-control" id="time" name="time" placeholder="time for roasting" required="">
+                                    </div>
+                                     <div class="form-group float-right">
+                                       <button type="reset" class="btn btn-default waves-effect">Reset</button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </fieldset>
+                            </form>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                
+                </div>                
             </div>
             <!-- /.container-fluid -->
-
-           
-
         
 <?php include('templates/_footer.php');?>   
