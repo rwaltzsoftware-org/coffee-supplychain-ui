@@ -4,14 +4,9 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Dashboard 1</h4>
+                        <h4 class="page-title">Dashboard</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                        <a href="https://themeforest.net/item/elite-admin-responsive-dashboard-web-app-kit-/16750820" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
-                        <ol class="breadcrumb">
-                            <li><a href="#">Dashboard</a></li>
-                            <li class="active">Dashboard 1</li>
-                        </ol>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -20,28 +15,28 @@
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box">
                             <div class="row row-in">
-                                <div class="col-lg-3 col-sm-6 row-in-br">
+                                <div class="col-lg-4 col-sm-6 row-in-br">
                                     <div class="col-in row">
-                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i data-icon="E" class="linea-icon linea-basic"></i>
-                                            <h5 class="text-muted vb">MYNEW CLIENTS</h5>
+                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i class="fa fa-user fa-2x"></i>
+                                            <h5 class="text-muted vb">Users</h5>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
                                             <h3 class="counter text-right m-t-15 text-danger">23</h3>
                                         </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
+                                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 100%"> <!-- <span class="sr-only">100% Complete (success)</span> --> </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-sm-6 row-in-br  b-r-none">
+                                <div class="col-lg-4 col-sm-6 row-in-br  b-r-none">
                                     <div class="col-in row">
                                         <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe01b;"></i>
-                                            <h5 class="text-muted vb">NEW PROJECTS</h5>
+                                            <h5 class="text-muted vb">Batch Progress</h5>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <h3 class="counter text-right m-t-15 text-megna">169</h3>
+                                            <h3 class="counter text-right m-t-15 text-megna">40</h3> 
                                         </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="progress">
@@ -50,22 +45,22 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-sm-6 row-in-br">
+                                <div class="col-lg-4 col-sm-6 row-in-br">
                                     <div class="col-in row">
                                         <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe00b;"></i>
-                                            <h5 class="text-muted vb">NEW INVOICES</h5>
+                                            <h5 class="text-muted vb">Total Batches</h5>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <h3 class="counter text-right m-t-15 text-primary">157</h3>
+                                            <h3 class="counter text-right m-t-15 text-primary">45</h3>
                                         </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
+                                                <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 100%"> <!-- <span class="sr-only">70% Complete (success)</span> --> </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-sm-6  b-0">
+                                <!-- <div class="col-lg-3 col-sm-6  b-0">
                                     <div class="col-in row">
                                         <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe016;"></i>
                                             <h5 class="text-muted vb">All PROJECTS</h5>
@@ -79,194 +74,146 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
                 </div>
                 <!--row -->
                 <!-- /.row -->
+                
+
+                               <!-- row -->
                 <div class="row">
-                    <div class="col-md-7 col-lg-9 col-sm-12 col-xs-12">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                         <div class="white-box">
-                            <h3 class="box-title">Yearly Sales</h3>
-                            <ul class="list-inline text-right">
-                                <li>
-                                    <h5><i class="fa fa-circle m-r-5" style="color: #00bfc7;"></i>iPhone</h5>
-                                </li>
-                                <li>
-                                    <h5><i class="fa fa-circle m-r-5" style="color: #fb9678;"></i>iPad</h5>
-                                </li>
-                                <li>
-                                    <h5><i class="fa fa-circle m-r-5" style="color: #9675ce;"></i>iPod</h5>
-                                </li>
-                            </ul>
-                            <div id="morris-area-chart" style="height: 340px;"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-5 col-lg-3 col-sm-6 col-xs-12">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="bg-theme-dark m-b-15">
-                                    <div class="row weather p-20">
-                                        <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 m-t-40">
-                                            <h3>&nbsp;</h3>
-                                            <h1>73<sup>°F</sup></h1>
-                                            <p class="text-white">AHMEDABAD, INDIA</p>
-                                        </div>
-                                        <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 text-right"> <i class="wi wi-day-cloudy-high"></i>
-                                            <br/>
-                                            <br/>
-                                            <b class="text-white">SUNNEY DAY</b>
-                                            <p class="w-title-sub">April 14</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="bg-theme m-b-15">
-                                    <div id="myCarouse2" class="carousel vcarousel slide p-20">
-                                        <!-- Carousel items -->
-                                        <div class="carousel-inner ">
-                                            <div class="active item">
-                                                <h3 class="text-white">My Acting blown <span class="font-bold">Your Mind</span> and you also laugh at the moment</h3>
-                                                <div class="twi-user"><img src="plugins/images/users/hritik.jpg" alt="user" class="img-circle img-responsive pull-left">
-                                                    <h4 class="text-white m-b-0">Govinda</h4>
-                                                    <p class="text-white">Actor</p>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <h3 class="text-white">My Acting blown <span class="font-bold">Your Mind</span> and you also laugh at the moment</h3>
-                                                <div class="twi-user"><img src="plugins/images/users/genu.jpg" alt="user" class="img-circle img-responsive pull-left">
-                                                    <h4 class="text-white m-b-0">Govinda</h4>
-                                                    <p class="text-white">Actor</p>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <h3 class="text-white">My Acting blown <span class="font-bold">Your Mind</span> and you also laugh at the moment</h3>
-                                                <div class="twi-user"><img src="plugins/images/users/ritesh.jpg" alt="user" class="img-circle img-responsive pull-left">
-                                                    <h4 class="text-white m-b-0">Govinda</h4>
-                                                    <p class="text-white">Actor</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--row -->
-                <div class="row">
-                    <div class="col-md-12 col-lg-6 col-sm-12">
-                        <div class="white-box">
-                            <h3 class="box-title">Recent Comments</h3>
-                            <div class="comment-center">
-                                <div class="comment-body">
-                                    <div class="user-img"> <img src="plugins/images/users/pawandeep.jpg" alt="user" class="img-circle"></div>
-                                    <div class="mail-contnet">
-                                        <h5>Pavan kumar</h5>
-                                        <span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat.</span> <span class="label label-rounded label-info">PENDING</span><a href="javacript:void(0)" class="action"><i class="ti-close text-danger"></i></a> <a href="javacript:void(0)" class="action"><i class="ti-check text-success"></i></a><span class="time pull-right">April 14, 2017</span></div>
-                                </div>
-                                <div class="comment-body">
-                                    <div class="user-img"> <img src="plugins/images/users/sonu.jpg" alt="user" class="img-circle"> </div>
-                                    <div class="mail-contnet">
-                                        <h5>Sonu Nigam</h5>
-                                        <span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat.</span><span class="label label-rounded label-success">APPROVED</span><a href="javacript:void(0)" class="action"><i class="ti-close text-danger"></i></a> <a href="javacript:void(0)" class="action"><i class="ti-check text-success"></i></a><span class="time pull-right">April 14, 2017</span></div>
-                                </div>
-                                <div class="comment-body">
-                                    <div class="user-img"> <img src="plugins/images/users/arijit.jpg" alt="user" class="img-circle"> </div>
-                                    <div class="mail-contnet">
-                                        <h5>Arijit Sinh</h5>
-                                        <span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. </span><span class="label label-rounded label-danger">REJECTED</span><a href="javacript:void(0)" class="action"><i class="ti-close text-danger"></i></a> <a href="javacript:void(0)" class="action"><i class="ti-check text-success"></i></a><span class="time pull-right">April 14, 2017</span></div>
-                                </div>
-                                <div class="comment-body b-none">
-                                    <div class="user-img"> <img src="plugins/images/users/pawandeep.jpg" alt="user" class="img-circle"></div>
-                                    <div class="mail-contnet">
-                                        <h5>Pavan kumar</h5>
-                                        <span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat.</span> <span class="label label-rounded label-info">PENDING</span> <a href="javacript:void(0)" class="action"><i class="ti-close text-danger"></i></a> <a href="javacript:void(0)" class="action"><i class="ti-check text-success"></i></a><span class="time pull-right">April 14, 2017</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-6 col-sm-12">
-                        <div class="white-box">
-                            <h3 class="box-title">Recent sales
-              <div class="col-md-3 col-sm-4 col-xs-6 pull-right">
-                <select class="form-control pull-right row b-none">
-                  <option>March 2017</option>
-                  <option>April 2017</option>
-                  <option>May 2017</option>
-                  <option>June 2017</option>
-                  <option>July 2017</option>
-                </select>
-              </div>
-            </h3>
-                            <div class="row sales-report">
-                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                    <h2>March 2017</h2>
-                                    <p>SALES REPORT</p>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-6 ">
-                                    <h1 class="text-right text-success m-t-20">$3,690</h1>
-                                </div>
-                            </div>
+                            <h3 class="box-title">Batches Overview</h3> 
                             <div class="table-responsive">
-                                <table class="table ">
+                                <table class="table product-overview">
                                     <thead>
                                         <tr>
-                                            <th>NAME</th>
-                                            <th>STATUS</th>
-                                            <th>DATE</th>
-                                            <th>PRICE</th>
+                                            <th>Batch ID</th>
+                                            <th>Farm Inspactor</th>
+                                            <th>Harvester</th>
+                                            <th>Exporter</th>
+                                            <th>Importer</th>
+                                            <th>Processor</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="txt-oflo">Elite admin</td>
-                                            <td><span class="label label-megna label-rounded">SALE</span> </td>
-                                            <td class="txt-oflo">April 18</td>
-                                            <td><span class="text-success">$24</span></td>
+                                            <td>#85457898as234ca3fsafa3444234223</td>
+                                            <td><span class="label label-success font-weight-100">Compilited</span></td>
+                                            <td><span class="label label-warning font-weight-100">Processing</span> </td>
+                                            <td><span class="label label-danger font-weight-100">Not Available</span> </td>
+                                            <td><span class="label label-danger font-weight-100">Not Available</span> </td>
+                                            <td><span class="label label-danger font-weight-100">Not Available</span> </td>
+                                            <td><a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-marker-alt"></i></a> </td>
+                                        </tr>
+                                         <tr>
+                                            <td>#8545735sf32as234ca3fsafa3444234223</td>
+                                            <td><span class="label label-success font-weight-100">Compilited</span></td>
+                                            <td><span class="label label-success font-weight-100">Compilited</span> </td>
+                                            <td><span class="label label-warning font-weight-100">Processing</span>  </td>
+                                            <td><span class="label label-danger font-weight-100">Not Available</span> </td>
+                                            <td><span class="label label-danger font-weight-100">Not Available</span> </td>
+                                            <td><a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-marker-alt"></i></a> </td>
                                         </tr>
                                         <tr>
-                                            <td class="txt-oflo">Real Homes</td>
-                                            <td><span class="label label-info label-rounded">EXTENDED</span></td>
-                                            <td class="txt-oflo">April 19</td>
-                                            <td><span class="text-info">$1250</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="txt-oflo">Medical Pro</td>
-                                            <td><span class="label label-danger label-rounded">TAX</span></td>
-                                            <td class="txt-oflo">April 20</td>
-                                            <td><span class="text-danger">-$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="txt-oflo">Hosting press</td>
-                                            <td><span class="label label-megna label-rounded">SALE</span></td>
-                                            <td class="txt-oflo">April 21</td>
-                                            <td><span class="text-success">$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="txt-oflo">Helping Hands</td>
-                                            <td><span class="label label-success label-rounded">MEMBER</span></td>
-                                            <td class="txt-oflo">April 22</td>
-                                            <td><span class="text-success">$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="txt-oflo">Digital Agency</td>
-                                            <td><span class="label label-megna label-rounded">SALE</span> </td>
-                                            <td class="txt-oflo">April 23</td>
-                                            <td><span class="text-danger">-$14</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="txt-oflo">Helping Hands</td>
-                                            <td><span class="label label-success label-rounded">MEMBER</span></td>
-                                            <td class="txt-oflo">April 22</td>
-                                            <td><span class="text-success">$64</span></td>
+                                            <td>#8545735sf32as234ca3fs54asf2444234223</td>
+                                            <td><span class="label label-success font-weight-100">Compilited</span></td>
+                                            <td><span class="label label-success font-weight-100">Compilited</span> </td>
+                                            <td><span class="label label-success font-weight-100">Compilited</span>  </td>
+                                            <td><span class="label label-success font-weight-100">Compilited</span> </td>
+                                            <td><span class="label label-success font-weight-100">Compilited</span> </td>
+                                            <td><a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-marker-alt"></i></a></td>
                                         </tr>
                                     </tbody>
                                 </table>
-                                <a href="#">Check all the sales</a> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--row -->
+                <div class="row">
+                    <div class="col-md-12 col-lg-4 col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">User Roles</h3> 
+                            <div class="table-responsive">
+                                <table class="table product-overview">
+                                    <thead>
+                                        <tr>
+                                            <th>Role Name</th>
+                                            <th>Role Slug</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Farm Inspection</td>
+                                            <td><span class="label label-success font-weight-100">FARM_INSPECTION</span></td>
+                                        </tr>
+                                         <tr>
+                                            <td>Harvester</td>
+                                            <td><span class="label label-success font-weight-100">HARVESTER</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Exporter</td>
+                                            <td><span class="label label-success font-weight-100">EXPORTER</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Importer</td>
+                                            <td><span class="label label-success font-weight-100">IMPORTER</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Processor</td>
+                                            <td><span class="label label-success font-weight-100">PROCESSOR</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-8 col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Batches Overview</h3> 
+                            <div class="table-responsive">
+                                <table class="table product-overview">
+                                    <thead>
+                                        <tr>
+                                            <th>User Address</th>
+                                            <th>Name</th>
+                                            <th>Contact No.</th>
+                                            <th>Role</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>#85457898as234ca3fsafa34442342231221</td>
+                                            <td>M S Dhoni</td>
+                                            <td>9876543210</td>
+                                            <td><span class="label label-success font-weight-100">HARVESTER</span></td>
+                                            <td><a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-marker-alt"></i></a> </td>
+                                        </tr>
+                                         <tr>
+                                            <td>#85457898as234ca3fsafa34442342231221</td>
+                                            <td>Rohit Sharma</td>
+                                            <td>9876543210</td>
+                                            <td><span class="label label-success font-weight-100">EXPORTER</span></td>
+                                            <td><a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-marker-alt"></i></a> </td>
+                                        </tr>
+                                        <tr>
+                                            <td>#85457898as234ca3fsafa34442342231221</td>
+                                            <td>Virat Kohli</td>
+                                            <td>9876543210</td>
+                                            <td><span class="label label-success font-weight-100">PROCESSOR</span></td>
+                                            <td><a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-marker-alt"></i></a> </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
