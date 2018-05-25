@@ -22,7 +22,7 @@
     <script src="plugins/bower_components/counterup/jquery.counterup.min.js"></script>
     <!--Morris JavaScript -->
     <script src="plugins/bower_components/raphael/raphael-min.js"></script>
-    <script src="plugins/bower_components/morrisjs/morris.js"></script>
+<!--     <script src="plugins/bower_components/morrisjs/morris.js"></script> -->
     <!-- Custom Theme JavaScript -->
     <script src="js/custom.min.js"></script>
     <script src="js/dashboard1.js"></script>
@@ -30,6 +30,7 @@
     <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
     <script src="plugins/bower_components/jquery-sparkline/jquery.charts-sparkline.js"></script>
     <script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
+
     <script type="text/javascript">
     $(document).ready(function() {
        

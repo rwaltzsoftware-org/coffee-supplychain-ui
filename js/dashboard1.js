@@ -2,7 +2,7 @@
 
 // Dashboard 1 Morris-chart
 
-Morris.Area({
+/*Morris.Area({
         element: 'morris-area-chart',
         data: [{
             period: '2010',
@@ -109,7 +109,7 @@ Morris.Area({
         lineColors: ['#b4becb', '#01c0c8'],
         resize: true
         
-    });
+    });*/
 
  
  $('.vcarousel').carousel({
