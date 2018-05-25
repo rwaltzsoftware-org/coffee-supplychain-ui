@@ -30,9 +30,17 @@
     <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
     <script src="plugins/bower_components/jquery-sparkline/jquery.charts-sparkline.js"></script>
     <script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
+
+     <!-- Magnific popup JavaScript -->
+    <script src="plugins/bower_components/Magnific-Popup-master/dist/jquery.magnific-popup.min.js"></script>
+    <script src="plugins/bower_components/Magnific-Popup-master/dist/jquery.magnific-popup-init.js"></script>
+
     <script type="text/javascript">
     $(document).ready(function() {
-       
+        
+        $('#resetForm').click(function(){
+            $('.reset')[0].reset();
+  });
     });
     </script>
     <!--Style Switcher -->
