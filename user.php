@@ -18,20 +18,20 @@
                                 <div class="overlay-box">
                                     <div class="user-content">
                                         <a href="javascript:void(0)"><img src="plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img"></a>
-                                        <h4 class="text-white">User Name</h4>
-                                        <h5 class="text-white" id="currentUserAddress">0xab0874cb61d83f6b67dc08141568868102233bef</h5>
+                                        <h4 class="text-white" id="userName">User Name</h4>
+                                        <h5 class="text-white" id="userAddress">0xab0874cb61d83f6b67dc08141568868102233bef</h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="user-btm-box">
                                 <div class="col-md-4 col-sm-4 text-center">
                                     <p class="text-purple"><i class="fa fa-mobile"></i> Contact No</p>
-                                    <h1>9876543210</h1>
+                                    <h1 id="userContact">9876543210</h1>
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 text-center">
                                     <p class="text-blue"><i class="fa fa-user"></i> Role</p>
-                                    <h1>Exporter</h1>
+                                    <h1 id="userRole">Exporter</h1>
                                 </div>
                                 <div class="col-md-4 col-sm-4 text-center">
                                     <p class="text-danger"><i class="fa fa-gears"></i> Settings</p>

@@ -1,10 +1,9 @@
 	var globIcoAddress = {
-		'CoffeeMain': "0xed19118faf41505aa39f68d8db05311970ebface",
+		'CoffeeMain': "0x8072e44fb7528e8f54907da93c318402c959eb7f",
 	};
 
 	var globMainContract = false;
-	var globCoinbase = false;
-	
+	var globCoinbase = false;	
 
 	window.addEventListener('load', function() 
 	{  
@@ -31,7 +30,8 @@
 		*/
 		getCurrentAccountAddress((address)=>{
 			globCoinbase = address;	
-			$("#currentUserAddress").html(globCoinbase);			
+			$("#userAddress").html(globCoinbase);	
+			$(window).trigger("coinbaseReady");		
 		});
 	}
 

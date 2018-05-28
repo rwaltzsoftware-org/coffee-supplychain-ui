@@ -1,7 +1,15 @@
 
-$(window).on("mainContractReady", function ()
+$(window).on("coinbaseReady", function ()
 {
     // updateUser(globMainContract);  
+
+    getUser(globMainContract, function(data){
+      console.log(data);
+       $("#userName").html(data.name);
+       $("#userContact").html(data.contactNo);
+       $("#userRole").html(data.role);
+    });
+
 });
 
 function updateUser(contractRef)
@@ -18,18 +26,18 @@ function updateUser(contractRef)
   });  
 }
 
-/*function getUser(contractRef,callback)
+function getUser(contractRef,callback)
 {
-   contractRef.methods.getUser(coinbase).call(function (error, result) {
+   contractRef.methods.getUser(globCoinbase).call(function (error, result) {
         if(error){
-            alert("Unable to get User");
+            alert("Unable to get User" + error);    
         }
 
-        newUser = coinbase;
+        newUser = result;
 
         if (callback)
         {
             callback(newUser);
         }        
     });
-}*/
+}
