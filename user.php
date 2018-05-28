@@ -59,22 +59,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- <div class="col-lg-3 col-sm-6  b-0">
-                                    <div class="col-in row">
-                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe016;"></i>
-                                            <h5 class="text-muted vb">All PROJECTS</h5>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <h3 class="counter text-right m-t-15 text-success">431</h3>
-                                        </div>
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
+                                </div>                               
                             </div>
                         </div>
                     </div>
@@ -98,7 +83,7 @@
                                             <th>Exporter</th>
                                             <th>Importer</th>
                                             <th>Processor</th>
-                                            <th>Actions</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -124,7 +109,6 @@
                                                 <a  href="view-batch.php"><span class="label label-success font-weight-100">View</span></a>&nbsp;
                                                 <a class="popup-with-form" href="#processingForm" ><span class="label label-success font-weight-100">Update</span></a> 
                                             </td>
-                                            <td><a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-marker-alt"></i></a></td>
                                         </tr>
                                          <tr>
                                             <td>#8545735sf32as234ca3fsafa3444234223</td>
@@ -132,8 +116,7 @@
                                             <td><span class="label label-success font-weight-100">Compilited</span> </td>
                                             <td><span class="label label-warning font-weight-100">Processing</span>  </td>
                                             <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                                            <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                                            <td><a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-marker-alt"></i></a> </td>
+                                            <td><span class="label label-danger font-weight-100">Not Available</span> </td>                
                                         </tr>
                                         <tr>
                                             <td>#8545735sf32as234ca3fs54asf2444234223</td>
@@ -142,7 +125,6 @@
                                             <td><span class="label label-success font-weight-100">Compilited</span>  </td>
                                             <td><span class="label label-success font-weight-100">Compilited</span> </td>
                                             <td><span class="label label-success font-weight-100">Compilited</span> </td>
-                                            <td><a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-marker-alt"></i></a></td>
                                         </tr>
                                     </tbody>
                                 </table>
