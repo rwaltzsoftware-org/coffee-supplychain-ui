@@ -5,7 +5,7 @@ import "./Ownable.sol";
 contract CoffeeSupplyChain is Ownable
 {
     /*Events*/
-    event UserUpdate(address indexed user, string indexed name, string indexed contactNo, string _role, bool _isActive);
+    event UserUpdate(address indexed user, string indexed name, string indexed contactNo, string _role, bool _isActive,bytes32 profileHash);
     event UserRoleUpdate(address indexed user, string indexed role);
     event PerformCultivation(address indexed user, bytes32 indexed batchNo);
     event DoneInspection(address indexed user, bytes32 indexed batchNo);
@@ -38,29 +38,49 @@ contract CoffeeSupplyChain is Ownable
         return supplyChainStorage.getNextAction(_batchNo);
     }
     
+    
+
     /* Create/Update User */
-    function updateUser(address _userAddress, string _name, string _contactNo, string _role, bool _isActive) public onlyOwner returns(bool)
+
+    function updateUser(string _name, string _contactNo, string _role, bool _isActive,bytes32 _profileHash) public returns(bool)
     {
-        require(_userAddress != address(0));
+        require(msg.sender != address(0));
         
         /* Call Storage Contract */
-        bool status = supplyChainStorage.setUser(_userAddress, _name, _contactNo, _role, _isActive);
+        bool status = supplyChainStorage.setUser(msg.sender, _name, _contactNo, _role, _isActive,_profileHash);
         
          /*call event*/
-        emit UserUpdate(_userAddress,_name,_contactNo,_role,_isActive);
-        emit UserRoleUpdate(_userAddress,_role);
+        emit UserUpdate(msg.sender,_name,_contactNo,_role,_isActive,_profileHash);
+        emit UserRoleUpdate(msg.sender,_role);
         
         return status;
     }
     
+
+    /* Create/Update User For Admin  */
+    function updateUserForAdmin(address _userAddress, string _name, string _contactNo, string _role, bool _isActive,bytes32 _profileHash) public onlyOwner returns(bool)
+    {
+        require(_userAddress != address(0));
+        
+        /* Call Storage Contract */
+        bool status = supplyChainStorage.setUser(_userAddress, _name, _contactNo, _role, _isActive, _profileHash);
+        
+         /*call event*/
+        emit UserUpdate(_userAddress,_name,_contactNo,_role,_isActive,_profileHash);
+        emit UserRoleUpdate(_userAddress,_role);
+        
+        return status;
+    }
+
+    
     /* get User */
-    function getUser(address _userAddress) public view returns(string name, string contactNo, bool isActive, string role){
+    function getUser(address _userAddress) public view returns(string name, string contactNo, string role, bool isActive , bytes32 profileHash){
         require(_userAddress != address(0));
         
         /*Getting value from struct*/
-        (name, contactNo, isActive, role) = supplyChainStorage.getUser(_userAddress);
+        (name, contactNo, role, isActive, profileHash) = supplyChainStorage.getUser(_userAddress);
     
-        return (name, contactNo, isActive, role);
+        return (name, contactNo, role, isActive, profileHash);
     }
          
     /* perform Basic Cultivation */

@@ -21,6 +21,7 @@ contract SupplyChainStorage is SupplyChainStorageOwnable {
         string name;
         string contactNo;
         bool isActive;
+        bytes32 profileHash;
     } 
     
     mapping(address => user) userDetails;
@@ -144,12 +145,14 @@ contract SupplyChainStorage is SupplyChainStorageOwnable {
                      string _name, 
                      string _contactNo, 
                      string _role, 
-                     bool _isActive) public onlyAuthCaller returns(bool){
+                     bool _isActive,
+                     bytes32 _profileHash) public onlyAuthCaller returns(bool){
         
         /*store data into struct*/
         userDetail.name = _name;
         userDetail.contactNo = _contactNo;
         userDetail.isActive = _isActive;
+        userDetail.profileHash = _profileHash;
         
         /*store data into mapping*/
         userDetails[_userAddress] = userDetail;
@@ -160,14 +163,16 @@ contract SupplyChainStorage is SupplyChainStorageOwnable {
     
     /*get user details*/
     function getUser(address _userAddress) public onlyAuthCaller view returns(string name, 
-                                                                string contactNo, 
-                                                                bool isActive, 
-                                                                string role){
+                                                                    string contactNo, 
+                                                                    string role,
+                                                                    bool isActive, 
+                                                                    bytes32 profileHash
+                                                                ){
 
         /*Getting value from struct*/
         user memory tmpData = userDetails[_userAddress];
         
-        return (tmpData.name, tmpData.contactNo, tmpData.isActive, userRole[_userAddress]);
+        return (tmpData.name, tmpData.contactNo, userRole[_userAddress], tmpData.isActive, tmpData.profileHash);
     }
     
     /*get batch basicDetails*/
