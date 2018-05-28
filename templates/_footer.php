@@ -36,9 +36,12 @@
 
     <script type="text/javascript" src="js/parsley.min.js"></script>
 
-    <script type="text/javascript">
+    <!--  contract abi  -->
+    <script type="text/javascript" src="js/web3.min.js"></script>
+    <script type="text/javascript" src="js/app/CoffeeSupplyChainAbi.js"></script>
 
-    </script>
+
+    <script type="text/javascript" src="js/app/app.js"></script>
     <!--Style Switcher -->
     <script src="plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
 </body>
