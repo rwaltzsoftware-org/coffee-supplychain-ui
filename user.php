@@ -19,7 +19,7 @@
                                     <div class="user-content">
                                         <a href="javascript:void(0)"><img src="plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img"></a>
                                         <h4 class="text-white">User Name</h4>
-                                        <h5 class="text-white">0xab0874cb61d83f6b67dc08141568868102233bef</h5>
+                                        <h5 class="text-white" id="currentUserAddress">0xab0874cb61d83f6b67dc08141568868102233bef</h5>
                                     </div>
                                 </div>
                             </div>
