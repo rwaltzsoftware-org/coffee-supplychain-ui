@@ -37,12 +37,7 @@
     <script type="text/javascript" src="js/parsley.min.js"></script>
 
     <script type="text/javascript">
-    $(document).ready(function() {
-        
-        $('#resetForm').click(function(){
-            $('.reset')[0].reset();
-  });
-    });
+
     </script>
     <!--Style Switcher -->
     <script src="plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
