@@ -12,70 +12,31 @@
                 </div>
                 <!-- /.row -->
                 <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12">
+                    <div class="col-lg-4 col-sm-6 ">
                         <div class="white-box">
-                            <div class="row row-in">
-                                <div class="col-lg-4 col-sm-6 row-in-br">
-                                    <div class="col-in row">
-                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i class="fa fa-user fa-2x"></i>
-                                            <h5 class="text-muted vb">Users</h5>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <h3 class="counter text-right m-t-15 text-danger">23</h3>
-                                        </div>
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 100%"> <!-- <span class="sr-only">100% Complete (success)</span> --> </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-sm-6 row-in-br  b-r-none">
-                                    <div class="col-in row">
-                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe01b;"></i>
-                                            <h5 class="text-muted vb">Batch Progress</h5>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <h3 class="counter text-right m-t-15 text-megna">40</h3> 
-                                        </div>
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-megna" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-sm-6 row-in-br">
-                                    <div class="col-in row">
-                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe00b;"></i>
-                                            <h5 class="text-muted vb">Total Batches</h5>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <h3 class="counter text-right m-t-15 text-primary">45</h3>
-                                        </div>
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 100%"> <!-- <span class="sr-only">70% Complete (success)</span> --> </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- <div class="col-lg-3 col-sm-6  b-0">
-                                    <div class="col-in row">
-                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe016;"></i>
-                                            <h5 class="text-muted vb">All PROJECTS</h5>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <h3 class="counter text-right m-t-15 text-success">431</h3>
-                                        </div>
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-                            </div>
+                            <h3 class="box-title">Users</h3>
+                            <ul class="list-inline two-part">
+                                <li><i class="icon-user text-info"></i></li>
+                                <li class="text-right"><span class="counter text-info">80</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 ">
+                        <div class="white-box">
+                            <h3 class="box-title">Total Roles</h3>
+                            <ul class="list-inline two-part">
+                                <li><i class="icon-graduation text-purple"></i></li>
+                                <li class="text-right "><span class="counter text-purple">5</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 ">
+                        <div class="white-box">
+                            <h3 class="box-title">Total Batches</h3>
+                            <ul class="list-inline two-part">
+                                <li><i class="icon-doc text-success"></i></li>
+                                <li class="text-right"><span class="counter text-success">15</span></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -145,27 +106,13 @@
                             <ul class="list-inline two-part">
                                 <li class="text-right">0xab0874cb61d83f6b67dc08141568868102233bef</li>
                             </ul>
-                            <h3 class="box-title">Contract Address <i class="fa fa-qrcode fa-2x text-info"></i></h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6 col-xs-12">
+                        <div class="white-box">
+                           <h3 class="box-title">Contract Address <i class="fa fa-qrcode fa-2x text-info"></i></h3>
                             <ul class="list-inline two-part">
                                 <li class="text-right">0xab0874cb61d83f6b67dc08141568868102233bef</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-xs-12">
-                        <div class="white-box">
-                            <h3 class="box-title">NEW Invoices</h3>
-                            <ul class="list-inline two-part">
-                                <li><i class="ti-wallet text-success"></i></li>
-                                <li class="text-right"><span class="">117</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-xs-12">
-                        <div class="white-box">
-                            <h3 class="box-title">NEW Projects</h3>
-                            <ul class="list-inline two-part">
-                                <li><i class="icon-folder text-purple"></i></li>
-                                <li class="text-right"><span class="counter">169</span></li>
                             </ul>
                         </div>
                     </div>
