@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="col-md-4 col-sm-4 text-center">
                                     <p class="text-danger"><i class="fa fa-gears"></i> Settings</p>
-                                    <a href="#batchForm" class="btn btn-info m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light popup-with-form">Edit</a>
+                                    <a class="btn btn-info m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light popup-with-form" id="updateUser" href="#updateUserForm" >Edit</a>
                                 </div>
 
                             </div>
@@ -106,6 +106,50 @@
                                         </tr>
                                     </tbody>
                                 </table>
+
+                            <!-- Update User Form -->
+                            <form id="updateUserForm" class="mfp-hide white-popup-block">
+                                <h1>Update User Profile</h1><br>
+                                <fieldset style="border:0;">
+                                    <div class="form-group">
+                                        <label class="control-label" for="fullname">Fullname</label>
+                                        <input type="text" class="form-control" id="fullname" name="fullname" placeholder="fullname" required="">
+                                    </div> 
+                                    <div class="form-group">
+                                        <label class="control-label" for="contactNumber">Contact Number</label>
+                                        <input type="text" class="form-control" id="contactNumber" name="contactNumber" placeholder="contact number" required="">
+                                    </div>                              
+                                    <div class="form-group">
+                                        <label class="control-label" for="role">User Role</label>
+                                       <!--  <input type="text" class="form-control" id="role" name="role" placeholder="Select User Role" required=""> -->
+                                       <select class="form-control" id="role" name="role">
+                                           <option value="" disabled selected>Select User Role</option>
+                                           <option value="SUPER_ADMIN">SUPER_ADMIN</option>
+                                           <option value="FARM_INSPECTION">FARM_INSPECTION</option>
+                                           <option value="HARVESTER">HARVESTER</option>
+                                           <option value="EXPORTER">EXPORTER</option>
+                                           <option value="IMPORTER">IMPORTER</option>
+                                           <option value="PROCESSOR">PROCESSOR</option>
+                                       </select>
+
+                                    </div>
+                                     <div class="form-group">
+                                        <label class="control-label" for="role">User Status</label>
+                                       <!--  <input type="text" class="form-control" id="role" name="role" placeholder="Select User Role" required=""> -->&nbsp;&nbsp;&nbsp;
+                                       <input type="radio" name="status" value="true" 
+                                       /> TRUE &nbsp;&nbsp;
+                                       <input type="radio" name="status" value="false"/> FALSE
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="profileHash">Profile Hash</label>
+                                        <input type="text" class="form-control" id="profileHash" name="profileHash" placeholder="Profile Hash" required="">
+                                    </div>
+                                     <div class="form-group float-right">
+                                       <button type="reset" class="btn btn-default waves-effect">Reset</button>
+                                            <button type="button" id="submitProfile" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </fieldset>
+                            </form>
 
                             <!-- Farm Inspection Form -->
                             <form id="farmInspectionForm" class="mfp-hide white-popup-block">

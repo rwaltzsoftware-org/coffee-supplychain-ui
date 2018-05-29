@@ -5,7 +5,7 @@ import "./Ownable.sol";
 contract CoffeeSupplyChain is Ownable
 {
     /*Events*/
-    event UserUpdate(address indexed user, string indexed name, string indexed contactNo, string _role, bool _isActive,bytes32 profileHash);
+    event UserUpdate(address indexed user, bytes indexed name, bytes indexed contactNo, bytes _role, bool _isActive,bytes32 profileHash);
     event UserRoleUpdate(address indexed user, string indexed role);
     event PerformCultivation(address indexed user, bytes32 indexed batchNo);
     event DoneInspection(address indexed user, bytes32 indexed batchNo);
@@ -24,13 +24,17 @@ contract CoffeeSupplyChain is Ownable
     
     /* Storage Variables */    
     SupplyChainStorage supplyChainStorage;
-    address Owner; 
+    address supplyChainAddress; 
     
     constructor(address _supplyChainAddress) public {
         supplyChainStorage = SupplyChainStorage(_supplyChainAddress);
-        Owner = msg.sender;
+        supplyChainAddress = _supplyChainAddress;
     }
     
+    function getStorageAddress() public view onlyOwner returns(address)
+    {
+        return (supplyChainAddress); 
+    }
     
     /* Get Next Action  */    
     function getNextAction(bytes32 _batchNo) public view returns(string)
@@ -50,7 +54,7 @@ contract CoffeeSupplyChain is Ownable
         bool status = supplyChainStorage.setUser(msg.sender, _name, _contactNo, _role, _isActive,_profileHash);
         
          /*call event*/
-        emit UserUpdate(msg.sender,_name,_contactNo,_role,_isActive,_profileHash);
+        emit UserUpdate(msg.sender,bytes(_name),bytes(_contactNo),bytes(_role),_isActive,_profileHash);
         emit UserRoleUpdate(msg.sender,_role);
         
         return status;
@@ -66,7 +70,7 @@ contract CoffeeSupplyChain is Ownable
         bool status = supplyChainStorage.setUser(_userAddress, _name, _contactNo, _role, _isActive, _profileHash);
         
          /*call event*/
-        emit UserUpdate(_userAddress,_name,_contactNo,_role,_isActive,_profileHash);
+        emit UserUpdate(_userAddress,bytes(_name),bytes(_contactNo),bytes(_role),_isActive,_profileHash);
         emit UserRoleUpdate(_userAddress,_role);
         
         return status;
