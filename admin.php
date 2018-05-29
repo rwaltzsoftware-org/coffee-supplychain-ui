@@ -104,7 +104,7 @@
                         <div class="white-box">
                             <h3 class="box-title">Your Address <i class="fa fa-qrcode fa-2x text-info"></i></h3>
                             <ul class="list-inline two-part">
-                                <li class="text-right">0xab0874cb61d83f6b67dc08141568868102233bef</li>
+                                <li class="text-right" id="currentUserAddress">0xab0874cb61d83f6b67dc08141568868102233bef</li>
                             </ul>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                         <div class="white-box">
                            <h3 class="box-title">Contract Address <i class="fa fa-qrcode fa-2x text-info"></i></h3>
                             <ul class="list-inline two-part">
-                                <li class="text-right">0xab0874cb61d83f6b67dc08141568868102233bef</li>
+                                <li class="text-right">0x8072e44fb7528e8f54907da93c318402c959eb7f</li>
                             </ul>
                         </div>
                     </div>
