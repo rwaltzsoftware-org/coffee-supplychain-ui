@@ -7,13 +7,11 @@
 
 /* Nitish Code Starts */
 
-(function()
-{
-    $(window).on("mainContractReady",function(){
 
-        
-    });
+$(window).on("coinbaseReady", function () {
+    getAllEvents(globMainContract);
 });
+
 
 function addCultivationBatch()
 {
@@ -21,15 +19,14 @@ function addCultivationBatch()
 }
 
 function getAllEvents(contractRef) {
-    contractRef.getPastEvents('Transfer', {
-        fromBlock: 0,
-        filter: {
-            to: coinbase
-        }
+    contractRef.getPastEvents('PerformCultivation', {
+        fromBlock: 0
     }).then(function (events) {
         console.log(events);
 
-        $("#transactions tbody").html(buildTransactionData(events));
+        // $("#transactions tbody").html(buildTransactionData(events));
+    }).catch(error => {
+        console.log(error)
     });
 }
 /* Nitish Code Ends */

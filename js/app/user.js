@@ -4,7 +4,7 @@ $(window).on("coinbaseReady", function ()
     // updateUser(globMainContract);  
 
     getUser(globMainContract, function(data){
-      console.log(data);
+    //   console.log(data);
        $("#userName").html(data.name);
        $("#userContact").html(data.contactNo);
        $("#userRole").html(data.role);
@@ -22,7 +22,7 @@ function updateUser(contractRef)
       alert(error);
     }
 
-    console.log(result);
+    // console.log(result);
   });  
 }
 
