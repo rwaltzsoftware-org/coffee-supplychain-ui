@@ -26,7 +26,7 @@
 
 			if(currentPanel == "admin.php")
 			{
-				if(address != 0x9F386CcD8A8e7043314902ECE639DE8E2452d731){
+				if (address != 0x36fEfe201706E2056fd01844030415F78840B2D8) {
 					window.location = "index.php";
 				}
 			}
