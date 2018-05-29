@@ -1,7 +1,7 @@
 /* Vikas Code Starts */
 
 $(window).on('coinbaseReady',function(){
-	getAllEvents(globMainContract);
+	// getAllEvents(globMainContract);
 });
 
 function userFormSubmit(){
@@ -33,7 +33,7 @@ function userFormSubmit(){
 
 
 $(window).on("coinbaseReady", function () {
-    getAllEvents(globMainContract);
+    getCultivationEvents(globMainContract);
 });
 
 
@@ -66,16 +66,109 @@ function addCultivationBatch()
     }
 }
 
-function getAllEvents(contractRef) {
-    contractRef.getPastEvents('UserUpdate', {
+function getCultivationEvents(contractRef) {
+    contractRef.getPastEvents('PerformCultivation', {
         fromBlock: 0
-    }).then(function (events) {
-        console.log(events);
+    }).then(function (events) 
+    {
+        var finalEvents = [];
+        $.each(events,function(index,elem)
+        {
+            var tmpData = {};
+            tmpData.batchNo = elem.returnValues.batchNo;
+            getBatchStatus(contractRef, tmpData.batchNo).then(result => {
+                tmpData.status = result;
+
+                finalEvents.push(tmpData);
+            });
+        });
+        
+        setTimeout(function()
+        {
+            var table = buildCultivationTable(finalEvents);
+            $("#adminCultivationTable").find("tbody").html(table);
+        },500); 
+
+        
 
         // $("#transactions tbody").html(buildTransactionData(events));
     }).catch(error => {
         console.log(error)
     });
+}
+
+function buildCultivationTable(finalEvents)
+{
+    var table = "";
+    
+    for (var tmpDataIndex in finalEvents)
+    {   
+        var elem = finalEvents[tmpDataIndex];
+        var tr = "";
+        if (elem.status == "FARM_INSPECTION") {
+            tr = `<tr>
+                    <td>#85457898as234ca3fsafa3444234223</td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span></td>
+                    <td><span class="label label-warning font-weight-100">Processing</span> </td>
+                    <td><span class="label label-danger font-weight-100">Not Available</span> </td>
+                    <td><span class="label label-danger font-weight-100">Not Available</span> </td>
+                    <td><span class="label label-danger font-weight-100">Not Available</span> </td>
+                    <td><a href="view-batch.php" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                </tr>`;
+        } else if (elem.status == "HARVESTER") {
+            tr = `<tr>
+                    <td>#85457898as234ca3fsafa3444234223</td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span></td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                    <td><span class="label label-warning font-weight-100">Processing</span> </td>
+                    <td><span class="label label-danger font-weight-100">Not Available</span> </td>
+                    <td><span class="label label-danger font-weight-100">Not Available</span> </td>
+                    <td><a href="view-batch.php" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                </tr>`;
+        } else if (elem.status == "EXPORTER") {
+            tr = `<tr>
+                    <td>#85457898as234ca3fsafa3444234223</td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span></td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                    <td><span class="label label-warning font-weight-100">Processing</span> </td>
+                    <td><span class="label label-danger font-weight-100">Not Available</span> </td>
+                    <td><a href="view-batch.php" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                </tr>`;
+        } else if (elem.status == "IMPORTER") {
+            tr = `<tr>
+                    <td>#85457898as234ca3fsafa3444234223</td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span></td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                    <td><span class="label label-warning font-weight-100">Processing</span> </td>
+                    <td><a href="view-batch.php" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                </tr>`;
+        } else if (elem.status == "PROCESSOR") {
+            tr = `<tr>
+                    <td>#85457898as234ca3fsafa3444234223</td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span></td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                    <td><a href="view-batch.php" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                </tr>`;
+        }
+
+        table+=tr;
+    }
+
+    return table;
+    
+}
+
+function getBatchStatus(contractRef, batchNo)
+{
+    return contractRef.methods.getNextAction(batchNo)
+        .call();
+       
 }
 /* Nitish Code Ends */
 

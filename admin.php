@@ -52,7 +52,7 @@
                              <a href="#batchForm" class="btn btn-info pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light popup-with-form">Create Batch</a>
                             <h3 class="box-title">Batches Overview</h3> 
                             <div class="table-responsive">
-                                <table class="table product-overview">
+                                <table class="table product-overview" id="adminCultivationTable">
                                     <thead>
                                         <tr>
                                             <th>Batch ID</th>
