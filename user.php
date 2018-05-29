@@ -113,16 +113,16 @@
                                 <fieldset style="border:0;">
                                     <div class="form-group">
                                         <label class="control-label" for="fullname">Fullname</label>
-                                        <input type="text" class="form-control" id="fullname" name="fullname" placeholder="fullname" required="">
+                                        <input type="text" class="form-control" id="fullname" name="fullname" placeholder="fullname" data-parsley-required="true">
                                     </div> 
                                     <div class="form-group">
                                         <label class="control-label" for="contactNumber">Contact Number</label>
-                                        <input type="text" class="form-control" id="contactNumber" name="contactNumber" placeholder="contact number" required="">
+                                        <input type="text" class="form-control" id="contactNumber" name="contactNumber" placeholder="contact number" data-parsley-required="true" data-parsley-type="digits" data-parsley-length="[10, 15]" maxlength="15">
                                     </div>                              
                                     <div class="form-group">
                                         <label class="control-label" for="role">User Role</label>
                                        <!--  <input type="text" class="form-control" id="role" name="role" placeholder="Select User Role" required=""> -->
-                                       <select class="form-control" id="role" name="role">
+                                       <select class="form-control" id="role" name="role" data-parsley-required="true">
                                            <option value="" disabled selected>Select User Role</option>
                                            <option value="SUPER_ADMIN">SUPER_ADMIN</option>
                                            <option value="FARM_INSPECTION">FARM_INSPECTION</option>
@@ -136,13 +136,13 @@
                                      <div class="form-group">
                                         <label class="control-label" for="role">User Status</label>
                                        <!--  <input type="text" class="form-control" id="role" name="role" placeholder="Select User Role" required=""> -->&nbsp;&nbsp;&nbsp;
-                                       <input type="radio" name="status" value="true" 
+                                       <input type="radio" name="status" value="true" data-parsley-required="true" 
                                        /> TRUE &nbsp;&nbsp;
                                        <input type="radio" name="status" value="false"/> FALSE
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="profileHash">Profile Hash</label>
-                                        <input type="text" class="form-control" id="profileHash" name="profileHash" placeholder="Profile Hash" required="">
+                                        <input type="text" class="form-control" id="profileHash" name="profileHash" placeholder="Profile Hash" data-parsley-required="true">
                                     </div>
                                      <div class="form-group float-right">
                                        <button type="reset" class="btn btn-default waves-effect">Reset</button>
@@ -157,24 +157,24 @@
                                 <fieldset style="border:0;">
                                     <div class="form-group">
                                         <label class="control-label" for="InspectorId">Inspector ID Number</label>
-                                        <input type="text" class="form-control" id="InspectorId" name="inspectorId" placeholder="inspector id number" required="">
+                                        <input type="text" class="form-control" id="InspectorId" name="inspectorId" placeholder="inspector id number" data-parsley-required="true">
                                     </div>                              
                                     <div class="form-group">
                                         <label class="control-label" for="typeOfSeed">Type of Seed</label>
-                                        <input type="text" class="form-control" id="typeOfSeed" name="typeOfSeed" placeholder="type of seed" required="">
+                                        <input type="text" class="form-control" id="typeOfSeed" name="typeOfSeed" placeholder="type of seed" data-parsley-required="true">
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="coffeeFamily">Coffee Family</label>
-                                        <input type="text" class="form-control" id="coffeeFamily" name="coffeeFamily" placeholder="coffee family" required="">
+                                        <input type="text" class="form-control" id="coffeeFamily" name="coffeeFamily" placeholder="coffee family" data-parsley-required="true">
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="fertilizer">Fertilizer Used</label>
-                                        <input type="text" class="form-control" id="fertilizer" name="fertilizer" placeholder="fertilizer used" required="">
+                                        <input type="text" class="form-control" id="fertilizer" name="fertilizer" placeholder="fertilizer used" data-parsley-required="true">
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="farmAddress">Farm Address</label>
                                         <br>
-                                        <textarea class="form-control" id="farmAddress" name="farmAddress" placeholder="farm address"></textarea>
+                                        <textarea class="form-control" id="farmAddress" name="farmAddress" placeholder="farm address" data-parsley-required="true"></textarea>
                                     </div>
                                      <div class="form-group float-right">
                                        <button type="reset" class="btn btn-default waves-effect" >Reset</button>
@@ -189,23 +189,23 @@
                                 <fieldset style="border:0;">
                                     <div class="form-group">
                                         <label class="control-label" for="registratoinNo">Registration No</label>
-                                        <input type="text" class="form-control" id="registratoinNo" name="registratoinNo" placeholder="registration number" required="">
+                                        <input type="text" class="form-control" id="registratoinNo" name="registratoinNo" placeholder="registration number" data-parsley-required="true">
                                     </div> 
                                     <div class="form-group">
                                         <label class="control-label" for="farmerName">Farmer Name</label>
-                                        <input type="text" class="form-control" id="farmerName" name="farmerName" placeholder="farmer name" required="">
+                                        <input type="text" class="form-control" id="farmerName" name="farmerName" placeholder="farmer name" data-parsley-required="true">
                                     </div>                              
                                     <div class="form-group">
                                         <label class="control-label" for="coffeeVeriety">Coffee Variety</label>
-                                        <input type="text" class="form-control" id="coffeeVeriety" name="coffeeVeriety" placeholder="coffee variety" required="">
+                                        <input type="text" class="form-control" id="coffeeVeriety" name="coffeeVeriety" placeholder="coffee variety" data-parsley-required="true">
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="temperature">Temperature</label>
-                                        <input type="text" class="form-control" id="temperature" name="temperature" placeholder="temperature" required="">
+                                        <input type="text" class="form-control" id="temperature" name="temperature" placeholder="temperature" data-parsley-required="true">
                                     </div>
                                      <div class="form-group">
                                         <label class="control-label" for="humidity">Humidity</label>
-                                        <input type="text" class="form-control" id="humidity" name="humidity" placeholder="humidity" required="">
+                                        <input type="text" class="form-control" id="humidity" name="humidity" placeholder="humidity" data-parsley-required="true">
                                     </div>                                
                                      <div class="form-group float-right">
                                        <button type="reset" class="btn btn-default waves-effect">Reset</button>
@@ -220,15 +220,15 @@
                                 <fieldset style="border:0;">
                                     <div class="form-group">
                                         <label class="control-label" for="departureTime">Time of Departure</label>
-                                        <input type="text" class="form-control" id="departureTime" name="departureTime" placeholder="time of departure" required="">
+                                        <input type="text" class="form-control" id="departureTime" name="departureTime" placeholder="time of departure" data-parsley-required="true">
                                     </div> 
                                     <div class="form-group">
                                         <label class="control-label" for="estimateArrival">Estimate Time of Arrival</label>
-                                        <input type="text" class="form-control" id="estimateArrival" name="estimateArrival" placeholder="estimate arrival" required="">
+                                        <input type="text" class="form-control" id="estimateArrival" name="estimateArrival" placeholder="estimate arrival" data-parsley-required="true">
                                     </div>                              
                                     <div class="form-group">
                                         <label class="control-label" for="dispatchDetails">Dispatch Details</label>
-                                        <input type="text" class="form-control" id="dispatchDetails" name="dispatchDetails" placeholder="dispatch details" required="">
+                                        <input type="text" class="form-control" id="dispatchDetails" name="dispatchDetails" placeholder="dispatch details" data-parsley-required="true">
                                     </div>
                                      <div class="form-group float-right">
                                        <button type="reset" class="btn btn-default waves-effect">Reset</button>
@@ -243,15 +243,15 @@
                                 <fieldset style="border:0;">
                                     <div class="form-group">
                                         <label class="control-label" for="warehouse">Warehouse Information</label>
-                                        <input type="text" class="form-control" id="warehouse" name="warehouse" placeholder="warehouse information" required="">
+                                        <input type="text" class="form-control" id="warehouse" name="warehouse" placeholder="warehouse information" data-parsley-required="true">
                                     </div> 
                                     <div class="form-group">
                                         <label class="control-label" for="processDispatch">Processing & Dispatch</label>
-                                        <input type="text" class="form-control" id="processDispatch" name="processDispatch" placeholder="processing & dispatch" required="">
+                                        <input type="text" class="form-control" id="processDispatch" name="processDispatch" placeholder="processing & dispatch" data-parsley-required="true" >
                                     </div>                              
                                     <div class="form-group">
                                         <label class="control-label" for="payment">Payment Confirmation</label>
-                                        <input type="text" class="form-control" id="payment" name="payment" placeholder="payment confirmation" required="">
+                                        <input type="text" class="form-control" id="payment" name="payment" placeholder="payment confirmation" data-parsley-required="true" >
                                     </div>
                                      <div class="form-group float-right">
                                        <button type="reset" class="btn btn-default waves-effect">Reset</button>
@@ -267,35 +267,35 @@
                                     <h4>Roast Coffee</h4><br>
                                     <div class="form-group">
                                         <label class="control-label" for="quantity">Quantity</label>
-                                        <input type="text" class="form-control" id="quantity" name="quantity" placeholder="quantity" required="">
+                                        <input type="text" class="form-control" id="quantity" name="quantity" placeholder="quantity" data-parsley-required="true">
                                     </div> 
                                     <div class="form-group">
                                         <label class="control-label" for="temperature">Temperature </label>
-                                        <input type="text" class="form-control" id="temperature" name="temperature" placeholder="temperature" required="">
+                                        <input type="text" class="form-control" id="temperature" name="temperature" placeholder="temperature" data-parsley-required="true">
                                     </div>                              
                                     <div class="form-group">
                                         <label class="control-label" for="time">Time for Roasting</label>
-                                        <input type="text" class="form-control" id="time" name="time" placeholder="time for roasting" required="">
+                                        <input type="text" class="form-control" id="time" name="time" placeholder="time for roasting" data-parsley-required="true" >
                                     </div>
                                
                                     <h4>Grinding</h4><br>
                                      <div class="form-group">
                                         <label class="control-label" for="quantity">Grinding</label>
-                                        <input type="text" class="form-control" id="quantity" name="quantity" placeholder="quantity" required="">
+                                        <input type="text" class="form-control" id="quantity" name="quantity" placeholder="quantity" data-parsley-required="true">
                                     </div>
                            
                                     <h4>Packaging</h4><br>
                                     <div class="form-group">
                                         <label class="control-label" for="quantity">Date</label>
-                                        <input type="text" class="form-control" id="quantity" name="quantity" placeholder="quantity" required="">
+                                        <input type="text" class="form-control" id="quantity" name="quantity" placeholder="quantity" data-parsley-required="true">
                                     </div> 
                                     <div class="form-group">
                                         <label class="control-label" for="temperature">Time</label>
-                                        <input type="text" class="form-control" id="temperature" name="temperature" placeholder="temperature" required="">
+                                        <input type="text" class="form-control" id="temperature" name="temperature" placeholder="temperature" data-parsley-required="true">
                                     </div>                              
                                     <div class="form-group">
                                         <label class="control-label" for="time">Place</label>
-                                        <input type="text" class="form-control" id="time" name="time" placeholder="time for roasting" required="">
+                                        <input type="text" class="form-control" id="time" name="time" placeholder="time for roasting" data-parsley-required="true">
                                     </div>
                                      <div class="form-group float-right">
                                        <button type="reset" class="btn btn-default waves-effect">Reset</button>
@@ -309,5 +309,17 @@
                 </div>                
             </div>
             <!-- /.container-fluid -->
+
+        <script type="text/javascript">
+            var userForm;      
+
+            $(document).ready(function(){
+              
+              userForm =  $("#updateUserForm").parsley();
+
+              $("#farmInspectionForm,#harvesterForm,#exporterForm,#importerForm,#processingForm").parsley();
+
+            });
+        </script>
         
 <?php include('templates/_footer.php');?>   
