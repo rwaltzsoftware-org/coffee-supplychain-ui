@@ -5,17 +5,17 @@ import "./Ownable.sol";
 contract CoffeeSupplyChain is Ownable
 {
     /*Events*/
-    event UserUpdate(address indexed user, string name, string contactNo, string _role, bool _isActive, bytes32 profileHash);
+    event UserUpdate(address indexed user, string name, string contactNo, string role, bool isActive, string profileHash);
     event UserRoleUpdate(address indexed user, string role);
-    event PerformCultivation(address indexed user, bytes32 indexed batchNo);
-    event DoneInspection(address indexed user, bytes32 indexed batchNo);
-    event DoneHarvesting(address indexed user, bytes32 indexed batchNo);
-    event DoneExporting(address indexed user, bytes32 indexed batchNo);
-    event DoneImporting(address indexed user, bytes32 indexed batchNo);
-    event DoneProcessing(address indexed user, bytes32 indexed batchNo);
+    event PerformCultivation(address indexed user, address batchNo);
+    event DoneInspection(address indexed user, address batchNo);
+    event DoneHarvesting(address indexed user, address batchNo);
+    event DoneExporting(address indexed user, address batchNo);
+    event DoneImporting(address indexed user, address batchNo);
+    event DoneProcessing(address indexed user, address batchNo);
     
     /*Modifier*/
-    modifier isValidPerformer(bytes32 batchNo, string role) {
+    modifier isValidPerformer(address batchNo, string role) {
     
         require(keccak256(supplyChainStorage.getUserRole(msg.sender)) == keccak256(role));
         require(keccak256(supplyChainStorage.getNextAction(batchNo)) == keccak256(role));
@@ -37,7 +37,7 @@ contract CoffeeSupplyChain is Ownable
     }
     
     /* Get Next Action  */    
-    function getNextAction(bytes32 _batchNo) public view returns(string)
+    function getNextAction(address _batchNo) public view returns(string)
     {
         return supplyChainStorage.getNextAction(_batchNo);
     }
@@ -46,7 +46,7 @@ contract CoffeeSupplyChain is Ownable
 
     /* Create/Update User */
 
-    function updateUser(string _name, string _contactNo, string _role, bool _isActive,bytes32 _profileHash) public returns(bool)
+    function updateUser(string _name, string _contactNo, string _role, bool _isActive,string _profileHash) public returns(bool)
     {
         require(msg.sender != address(0));
         
@@ -62,7 +62,7 @@ contract CoffeeSupplyChain is Ownable
     
 
     /* Create/Update User For Admin  */
-    function updateUserForAdmin(address _userAddress, string _name, string _contactNo, string _role, bool _isActive,bytes32 _profileHash) public onlyOwner returns(bool)
+    function updateUserForAdmin(address _userAddress, string _name, string _contactNo, string _role, bool _isActive,string _profileHash) public onlyOwner returns(bool)
     {
         require(_userAddress != address(0));
         
@@ -78,7 +78,7 @@ contract CoffeeSupplyChain is Ownable
 
     
     /* get User */
-    function getUser(address _userAddress) public view returns(string name, string contactNo, string role, bool isActive , bytes32 profileHash){
+    function getUser(address _userAddress) public view returns(string name, string contactNo, string role, bool isActive , string profileHash){
         require(_userAddress != address(0));
         
         /*Getting value from struct*/
@@ -94,9 +94,9 @@ contract CoffeeSupplyChain is Ownable
                              string _farmAddress,
                              string _exporterName,
                              string _importerName
-                            ) public onlyOwner returns(bytes32) {
+                            ) public onlyOwner returns(address) {
     
-        bytes32 batchNo = supplyChainStorage.setBasicDetails(_registrationNo,
+        address batchNo = supplyChainStorage.setBasicDetails(_registrationNo,
                                                             _farmerName,
                                                             _farmAddress,
                                                             _exporterName,
@@ -109,7 +109,7 @@ contract CoffeeSupplyChain is Ownable
     
     /* get Farm Inspection */
     
-    function getFarmInspectorData(bytes32 _batchNo) public view returns (string coffeeFamily,string typeOfSeed,string fertilizerUsed) {
+    function getFarmInspectorData(address _batchNo) public view returns (string coffeeFamily,string typeOfSeed,string fertilizerUsed) {
         /* Call Storage Contract */
         (coffeeFamily, typeOfSeed, fertilizerUsed) = supplyChainStorage.getFarmInspectorData(_batchNo);  
         
@@ -118,7 +118,7 @@ contract CoffeeSupplyChain is Ownable
     
     /* perform Farm Inspection */
     
-    function updateFarmInspectorData(bytes32 _batchNo,
+    function updateFarmInspectorData(address _batchNo,
                                     string _coffeeFamily,
                                     string _typeOfSeed,
                                     string _fertilizerUsed) 
@@ -133,7 +133,7 @@ contract CoffeeSupplyChain is Ownable
     
     /* get Harvest */
     
-    function getHarvesterData(bytes32 _batchNo) public view returns (string cropVariety, string tempatureUsed, string humidity) {
+    function getHarvesterData(address _batchNo) public view returns (string cropVariety, string tempatureUsed, string humidity) {
         /* Call Storage Contract */
         (cropVariety, tempatureUsed, humidity) = supplyChainStorage.getHarvesterData(_batchNo);  
         
@@ -142,7 +142,7 @@ contract CoffeeSupplyChain is Ownable
     
     /* perform Harvest */
     
-    function updateHarvesterData(bytes32 _batchNo,
+    function updateHarvesterData(address _batchNo,
                                 string _cropVariety,
                                 string _tempatureUsed,
                                 string _humidity) 
@@ -157,7 +157,7 @@ contract CoffeeSupplyChain is Ownable
     
     /* get Export */
     
-    function getExporterData(bytes32 _batchNo) public view returns (uint256 quantity,
+    function getExporterData(address _batchNo) public view returns (uint256 quantity,
                                                                     string destinationAddress,
                                                                     string shipName,
                                                                     string shipNo,
@@ -180,7 +180,7 @@ contract CoffeeSupplyChain is Ownable
     
     /* perform Export */
     
-    function updateExporterData(bytes32 _batchNo,
+    function updateExporterData(address _batchNo,
                                 uint256 _quantity,    
                                 string _destinationAddress,
                                 string _shipName,
@@ -199,7 +199,7 @@ contract CoffeeSupplyChain is Ownable
     
     /* get Import */
     
-    function getImporterData(bytes32 _batchNo) public view returns (uint256 quantity,
+    function getImporterData(address _batchNo) public view returns (uint256 quantity,
                                                                     string shipName,
                                                                     string shipNo,
                                                                     uint256 arrivalDateTime,
@@ -222,7 +222,7 @@ contract CoffeeSupplyChain is Ownable
     
     /* perform Import */
     
-    function updateImporterData(bytes32 _batchNo,
+    function updateImporterData(address _batchNo,
                                 uint256 _quantity, 
                                 string _shipName,
                                 string _shipNo,
@@ -242,7 +242,7 @@ contract CoffeeSupplyChain is Ownable
     
     /* get Processor */
     
-    function getProccesorData(bytes32 _batchNo) public view returns (uint256 quantity,
+    function getProccesorData(address _batchNo) public view returns (uint256 quantity,
                                                                     string tempature,
                                                                     uint256 rostingDuration,
                                                                     string internalBatchNo,
@@ -263,7 +263,7 @@ contract CoffeeSupplyChain is Ownable
     
     /* perform Processing */
     
-    function updateProcessorData(bytes32 _batchNo,
+    function updateProcessorData(address _batchNo,
                               uint256 _quantity, 
                               string _tempature,
                               uint256 _rostingDuration,
@@ -285,13 +285,4 @@ contract CoffeeSupplyChain is Ownable
         emit DoneProcessing(msg.sender, _batchNo);
         return (status);
     }
-    
-    
-    
-    
-    
-   
-    
-    
-    
 }
