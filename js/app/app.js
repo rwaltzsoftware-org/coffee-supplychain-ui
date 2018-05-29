@@ -17,11 +17,31 @@
 		  web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 		}
 		
+		getCurrentAccountAddress((address) => {
+			/*  To Restrict User in Admin Section */
+			var currentPath = window.location.pathname;
+			var tmpStack = currentPath.split("/");
+			var currentPanel = tmpStack.pop();
+
+
+			if (currentPanel == "admin.php") {
+				if (err) {
+					console.error("An error occurred: " + err);
+				} else if (accounts.length == 0) {
+
+					// sweetAlert('Error', 'Please login to MetaMask..!', 'error');
+					// window.location = 'index.php';
+					// $("#currentUserAddress").html('').html("0x0000000000000000000000000000000000000000");
+				}
+			}
+		});
+
 		initContract();
 
-		setInterval(function () {
+		/* setInterval(function () {
 			updateLoginAccountStatus();
-		}, 500);
+		}, 500); */
+		
 	});
 
 	function initContract()
@@ -42,26 +62,7 @@
 		});
 	}
 
-	getCurrentAccountAddress((address)=>{
-		/*  To Restrict User in Admin Section */
-		var currentPath = window.location.pathname;
-		var tmpStack = currentPath.split("/");
-		var currentPanel = tmpStack.pop();
-
-
-		if(currentPanel == "admin.php")
-		{
-		    if (err){
-				console.error("An error occurred: " + err);
-			} 
-		    else if (accounts.length == 0){
-
-		     	// sweetAlert('Error', 'Please login to MetaMask..!', 'error');
-		     	// window.location = 'index.php';
-		     	// $("#currentUserAddress").html('').html("0x0000000000000000000000000000000000000000");
-			}
-		}
-	});
+	
 
 
 
