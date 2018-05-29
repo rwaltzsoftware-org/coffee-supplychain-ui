@@ -37,7 +37,7 @@
 
 	function getCurrentAccountAddress(callback){
 		callback = callback || false;
-
+		
 		web3.eth.getCoinbase()
 		.then((_coinbase) => {
 			callback(_coinbase);
