@@ -44,6 +44,7 @@
 
     <script type="text/javascript" src="js/app/app.js"></script>
     <script type="text/javascript" src="js/app/user.js"></script>
+    <script type="text/javascript" src="js/app/admin.js"></script>
     <!--Style Switcher -->
     <script src="plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
 </body>

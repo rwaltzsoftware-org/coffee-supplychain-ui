@@ -1,7 +1,7 @@
 var globCoinbase;
 
 var globIcoAddress = {
-	'CoffeeMain': "0x8072e44fb7528e8f54907da93c318402c959eb7f",
+	'CoffeeMain': "0xa5d0a05561261e41dbe4931cb5fb6a7ec51c9c9b"
 };
 
 var globMainContract = false;
@@ -42,7 +42,6 @@ function initContract()
 	globMainContract = new web3.eth.Contract(CoffeeSupplyChainAbi,globIcoAddress.CoffeeMain);	
 	$(window).trigger("mainContractReady");
 
-	getAllEvents(globMainContract);
 }
 
 /*Vikas - Start*/
@@ -65,7 +64,7 @@ function updateLoginAccountStatus(){
 function initAccountDetails(){
 	getCurrentAccountAddress((address)=>{
 		globCoinbase = address;
-		$("#currentUserAddress").html(globCoinbase);
+		$("#currentUserAddress").html(globCoinbase);		
 	})
 }
 
@@ -85,41 +84,49 @@ function getCurrentAccountAddress(callback){
 
 function getAllEvents(contractRef)
 {
-	// console.log(contractRef);
-	// contractRef.getPastEvents('UserUpdate', {
-	//     // filter: {myIndexedParam: [20,23], myOtherIndexedParam: '0x123456789...'}, // Using an array means OR: e.g. 20 or 23
-	//     fromBlock: 0,
-	//     toBlock: 'latest'
-	// }, function(error, events){ console.log(events); })
-	// .then(function(events){
-	//     console.log(events) // same results as the optional callback above
-	// });
-
-	contractRef.events.UserUpdate({
-	    fromBlock: 0
-	    // toBlock: 'latest'
-	}, function(error, event){
-		console.log("event : ",event);
-		console.log("error : ",error);
-	});
-
-	// contractRef.UserUpdate({}, { fromBlock: 0, toBlock: 'latest' }).get((error, eventResult) => {
-	//   if (error)
-	//     console.log('Error in myEvent event handler: ' + error);
-	//   else
-	//     console.log('myEvent: ' + JSON.stringify(eventResult.args));
-	// });
-
-	// console.log(contractRef);
- //    contractRef.getPastEvents('UserUpdate',{
- //        fromBlock:0,
- //        /*filter: {to: globCoinbase}  */      
- //    }).then(function (events){
- //        console.log(events);
+    contractRef.getPastEvents('UserUpdate',{
+        fromBlock:0,  
+    }).then(function (events){
+        console.log(events);
         	
- //        // $("#transactions tbody").html(buildTransactionData(events));
- //        // $("#transactions").DataTable();
- //    });
+        // $("#transactions tbody").html(buildTransactionData(events));
+        // $("#transactions").DataTable();
+    }).catch((err)=>{
+    	console.log(err);
+    });
+}
+
+function handleTransactionResponse(txHash,finalMessage)
+{
+	var txLink = "https://rinkeby.etherscan.io/tx/" + txHash ;
+    var txLinkHref = "<a target='_blank' href='"+txLink+"'> Click here for Transaction Status </a>" ;
+
+    sweetAlert("Success", "Please Check Transaction Status here :  "+txLinkHref, "success");
+
+    $("#linkOngoingTransaction").html(txLinkHref);
+    $("#divOngoingTransaction").fadeIn();
+}
+
+function handleTransactionReceipt(receipt,finalMessage)
+{
+	$("#linkOngoingTransaction").html("");
+    $("#divOngoingTransaction").fadeOut();
+
+    // sweetAlert("Success", "Token Purchase Complete ", "success");
+    sweetAlert("Success", finalMessage, "success");
+}
+
+function handleGenericError(error_message)
+{
+    if(error_message.includes("MetaMask Tx Signature"))
+    {
+        sweetAlert("Error", "Transaction Refused ", "error");
+    }
+    else
+    {
+        // sweetAlert("Error", "Error Occured, Please Try Again , if problem persist get in touch with us. ", "error");
+        sweetAlert("Error", error_message, "error");
+    }
 }
 
 /*Vikas -End*/

@@ -159,7 +159,7 @@
                     </div>
                     <div class="col-md-12 col-lg-8 col-sm-12">
                         <div class="white-box">
-                             <a href="#userForm" class="btn btn-info pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light popup-with-form">Create User</a>
+                             <a href="#userFormAdd" class="btn btn-info pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light popup-with-form">Create User</a>
                             <h3 class="box-title">Users</h3> 
                             <div class="table-responsive">
                                 <table class="table product-overview">
@@ -234,12 +234,12 @@
                 </fieldset>
             </form>
 
-            <form id="userForm" class="mfp-hide white-popup-block reset">
+            <form id="userFormAdd" onsubmit="return false;" class="mfp-hide white-popup-block reset">
                 <h1>Add User</h1><br>
                 <fieldset style="border:0;">
                     <div class="form-group">
                         <label class="control-label" for="userWalletAddress">User Wallet Address <i class="red">*</i></label>
-                        <input type="text" class="form-control" id="userWalletAddress" name="userWalletAddress" placeholder="Wallet Address" data-parsley-required="true" maxlength="42">
+                        <input type="text" class="form-control" id="userWalletAddress" name="userWalletAddress" placeholder="Wallet Address" data-parsley-required="true" minlength="42" maxlength="42">
                     </div> 
                     <div class="form-group">
                         <label class="control-label" for="userName">User Name <i class="red">*</i></label>
@@ -261,7 +261,7 @@
                         </select>    
                     </div>
                      <div class="form-group float-right">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" onclick="userFormSubmit();" class="btn btn-primary">Submit</button>
                     </div>
                 </fieldset>
             </form>
@@ -269,7 +269,7 @@
 
         <script type="text/javascript">
             $(document).ready(function(){
-                $("#userForm,#batchForm").parsley();
+                $("#userFormAdd,#batchForm").parsley();
             });
         </script>
 
