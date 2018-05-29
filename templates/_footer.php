@@ -35,6 +35,7 @@
     <script src="plugins/bower_components/Magnific-Popup-master/dist/jquery.magnific-popup-init.js"></script>
 
     <script type="text/javascript" src="js/parsley.min.js"></script>
+    <script type="text/javascript" src="js/sweetAlert.js"></script>
 
     <!--  contract abi  -->
     <script type="text/javascript" src="js/web3.min.js"></script>

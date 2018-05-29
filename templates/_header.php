@@ -24,6 +24,8 @@
     <link href="css/style.css" rel="stylesheet">
     <!-- color CSS -->
     <link href="css/colors/blue.css" id="theme" rel="stylesheet">
+    
+    <link href="css/sweetAlert.css" id="theme" rel="stylesheet">
 
     <!-- Popup CSS -->
     <link href="plugins/bower_components/Magnific-Popup-master/dist/magnific-popup.css" rel="stylesheet">
