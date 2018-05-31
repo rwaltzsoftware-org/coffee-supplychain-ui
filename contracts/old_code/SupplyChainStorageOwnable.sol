@@ -6,12 +6,15 @@ pragma solidity ^0.4.23;
  * @dev The Ownable contract has an owner address, and provides basic authorization control
  * functions, this simplifies the implementation of "user permissions".
  */
-contract Ownable {
+contract SupplyChainStorageOwnable {
   address public owner;
 
 
   event OwnershipRenounced(address indexed previousOwner);
-  event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+  event OwnershipTransferred(
+    address indexed previousOwner,
+    address indexed newOwner
+  );
 
 
   /**

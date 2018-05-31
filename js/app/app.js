@@ -26,7 +26,7 @@
 
 			if(currentPanel == "admin.php")
 			{
-				if(address != 0x9F386CcD8A8e7043314902ECE639DE8E2452d731){
+				if(address != 0x36fEfe201706E2056fd01844030415F78840B2D8){
 					window.location = "index.php";
 				}
 			}
@@ -68,8 +68,7 @@
 		*/
 		getCurrentAccountAddress((address)=>{
 			globCoinbase = address;	
-			$("#userAddress").html(globCoinbase);	
-			
+			$("#currentUserAddress").html(globCoinbase);	
 			$(window).trigger("coinbaseReady");		
 		});
 	}
@@ -92,18 +91,70 @@
 		})
 	}
 
+	function getUserDetails(contractRef,userAddress,callback){
+		callback = callback || false;
+
+		contractRef.methods.getUser(userAddress).call()
+		.then((result)=>{
+			callback(result);
+		})
+		.catch((error)=>{
+			sweetAlert("Error","Unabale to get User Details","error");
+			callback(0);
+		});
+	}
+
+
 	function getAllEvents(contractRef)
 	{
 	    contractRef.getPastEvents('UserUpdate',{
-	        fromBlock:0,  
+	        fromBlock: 0 
 	    }).then(function (events){
-	        console.log(events);
-	        	
-	        // $("#transactions tbody").html(buildTransactionData(events));
-	        // $("#transactions").DataTable();
+	        $("#tblUser").DataTable().destroy();
+	        $("#tblUser tbody").html(buildUserDetails(events));
+	        $("#tblUser").DataTable({
+	        	"displayLength": 3,
+	        	"order": [[ 1, "asc" ]]
+	        });
 	    }).catch((err)=>{
 	    	console.log(err);
 	    });
+	}
+
+	function buildUserDetails(events){
+		var tbody = "";
+		var roleClass = "";
+
+		$("#totalUsers").html(events.length);
+		counterInit();
+
+		$(events).each(function(index,event){
+			console.log(event);
+			var role        = event.returnValues._role;
+			var userAddress = event.returnValues.user;
+
+			if(role == 'FARM_INSPECTION'){
+				roleClass = "info";
+			}else if(role == 'HARVESTER'){
+				roleClass = "success";	
+			}else if(role == 'EXPORTER'){
+				roleClass = "warning";
+			}else if(role == 'IMPORTER'){
+				roleClass = "danger";
+			}else if(role == 'PROCESSOR'){
+				roleClass = "primary";
+			}
+
+			tbody += `<tr>
+	                        <td>`+userAddress+`</td>
+	                        <td>`+event.returnValues.name+`</td>
+	                        <td>`+event.returnValues.contactNo+`</td>
+	                        <td><span class="label label-`+roleClass+` font-weight-100">`+role+`</span></td>
+	                        <td><a href="javascript:void(0);" class="text-inverse p-r-10" data-toggle="tooltip" data-userAddress="`+userAddress+`" onclick="openEditUser(this);" title="Edit"><i class="ti-marker-alt"></i></a> </td>
+	                  </tr>`;
+		});
+
+		return tbody;
 	}
 
 	function handleTransactionResponse(txHash,finalMessage)
@@ -115,6 +166,8 @@
 
 	    $("#linkOngoingTransaction").html(txLinkHref);
 	    $("#divOngoingTransaction").fadeIn();
+	    /*scroll to top*/
+	    $('html, body').animate({ scrollTop: 0 }, 'slow', function () {});
 	}
 
 	function handleTransactionReceipt(receipt,finalMessage)
@@ -138,6 +191,49 @@
 	        sweetAlert("Error", error_message, "error");
 	    }
 
+	}
+
+
+	function changeSwitchery(element, checked) {
+	  if ( ( element.is(':checked') && checked == false ) || ( !element.is(':checked') && checked == true ) ) {
+	    element.parent().find('.switchery').trigger('click');
+	  }
+	}
+
+	/*==================================Bootstrap Model Start=========================================*/
+
+	function startLoader(){
+		$(".preloader").fadeIn();
+	}
+
+	function stopLoader(){
+		$(".preloader").fadeOut();
+	}
+
+	/*Set Default inactive*/
+    $("#userFormClick").click(function(){
+        $("#userForm").trigger('reset');
+        changeSwitchery($("#isActive"),false);
+        $("#userModelTitle").html("Add User");
+        $("#userFormModel").modal();    
+    });
+
+    /*Edit User Model Form*/
+    function openEditUser(ref){
+		var userAddress = $(ref).attr("data-userAddress");
+		startLoader();
+		getUserDetails(globMainContract,userAddress,function(result){
+			$("#userWalletAddress").val(userAddress);
+			$("#userName").val(result.name);
+			$("#userContactNo").val(result.contactNo);
+			$("#userProfileHash").val(result.profileHash);
+			$('#userRoles').val(result.role).prop('selected', true);
+
+			changeSwitchery($("#isActive"),result.isActive);
+			$("#userModelTitle").html("Update User");
+			stopLoader();
+			$("#userFormModel").modal();
+		});
 	}
 
 /*Vikas -End*/

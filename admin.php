@@ -10,6 +10,13 @@
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-info" id="divOngoingTransaction" style="display: none">Ongoing Transaction: <span id="linkOngoingTransaction">None</span> </div>
+                    </div>    
+                </div>
+
                 <!-- /.row -->
                 <div class="row">
                     <div class="col-lg-4 col-sm-6 ">
@@ -17,7 +24,7 @@
                             <h3 class="box-title">Users</h3>
                             <ul class="list-inline two-part">
                                 <li><i class="icon-user text-info"></i></li>
-                                <li class="text-right"><span class="counter text-info">80</span></li>
+                                <li class="text-right"><span class="counter text-info" id="totalUsers">0</span></li>
                             </ul>
                         </div>
                     </div>
@@ -159,10 +166,10 @@
                     </div>
                     <div class="col-md-12 col-lg-8 col-sm-12">
                         <div class="white-box">
-                             <a href="#userFormAdd" class="btn btn-info pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light popup-with-form">Create User</a>
+                             <a href="javascript:void(0);" id="userFormClick" class="btn btn-info pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Create User</a>
                             <h3 class="box-title">Users</h3> 
                             <div class="table-responsive">
-                                <table class="table product-overview">
+                                <table class="table product-overview" id="tblUser">
                                     <thead>
                                         <tr>
                                             <th>User Address</th>
@@ -173,27 +180,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>#85457898as234ca3fsafa34442342231221</td>
-                                            <td>M S Dhoni</td>
-                                            <td>9876543210</td>
-                                            <td><span class="label label-success font-weight-100">HARVESTER</span></td>
-                                            <td><a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-marker-alt"></i></a> </td>
-                                        </tr>
-                                         <tr>
-                                            <td>#85457898as234ca3fsafa34442342231221</td>
-                                            <td>Rohit Sharma</td>
-                                            <td>9876543210</td>
-                                            <td><span class="label label-warning font-weight-100">EXPORTER</span></td>
-                                            <td><a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-marker-alt"></i></a> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>#85457898as234ca3fsafa34442342231221</td>
-                                            <td>Virat Kohli</td>
-                                            <td>9876543210</td>
-                                            <td><span class="label label-primary font-weight-100">PROCESSOR</span></td>
-                                            <td><a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-marker-alt"></i></a> </td>
-                                        </tr>
+                                       
                                     </tbody>
                                 </table>
                             </div>
@@ -234,43 +221,72 @@
                 </fieldset>
             </form>
 
-            <form id="userFormAdd" onsubmit="return false;" class="mfp-hide white-popup-block reset">
-                <h1>Add User</h1><br>
-                <fieldset style="border:0;">
-                    <div class="form-group">
-                        <label class="control-label" for="userWalletAddress">User Wallet Address <i class="red">*</i></label>
-                        <input type="text" class="form-control" id="userWalletAddress" name="userWalletAddress" placeholder="Wallet Address" data-parsley-required="true" minlength="42" maxlength="42">
-                    </div> 
-                    <div class="form-group">
-                        <label class="control-label" for="userName">User Name <i class="red">*</i></label>
-                        <input type="text" class="form-control" id="userName" name="userName" placeholder="Name" data-parsley-required="true">
-                    </div>                              
-                    <div class="form-group">
-                        <label class="control-label" for="userContactNo">User Contact <i class="red">*</i></label>
-                        <input type="text" class="form-control" id="userContactNo" name="userContactNo" placeholder="Contact No." data-parsley-required="true" data-parsley-type="digits" data-parsley-length="[10, 15]" maxlength="15">
+            <div id="userFormModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; padding-top: 170px;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h2 class="modal-title" id="userModelTitle">Add User</h2>
+                        </div>
+                        <div class="modal-body">
+                            <form id="userForm" onsubmit="return false;">
+                                <fieldset style="border:0;">
+                                    <div class="form-group">
+                                        <label class="control-label" for="userWalletAddress">User Wallet Address <i class="red">*</i></label>
+                                        <input type="text" class="form-control" id="userWalletAddress" name="userWalletAddress" placeholder="Wallet Address" data-parsley-required="true" minlength="42" maxlength="42">
+                                    </div> 
+                                    <div class="form-group">
+                                        <label class="control-label" for="userName">User Name <i class="red">*</i></label>
+                                        <input type="text" class="form-control" id="userName" name="userName" placeholder="Name" data-parsley-required="true">
+                                    </div>                              
+                                    <div class="form-group">
+                                        <label class="control-label" for="userContactNo">User Contact <i class="red">*</i></label>
+                                        <input type="text" class="form-control" id="userContactNo" name="userContactNo" placeholder="Contact No." data-parsley-required="true" data-parsley-type="digits" data-parsley-length="[10, 15]" maxlength="15">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="userRoles">User Role <i class="red">*</i></label>
+                                        <select class="form-control" id="userRoles" name="userRoles" data-parsley-required="true">
+                                            <option value="">Select Role</option>
+                                            <option value="FARM_INSPECTION">Farm Inspection</option>
+                                            <option value="HARVESTER">Harvester</option>
+                                            <option value="EXPORTER">Exporter</option>
+                                            <option value="IMPORTER">Importer</option>
+                                            <option value="PROCESSOR">Processor</option>
+                                        </select>    
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="isActive">User Status</label>
+                                        <input type="checkbox" class="js-switch" data-color="#99d683" data-secondary-color="#f96262" id="isActive" name="isActive" data-size="small"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="userContactNo">Profile Image Hash <i class="red">*</i></label>
+                                        <input type="text" class="form-control" id="userProfileHash" name="userProfileHash" placeholder="User Profile Hash" data-parsley-required="true" >
+                                    </div>
+                                </fieldset>
+                            
+                        </div>
+                        <div class="modal-footer">
+                             <button type="submit" onclick="userFormSubmit();" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label" for="userRole">User Role <i class="red">*</i></label>
-                        <select class="form-control" id="userRole" name="userRole" data-parsley-required="true">
-                            <option value="">Select Role</option>
-                            <option value="FARM_INSPECTION">Farm Inspection</option>
-                            <option value="HARVESTER">Harvester</option>
-                            <option value="EXPORTER">Exporter</option>
-                            <option value="IMPORTER">Importer</option>
-                            <option value="PROCESSOR">Processor</option>
-                        </select>    
-                    </div>
-                     <div class="form-group float-right">
-                        <button type="submit" onclick="userFormSubmit();" class="btn btn-primary">Submit</button>
-                    </div>
-                </fieldset>
-            </form>
+                </div>
+            </div>
 
+            
+            
 
         <script type="text/javascript">
             $(document).ready(function(){
-                $("#userFormAdd,#batchForm").parsley();
+                $("#userForm,#batchForm").parsley();
+
+                initSwitch();
             });
+
+            function initSwitch(){
+                /*For User Form Pop Up*/
+                new Switchery($("#isActive")[0], $("#isActive").data());     
+            }
         </script>
 
 <?php include('templates/_footer.php');?>            
