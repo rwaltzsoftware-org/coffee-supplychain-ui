@@ -54,18 +54,11 @@ $("#submitProfile").on('click',function(){
     }
 });
 
-
-
-
-
-
-
-
-
 function updateUser(contractRef,data)
 {
   //contractRef.methods.updateUser("Swapnali","9578774787","HARVESTER",true,"0x74657374")
-  contractRef.methods.updateUser(data.fullname, data.contact,data.role, data.status, web3.utils.fromAscii(data.profile))
+  // check 
+  contractRef.methods.updateUser(data.fullname, data.contact,data.role, data.status, web3.utils.toAscii(data.profile))
   .send({from:globCoinbase,to:contractRef.address})
   .on('transactionHash',function(hash)
         {
@@ -95,4 +88,41 @@ function getUser(contractRef,callback)
             callback(newUser);
         }        
     });
+}
+
+ipfs = window.IpfsApi('localhost', 5001); // Connect to IPFS
+
+function handleFileUpload(event) {
+      const file = event.target.files[0];
+
+      let reader = new window.FileReader();
+      reader.onloadend = function () {
+        saveToIpfs(reader)
+      }
+
+      reader.readAsArrayBuffer(file)
+}
+
+function saveToIpfs(reader) {
+      let ipfsId;
+
+      const Buffer = window.IpfsApi().Buffer;
+      const buffer = Buffer.from(reader.result);
+
+      ipfs.files.add(buffer, (err, result) => { // Upload buffer to IPFS
+        if (err) {
+          console.error(err)
+          return
+}
+        console.log(result);
+        console.log(result[0].hash);
+
+         $("#profileHash").val(result[0].hash);
+  /* setHash(contract, result[0].hash, function (finalResult) {
+          console.log(finalResult)
+          getHash(contract,function(returnHash){
+              console.log(returnHash)
+          });         
+        });*/
+      })
 }

@@ -41,10 +41,18 @@
     <script type="text/javascript" src="js/web3.min.js"></script>
     <script type="text/javascript" src="js/app/CoffeeSupplyChainAbi.js"></script>
 
+    <!-- ipfs  -->
+    <script src="https://wzrd.in/standalone/buffer"></script>
+    <script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js" integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB"
+        crossorigin="anonymous"></script>
+
 
     <script type="text/javascript" src="js/app/app.js"></script>
     <script type="text/javascript" src="js/app/user.js"></script>
     <script type="text/javascript" src="js/app/admin.js"></script>
+
+
+
     <!--Style Switcher -->
     <script src="plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
 </body>

@@ -142,7 +142,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="profileHash">Profile Hash</label>
-                                        <input type="text" class="form-control" id="profileHash" name="profileHash" placeholder="Profile Hash" data-parsley-required="true">
+                                        <input type="file" onchange="handleFileUpload(event)" />
+                                        <p id="hash"></p>
+                                        <input type="hidden" id="profileHash" value=""/>
+
+                                       <!--  <input type="text" class="form-control" id="profileHash" name="profileHash" placeholder="Profile Hash" data-parsley-required="true"> -->
                                     </div>
                                      <div class="form-group float-right">
                                        <button type="reset" class="btn btn-default waves-effect">Reset</button>
