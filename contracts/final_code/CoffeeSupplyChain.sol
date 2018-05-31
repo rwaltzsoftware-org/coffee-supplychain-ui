@@ -38,6 +38,18 @@ contract CoffeeSupplyChain is Ownable
     }
     
 
+    /* get Basic Details */
+    
+    function getBasicDetails(address _batchNo) public view returns (string registrationNo,
+                                                                     string farmerName,
+                                                                     string farmAddress,
+                                                                     string exporterName,
+                                                                     string importerName) {
+        /* Call Storage Contract */
+        (registrationNo, farmerName, farmAddress, exporterName, importerName) = supplyChainStorage.getBasicDetails(_batchNo);  
+        return (registrationNo, farmerName, farmAddress, exporterName, importerName);
+    }
+
     /* perform Basic Cultivation */
     
     function addBasicDetails(string _registrationNo,
@@ -206,7 +218,7 @@ contract CoffeeSupplyChain is Ownable
     
     /* get Processor */
     
-    function getProccesorData(address _batchNo) public view returns (uint256 quantity,
+    function getProcessorData(address _batchNo) public view returns (uint256 quantity,
                                                                     string tempature,
                                                                     uint256 rostingDuration,
                                                                     string internalBatchNo,
@@ -220,7 +232,7 @@ contract CoffeeSupplyChain is Ownable
          internalBatchNo,
          packageDateTime,
          processorName,
-         processorAddress) =  supplyChainStorage.getProccesorData(_batchNo);  
+         processorAddress) =  supplyChainStorage.getProcessorData(_batchNo);  
          
          return (quantity,
                  tempature,

@@ -1,7 +1,7 @@
 
 $(window).on("coinbaseReady", function ()
 {
-    getUser(globMainContract, function(data){
+    getUser(globUserContract, function(data){
     //   console.log(data);
        $("#userName").html(data.name);
        $("#userContact").html(data.contactNo);
@@ -11,7 +11,7 @@ $(window).on("coinbaseReady", function ()
 
 $("#updateUser").on('click',function(){
 
-  getUser(globMainContract, function(data){
+  getUser(globUserContract, function(data){
        
        $("#fullname").val(data.name);
        $("#contactNumber").val(data.contactNo);
@@ -50,7 +50,7 @@ $("#submitProfile").on('click',function(){
         profile : profileHash
       };    
 
-      updateUser(globMainContract, userDetails); 
+      updateUser(globUserContract, userDetails); 
     }
 });
 

@@ -39,11 +39,13 @@
     <!--  contract abi  -->
     <script type="text/javascript" src="js/web3.min.js"></script>
     <script type="text/javascript" src="js/app/CoffeeSupplyChainAbi.js"></script>
+    <script type="text/javascript" src="js/app/SupplyChainUserAbi.js"></script>
 
 
     <script type="text/javascript" src="js/app/app.js"></script>
     <script type="text/javascript" src="js/app/user.js"></script>
     <script type="text/javascript" src="js/app/admin.js"></script>
+    <script type="text/javascript" src="js/app/batch-details.js"></script>
     <!--Style Switcher -->
     <script src="plugins/bower_components/switchery/dist/switchery.min.js"></script>
 

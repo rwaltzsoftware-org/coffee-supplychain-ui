@@ -43,7 +43,7 @@
                             <h3 class="box-title">Total Batches</h3>
                             <ul class="list-inline two-part">
                                 <li><i class="icon-doc text-success"></i></li>
-                                <li class="text-right"><span class="counter text-success">15</span></li>
+                                <li class="text-right"><span class="counter text-success" id="totalBatch">0</span></li>
                             </ul>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                         <div class="white-box">
-                             <a href="#batchForm" class="btn btn-info pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light popup-with-form">Create Batch</a>
+                             <a href="javascript:void(0);" class="btn btn-info pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light" onclick="javascript:$('#batchFormModel').modal();">Create Batch</a>
                             <h3 class="box-title">Batches Overview</h3> 
                             <div class="table-responsive">
                                 <table class="table product-overview" id="adminCultivationTable">
@@ -72,34 +72,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>#85457898as234ca3fsafa3444234223</td>
-                                            <td><span class="label label-success font-weight-100">Compilited</span>
-                                            </td>
-                                            <td><span class="label label-warning font-weight-100">Processing</span> </td>
-                                            <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                                            <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                                            <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                                            <td><a href="view-batch.php" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
-                                        </tr>
                                          <tr>
-                                            <td>#8545735sf32as234ca3fsafa3444234223</td>
-                                            <td><span class="label label-success font-weight-100">Compilited</span></td>
-                                            <td><span class="label label-success font-weight-100">Compilited</span> </td>
-                                            <td><span class="label label-warning font-weight-100">Processing</span>  </td>
-                                            <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                                            <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                                            <td><a href="view-batch.php" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>#8545735sf32as234ca3fs54asf2444234223</td>
-                                            <td><span class="label label-success font-weight-100">Compilited</span></td>
-                                            <td><span class="label label-success font-weight-100">Compilited</span> </td>
-                                            <td><span class="label label-success font-weight-100">Compilited</span>  </td>
-                                            <td><span class="label label-success font-weight-100">Compilited</span> </td>
-                                            <td><span class="label label-success font-weight-100">Compilited</span> </td>
-                                            <td><a href="view-batch.php" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a></td>
-                                        </tr>
+                                             <td colspan="7" align="center">No Data Available</td>
+                                         </tr>   
                                     </tbody>
                                 </table>
                             </div>
@@ -193,34 +168,46 @@
             </div>
             <!-- /.container-fluid -->
 
-            <form id="batchForm" class="mfp-hide white-popup-block reset">
-                <h1>Add batch</h1><br>
-                <fieldset style="border:0;">
-                    <div class="form-group">
-                        <label class="control-label" for="farmerRegistrationNo">Farmer Registration No <i class="red">*</i></label>
-                        <input type="text" class="form-control" id="farmerRegistrationNo" name="farmerRegistrationNo" placeholder="Registration No" data-parsley-required="true">
-                    </div> 
-                    <div class="form-group">
-                        <label class="control-label" for="farmerName">Farmer Name <i class="red">*</i></label>
-                        <input type="text" class="form-control" id="farmerName" name="farmerName" placeholder="Farmer Name" data-parsley-required="true">
-                    </div>                              
-                    <div class="form-group">
-                        <label class="control-label" for="farmerAddress">Farmer Address <i class="red">*</i></label>
-                        <textarea class="form-control" id="farmerAddress" name="farmerAddress" placeholder="Farmer Address" data-parsley-required="true"></textarea>
+            <div id="batchFormModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; padding-top: 170px;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h2 class="modal-title" id="userModelTitle">Add Batch</h2>
+                        </div>
+                        <div class="modal-body">
+                            <form id="batchForm" onsubmit="return false;">
+                            <fieldset style="border:0;">
+                                <div class="form-group">
+                                    <label class="control-label" for="farmerRegistrationNo">Farmer Registration No <i class="red">*</i></label>
+                                    <input type="text" class="form-control" id="farmerRegistrationNo" name="farmerRegistrationNo" placeholder="Registration No" data-parsley-required="true">
+                                </div> 
+                                <div class="form-group">
+                                    <label class="control-label" for="farmerName">Farmer Name <i class="red">*</i></label>
+                                    <input type="text" class="form-control" id="farmerName" name="farmerName" placeholder="Farmer Name" data-parsley-required="true">
+                                </div>                              
+                                <div class="form-group">
+                                    <label class="control-label" for="farmerAddress">Farmer Address <i class="red">*</i></label>
+                                    <textarea class="form-control" id="farmerAddress" name="farmerAddress" placeholder="Farmer Address" data-parsley-required="true"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="exporterName">Exporter Name <i class="red">*</i></label>
+                                    <input type="text" class="form-control" id="exporterName" name="exporterName" placeholder="Exporter Name" data-parsley-required="true">
+                                </div> 
+                                <div class="form-group">
+                                    <label class="control-label" for="importerName">Importer Name <i class="red">*</i></label>
+                                    <input type="text" class="form-control" id="importerName" name="importerName" placeholder="Importer Name" data-parsley-required="true">
+                                </div> 
+                            </fieldset>
+                            
+                        </div>
+                        <div class="modal-footer">
+                             <button type="submit" onclick="addCultivationBatch();" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label" for="exporterName">Exporter Name <i class="red">*</i></label>
-                        <input type="text" class="form-control" id="exporterName" name="exporterName" placeholder="Exporter Name" data-parsley-required="true">
-                    </div> 
-                    <div class="form-group">
-                        <label class="control-label" for="importerName">Importer Name <i class="red">*</i></label>
-                        <input type="text" class="form-control" id="importerName" name="importerName" placeholder="Importer Name" data-parsley-required="true">
-                    </div> 
-                     <div class="form-group float-right">
-                        <button type="button" class="btn btn-primary">Submit</button>
-                    </div>
-                </fieldset>
-            </form>
+                </div>
+            </div>
 
             <div id="userFormModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; padding-top: 170px;">
                 <div class="modal-dialog">

@@ -1,7 +1,7 @@
-/* Vikas Code Starts */
 
 $(window).on('coinbaseReady',function(){
-	// getAllEvents(globMainContract);
+	getUserEvents(globUserContract);
+	getCultivationEvents(globMainContract);
 });
 
 function userFormSubmit(){
@@ -16,8 +16,8 @@ function userFormSubmit(){
 		var userImageAddress  = '0x048536';
 		/*var userImageAddress  = $("#userProfileHash").val();*/
 
-		globMainContract.methods.updateUserForAdmin(userWalletAddress,userName,userContactNo,userRoles,isActive,userImageAddress)
-		.send({from:globCoinbase, to:globMainContract._address})
+		globUserContract.methods.updateUserForAdmin(userWalletAddress,userName,userContactNo,userRoles,isActive,userImageAddress)
+		.send({from:globCoinbase, to:globUserContract._address})
 		.on('transactionHash',function(hash){
 			 handleTransactionResponse(hash);
 			 $("#userFormModel").modal('hide');
@@ -26,7 +26,7 @@ function userFormSubmit(){
 			receiptMessage = "User Created Successfully";
       		handleTransactionReceipt(receipt,receiptMessage);
       		$("#userFormModel").modal('hide');
-      		getAllEvents(globMainContract);
+      		getUserEvents(globUserContract);
 		})
 		.on('error',function(error)
 		{
@@ -36,20 +36,9 @@ function userFormSubmit(){
 	}
 }
 
-/* Vikas Code Ends */
-
-
-/* Nitish Code Starts */
-
-
-
-$(window).on("coinbaseReady", function () {
-    getCultivationEvents(globMainContract);
-});
-
-
 function addCultivationBatch()
 {
+
     if (batchFormInstance.validate())
     {
         var farmerRegistrationNo = $("#farmerRegistrationNo").val().trim();
@@ -65,10 +54,13 @@ function addCultivationBatch()
         })
         .on('transactionHash', function (hash) {
             handleTransactionResponse(hash);
+            $("#batchFormModel").modal('hide');
         })
         .on('receipt', function (receipt) {
             receiptMessage = "Token Transferred Successfully";
-            handleTransactionReceipt(receipt, receiptMessage)
+            handleTransactionReceipt(receipt, receiptMessage);
+            $("#batchFormModel").modal('hide');
+            getCultivationEvents(globMainContract);
         })
         .on('error', function (error) {
             handleGenericError(error.message);
@@ -83,6 +75,9 @@ function getCultivationEvents(contractRef) {
         fromBlock: 0
     }).then(function (events) 
     {
+    	$("#totalBatch").html(events.length);
+    	counterInit();
+
         var finalEvents = [];
         $.each(events,function(index,elem)
         {
@@ -97,8 +92,10 @@ function getCultivationEvents(contractRef) {
         
         setTimeout(function()
         {
-            var table = buildCultivationTable(finalEvents);
-            $("#adminCultivationTable").find("tbody").html(table);
+        	if(finalEvents.length > 0){
+	            var table = buildCultivationTable(finalEvents);
+	            $("#adminCultivationTable").find("tbody").html(table);
+	        }    
         },500); 
 
         
@@ -116,56 +113,57 @@ function buildCultivationTable(finalEvents)
     for (var tmpDataIndex in finalEvents)
     {   
         var elem = finalEvents[tmpDataIndex];
+        var batchNo = elem.batchNo;
         var tr = "";
         if (elem.status == "FARM_INSPECTION") {
             tr = `<tr>
-                    <td>#85457898as234ca3fsafa3444234223</td>
+                    <td>`+batchNo+`</td>
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
                     <td><span class="label label-warning font-weight-100">Processing</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                    <td><a href="view-batch.php" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                    <td><a href="view-batch.php?batchNo=`+batchNo+`" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
                 </tr>`;
         } else if (elem.status == "HARVESTER") {
             tr = `<tr>
-                    <td>#85457898as234ca3fsafa3444234223</td>
+                    <td>`+batchNo+`</td>
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-warning font-weight-100">Processing</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                    <td><a href="view-batch.php" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                    <td><a href="view-batch.php?batchNo=`+batchNo+`" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
                 </tr>`;
         } else if (elem.status == "EXPORTER") {
             tr = `<tr>
-                    <td>#85457898as234ca3fsafa3444234223</td>
+                    <td>`+batchNo+`</td>
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-warning font-weight-100">Processing</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                    <td><a href="view-batch.php" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                    <td><a href="view-batch.php?batchNo=`+batchNo+`" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
                 </tr>`;
         } else if (elem.status == "IMPORTER") {
             tr = `<tr>
-                    <td>#85457898as234ca3fsafa3444234223</td>
+                    <td>`+batchNo+`</td>
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-warning font-weight-100">Processing</span> </td>
-                    <td><a href="view-batch.php" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                    <td><a href="view-batch.php?batchNo=`+batchNo+`" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
                 </tr>`;
         } else if (elem.status == "PROCESSOR") {
             tr = `<tr>
-                    <td>#85457898as234ca3fsafa3444234223</td>
+                    <td>`+batchNo+`</td>
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
-                    <td><a href="view-batch.php" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                    <td><a href="view-batch.php?batchNo=`+batchNo+`" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
                 </tr>`;
         }
 
@@ -183,5 +181,4 @@ function getBatchStatus(contractRef, batchNo)
        
 }
 
-/* Nitish Code Ends */
 

@@ -1,9 +1,10 @@
 	var globIcoAddress = {
-		// 'CoffeeMain': "0x8072e44fb7528e8f54907da93c318402c959eb7f",
-		'CoffeeMain': "0xa5d0a05561261e41dbe4931cb5fb6a7ec51c9c9b",
+		'CoffeeMain': "0xfA171Cda184d815D20a318fCe9920AafdC04934e",
+		'CoffeeUser': "0x26d723acFe39f93A9702592dD9371851f81cF59F"
 	};
 
 	var globMainContract = false;
+	var globUserContract = false;
 	var globCoinbase = false;	
 
 
@@ -26,7 +27,7 @@
 
 			if(currentPanel == "admin.php")
 			{
-				if(address != 0x36fEfe201706E2056fd01844030415F78840B2D8){
+				if(address != 0xab0874cB61D83F6B67Dc08141568868102233bef){
 					window.location = "index.php";
 				}
 			}
@@ -45,6 +46,9 @@
 	{
 		globMainContract = new web3.eth.Contract(CoffeeSupplyChainAbi,globIcoAddress.CoffeeMain);	
 		$(window).trigger("mainContractReady");
+
+		globUserContract = new web3.eth.Contract(SupplyChainUserAbi,globIcoAddress.CoffeeUser);	
+		$(window).trigger("userContractReady");
 	}
 
 	function updateLoginAccountStatus(){
@@ -74,9 +78,6 @@
 	}
 
 
-
-/*Vikas - Start*/
-
 	function getCurrentAccountAddress(callback){
 		callback = callback || false;
 
@@ -104,8 +105,85 @@
 		});
 	}
 
+	function getCultivationData(contractRef,batchNo,callback){
+		callback = callback || false;
 
-	function getAllEvents(contractRef)
+		contractRef.methods.getBasicDetails(batchNo).call()
+		.then((result)=>{
+			callback(result);
+		})
+		.catch((error)=>{
+			sweetAlert("Error","Unabale to get Cultivation Details","error");
+			callback(0);
+		});
+	}
+
+	function getFarmInspectorData(contractRef,batchNo,callback){
+		callback = callback || false;
+
+		contractRef.methods.getFarmInspectorData(batchNo).call()
+		.then((result)=>{
+			callback(result);
+		})
+		.catch((error)=>{
+			sweetAlert("Error","Unabale to get Farm Inspection Details","error");
+			callback(0);
+		});
+	}
+
+	function getHarvesterData(contractRef,batchNo,callback){
+		callback = callback || false;
+
+		contractRef.methods.getHarvesterData(batchNo).call()
+		.then((result)=>{
+			callback(result);
+		})
+		.catch((error)=>{
+			sweetAlert("Error","Unabale to get Harvesting Details","error");
+			callback(0);
+		});
+	}
+
+	function getExporterData(contractRef,batchNo,callback){
+		callback = callback || false;
+
+		contractRef.methods.getExporterData(batchNo).call()
+		.then((result)=>{
+			callback(result);
+		})
+		.catch((error)=>{
+			sweetAlert("Error","Unabale to get Exporting Details","error");
+			callback(0);
+		});
+	}
+
+	function getImporterData(contractRef,batchNo,callback){
+		callback = callback || false;
+
+		contractRef.methods.getImporterData(batchNo).call()
+		.then((result)=>{
+			callback(result);
+		})
+		.catch((error)=>{
+			sweetAlert("Error","Unabale to get Importing Details","error");
+			callback(0);
+		});
+	}
+
+	function getProcessorData(contractRef,batchNo,callback){
+		callback = callback || false;
+
+		contractRef.methods.getProcessorData(batchNo).call()
+		.then((result)=>{
+			callback(result);
+		})
+		.catch((error)=>{
+			sweetAlert("Error","Unabale to get Processing Details","error");
+			callback(0);
+		});
+	}
+
+	function getUserEvents(contractRef)
 	{
 	    contractRef.getPastEvents('UserUpdate',{
 	        fromBlock: 0 
@@ -126,10 +204,8 @@
 		var roleClass = "";
 
 		$("#totalUsers").html(events.length);
-		counterInit();
 
 		$(events).each(function(index,event){
-			console.log(event);
 			var role        = event.returnValues._role;
 			var userAddress = event.returnValues.user;
 
@@ -222,7 +298,7 @@
     function openEditUser(ref){
 		var userAddress = $(ref).attr("data-userAddress");
 		startLoader();
-		getUserDetails(globMainContract,userAddress,function(result){
+		getUserDetails(globUserContract,userAddress,function(result){
 			$("#userWalletAddress").val(userAddress);
 			$("#userName").val(result.name);
 			$("#userContactNo").val(result.contactNo);
@@ -236,4 +312,3 @@
 		});
 	}
 
-/*Vikas -End*/

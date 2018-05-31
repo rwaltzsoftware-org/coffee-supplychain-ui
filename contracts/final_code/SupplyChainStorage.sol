@@ -398,8 +398,8 @@ contract SupplyChainStorage is SupplyChainStorageOwnable {
     }
     
     
-    /*get Proccessor data*/
-    function getProccesorData( address batchNo) public onlyAuthCaller view returns(
+    /*get Processor data*/
+    function getProcessorData( address batchNo) public onlyAuthCaller view returns(
                                                                                         uint256 quantity,
                                                                                         string tempature,
                                                                                         uint256 rostingDuration,
