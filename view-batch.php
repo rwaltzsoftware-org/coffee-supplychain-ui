@@ -25,16 +25,16 @@
                 <div class="white-box">
                     <ul class="timeline">
                         <li>
-                            <div class="timeline-badge success">
+                            <div class="timeline-badge danger">
                                 <i class="fa fa-check"></i>
                             </div>
-                            <div class="timeline-panel">
+                            <div class="timeline-panel" id="cultivationSection">
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Cultivation</h4>
-                                    <p><small class="text-muted"><i class="fa fa-clock-o"></i> 11 hours ago</small> </p>
+                                    <p><small class="text-muted text-success activityDateTime"></small> </p>
                                 </div>
                                 <div class="timeline-body">
-                                    <table class="table" id="cultivationData">
+                                    <table class="table activityData" >
                                         <tr>
                                             <td colspan="2"><p>Information Not Avilable</p></td>
                                         </tr>
@@ -43,13 +43,13 @@
                             </div>
                         </li>
                         <li class="timeline-inverted">
-                            <div class="timeline-badge success">
-                                <i class="fa fa-check"></i>
+                            <div class="timeline-badge danger">
+                                <i class="fa fa-times"></i>
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Farm-Inspector</h4>
-                                    <p><small class="text-muted"><i class="fa fa-clock-o"></i> 11 hours ago</small> </p>
+                                    <p><small class="text-muted"></small> </p>
                                 </div>
                                 <div class="timeline-body">
                                     <table class="table" id="farmInspactorData">
@@ -67,7 +67,7 @@
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Harverter</h4>
-                                    <p><small class="text-muted"><!-- <i class="fa fa-clock-o"></i> 11 hours ago --></small> </p>
+                                    <p><small class="text-muted"></small> </p>
                                 </div>
                                 <div class="timeline-body">
                                     <table class="table" id="harvesterData">
@@ -85,7 +85,7 @@
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Exporter</h4>
-                                    <p><small class="text-muted"><!-- i class="fa fa-clock-o"></i> 11 hours ago --></small> </p>
+                                    <p><small class="text-muted"></small> </p>
                                 </div>
                                 <div class="timeline-body">
                                     <table class="table" id="exporterData">
@@ -103,7 +103,7 @@
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Importer</h4>
-                                    <p><small class="text-muted"><!-- <i class="fa fa-clock-o"></i> 11 hours ago --></small> </p>
+                                    <p><small class="text-muted"></small> </p>
                                 </div>
                                 <div class="timeline-body">
                                    <table class="table" id="importerData">
@@ -121,7 +121,7 @@
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Processor</h4>
-                                    <p><small class="text-muted"><!-- <i class="fa fa-clock-o"></i> 11 hours ago --></small> </p>
+                                    <p><small class="text-muted"></small> </p>
                                 </div>
                                 <div class="timeline-body">
                                     <table class="table" id="processorData">

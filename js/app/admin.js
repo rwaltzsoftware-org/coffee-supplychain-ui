@@ -123,7 +123,7 @@ function buildCultivationTable(finalEvents)
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                    <td><a href="view-batch.php?batchNo=`+batchNo+`" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                    <td><a href="view-batch.php?batchNo=`+batchNo+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
                 </tr>`;
         } else if (elem.status == "HARVESTER") {
             tr = `<tr>
@@ -133,7 +133,7 @@ function buildCultivationTable(finalEvents)
                     <td><span class="label label-warning font-weight-100">Processing</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                    <td><a href="view-batch.php?batchNo=`+batchNo+`" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                    <td><a href="view-batch.php?batchNo=`+batchNo+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
                 </tr>`;
         } else if (elem.status == "EXPORTER") {
             tr = `<tr>
@@ -143,7 +143,7 @@ function buildCultivationTable(finalEvents)
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-warning font-weight-100">Processing</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                    <td><a href="view-batch.php?batchNo=`+batchNo+`" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                    <td><a href="view-batch.php?batchNo=`+batchNo+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
                 </tr>`;
         } else if (elem.status == "IMPORTER") {
             tr = `<tr>
@@ -153,7 +153,7 @@ function buildCultivationTable(finalEvents)
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-warning font-weight-100">Processing</span> </td>
-                    <td><a href="view-batch.php?batchNo=`+batchNo+`" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                    <td><a href="view-batch.php?batchNo=`+batchNo+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
                 </tr>`;
         } else if (elem.status == "PROCESSOR") {
             tr = `<tr>
@@ -163,7 +163,7 @@ function buildCultivationTable(finalEvents)
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
-                    <td><a href="view-batch.php?batchNo=`+batchNo+`" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                    <td><a href="view-batch.php?batchNo=`+batchNo+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
                 </tr>`;
         }
 

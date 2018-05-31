@@ -1,46 +1,21 @@
 var batchNo;
 window.addEventListener('load', function() 
-{
+{	
 	batchNo = $("#batchNo").val();
 
 	if(batchNo!="" || batchNo!=null || batchNo!=undefined){
 		
-		getCultivationData(globMainContract,batchNo,function(result){
-			var cultivationData = '';
-			var registrationNo = result.registrationNo;
-			var farmerName     = result.farmerName;
-			var farmAddress    = result.farmAddress;
-			var exporterName   = result.exporterName;
-			var importerName   = result.importerName;
+		getCultivationData(globMainContract,batchNo,function(result)
+		{
+			
+			var parentSection = $("#cultivationSection");
+			var activityName =  "PerformCultivation";
 
-			if(registrationNo!='' && farmerName!='' && farmAddress!='' && exporterName!='' && importerName!=''){
-				cultivationData =  `<tr>
-                                        <td><b>Registration No:</b></td>
-                                        <td>`+registrationNo+` <i class="fa fa-check-circle verified_info"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Farmer Name:</b></td>
-                                        <td>`+farmerName+` <i class="fa fa-check-circle verified_info"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Farm Address:</b></td>
-                                        <td>`+farmAddress+` <i class="fa fa-check-circle verified_info"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Exporter Name:</b></td>
-                                        <td>`+exporterName+` <i class="fa fa-check-circle verified_info"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Importer Name:</b></td>
-                                        <td>`+importerName+` <i class="fa fa-check-circle verified_info"></i></td>
-                                    </tr>`;
-	        }else{
-	        	cultivationData = ` <tr>
-                                            <td colspan="2"><p>Information Not Avilable</p></td>
-                                    </tr>`;
-	        }  
+			/* To Get Timestamp */
 
-	        $("#cultivationData").html(cultivationData);                          
+			populateSection(parentSection,result,activityName,batchNo)
+
+	                                 
 		});
 
 		getFarmInspectorData(globMainContract,batchNo,function(result){
@@ -255,3 +230,95 @@ window.addEventListener('load', function()
 		});
 	}
 });
+
+function populateSection(parentSection,result,activityName,batchNo)
+{
+	getActivityTimestamp(activityName,batchNo, function(dataTime)
+	{
+		if(dataTime)
+		{
+			$(parentSection).find(".activityDateTime").html("<i class='fa fa-clock-o'> </i> " + dataTime.toUTCString());
+		}
+	});
+
+	var built = buildCultivationBlock(result);
+	var tmpTimelineBadge = $(parentSection).prev(".timeline-badge");
+
+	if(built.isDataAvail)
+	{
+		$(tmpTimelineBadge).removeClass("danger").addClass("success");
+		$(tmpTimelineBadge).find("i").removeClass().addClass("fa fa-check");
+	}
+
+
+	$(parentSection).find(".activityData").html(built.html); 
+}
+
+function getActivityTimestamp(activityName, batchNo, callback)
+{
+	globMainContract.getPastEvents(activityName,{
+		fromBlock:0,
+		filter:{batchNo: batchNo}
+	},function(error,eventData)
+	{
+		try
+		{
+			web3.eth.getBlock(eventData[0].blockNumber,function(error,blockData)
+			{
+				var date = blockData.timestamp;
+				/* Convert Seconds to Miliseconds */
+			 	date = new Date(date * 1000);
+			 	// $("#cultivationDateTime").html("<i class='fa fa-clock-o'> </i> " + date.toUTCString());
+
+			 	callback(date);
+			})	
+		}
+		catch(e)
+		{
+			callback(false);
+		}
+	});
+}
+
+function buildCultivationBlock(result)
+{
+	var cultivationData = {};
+	var registrationNo = result.registrationNo;
+	var farmerName     = result.farmerName;
+	var farmAddress    = result.farmAddress;
+	var exporterName   = result.exporterName;
+	var importerName   = result.importerName;
+
+	if(registrationNo!='' && farmerName!='' && farmAddress!='' && exporterName!='' && importerName!=''){
+		cultivationData.html =  `<tr>
+                                <td><b>Registration No:</b></td>
+                                <td>`+registrationNo+` <i class="fa fa-check-circle verified_info"></i></td>
+                            </tr>
+                            <tr>
+                                <td><b>Farmer Name:</b></td>
+                                <td>`+farmerName+` <i class="fa fa-check-circle verified_info"></i></td>
+                            </tr>
+                            <tr>
+                                <td><b>Farm Address:</b></td>
+                                <td>`+farmAddress+` <i class="fa fa-check-circle verified_info"></i></td>
+                            </tr>
+                            <tr>
+                                <td><b>Exporter Name:</b></td>
+                                <td>`+exporterName+` <i class="fa fa-check-circle verified_info"></i></td>
+                            </tr>
+                            <tr>
+                                <td><b>Importer Name:</b></td>
+                                <td>`+importerName+` <i class="fa fa-check-circle verified_info"></i></td>
+                            </tr>`;
+
+        cultivationData.isDataAvail = true;                    
+    }else{
+    	cultivationData.html = ` <tr>
+                                    <td colspan="2"><p>Information Not Avilable</p></td>
+                            </tr>`;
+
+        cultivationData.isDataAvail = true;                                        
+    }
+
+    return cultivationData;
+}
