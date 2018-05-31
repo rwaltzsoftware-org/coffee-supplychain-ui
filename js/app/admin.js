@@ -5,18 +5,28 @@ $(window).on('coinbaseReady',function(){
 });
 
 function userFormSubmit(){
-	if($("form#userFormAdd").parsley().isValid()){
 
-		// var 
+	if($("form#userForm").parsley().isValid()){
 
-		globMainContract.methods.updateUser()
+		var userWalletAddress = $("#userWalletAddress").val();
+		var userName          = $("#userName").val();
+		var userContactNo     = $("#userContactNo").val();
+		var userRoles         = $("#userRoles").val();
+		var isActive          = $("#isActive").is(":checked");
+		var userImageAddress  = '0x048536';
+		/*var userImageAddress  = $("#userProfileHash").val();*/
+
+		globMainContract.methods.updateUserForAdmin(userWalletAddress,userName,userContactNo,userRoles,isActive,userImageAddress)
 		.send({from:globCoinbase, to:globMainContract._address})
 		.on('transactionHash',function(hash){
 			 handleTransactionResponse(hash);
+			 $("#userFormModel").modal('hide');
 		})
 		.on('receipt', function(receipt){
 			receiptMessage = "User Created Successfully";
-      		handleTransactionReceipt(receipt,receiptMessage)
+      		handleTransactionReceipt(receipt,receiptMessage);
+      		$("#userFormModel").modal('hide');
+      		getAllEvents(globMainContract);
 		})
 		.on('error',function(error)
 		{
@@ -30,6 +40,7 @@ function userFormSubmit(){
 
 
 /* Nitish Code Starts */
+
 
 
 $(window).on("coinbaseReady", function () {
@@ -65,6 +76,7 @@ function addCultivationBatch()
         });
     }
 }
+
 
 function getCultivationEvents(contractRef) {
     contractRef.getPastEvents('PerformCultivation', {
@@ -170,5 +182,6 @@ function getBatchStatus(contractRef, batchNo)
         .call();
        
 }
+
 /* Nitish Code Ends */
 

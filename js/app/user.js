@@ -52,8 +52,15 @@ $("#submitProfile").on('click',function(){
 
       updateUser(globMainContract, userDetails); 
     }
-
 });
+
+
+
+
+
+
+
+
 
 function updateUser(contractRef,data)
 {

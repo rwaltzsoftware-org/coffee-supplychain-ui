@@ -20,15 +20,14 @@
     <script src="plugins/bower_components/waypoints/lib/jquery.waypoints.js"></script>
     <script src="plugins/bower_components/counterup/jquery.counterup.min.js"></script>
     <!--Morris JavaScript -->
-    <script src="plugins/bower_components/raphael/raphael-min.js"></script>
+<!--     <script src="plugins/bower_components/raphael/raphael-min.js"></script> -->
 <!--     <script src="plugins/bower_components/morrisjs/morris.js"></script> -->
     <!-- Custom Theme JavaScript -->
     <script src="js/custom.min.js"></script>
     <script src="js/dashboard1.js"></script>
     <!-- Sparkline chart JavaScript -->
     <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
-    <script src="plugins/bower_components/jquery-sparkline/jquery.charts-sparkline.js"></script>
-    <script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
+    <script src="plugins/bower_components/datatables/jquery.dataTables.min.js"></script>
 
      <!-- Magnific popup JavaScript -->
     <script src="plugins/bower_components/Magnific-Popup-master/dist/jquery.magnific-popup.min.js"></script>
@@ -46,7 +45,8 @@
     <script type="text/javascript" src="js/app/user.js"></script>
     <script type="text/javascript" src="js/app/admin.js"></script>
     <!--Style Switcher -->
-    <script src="plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+    <script src="plugins/bower_components/switchery/dist/switchery.min.js"></script>
+
 </body>
 
 </html>
