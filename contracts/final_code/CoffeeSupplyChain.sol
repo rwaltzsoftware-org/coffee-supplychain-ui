@@ -11,7 +11,7 @@ contract CoffeeSupplyChain is Ownable
     event DoneExporting(address indexed user, address indexed batchNo);
     event DoneImporting(address indexed user, address indexed batchNo);
     event DoneProcessing(address indexed user, address indexedbatchNo);
-    
+
     
     /*Modifier*/
     modifier isValidPerformer(address batchNo, string role) {
@@ -30,14 +30,14 @@ contract CoffeeSupplyChain is Ownable
     
     
     /* Get Next Action  */    
+
     function getNextAction(address _batchNo) public view returns(string action)
     {
        (action) = supplyChainStorage.getNextAction(_batchNo);
        return (action);
     }
     
-    
-    
+
     /* perform Basic Cultivation */
     
     function addBasicDetails(string _registrationNo,

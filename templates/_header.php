@@ -38,7 +38,7 @@
             float: right;
         }
 
-        .red{
+        .parsley-required , .red{
             color: red;
         }
     </style>

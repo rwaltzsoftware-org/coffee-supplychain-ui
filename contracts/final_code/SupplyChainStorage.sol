@@ -202,7 +202,7 @@ contract SupplyChainStorage is SupplyChainStorageOwnable {
                              
                             ) public onlyAuthCaller returns(address) {
         
-        uint tmpData = uint(keccak256(now));
+        uint tmpData = uint(keccak256(msg.sender, now));
         address batchNo = address(tmpData);
         
         basicDetailsData.registrationNo = _registrationNo;

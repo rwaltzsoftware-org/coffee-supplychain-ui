@@ -32,6 +32,8 @@ $("#updateUser").on('click',function(){
 
 $("#submitProfile").on('click',function(){
 
+    if(userForm.validate())
+    {
       var fullname = $("#fullname").val();
       var contactNumber = $("#contactNumber").val();
       var role = $("#role").val();
@@ -49,21 +51,36 @@ $("#submitProfile").on('click',function(){
       };    
 
       updateUser(globMainContract, userDetails); 
+    }
 });
+
+
+
+
+
+
+
+
 
 function updateUser(contractRef,data)
 {
   //contractRef.methods.updateUser("Swapnali","9578774787","HARVESTER",true,"0x74657374")
   contractRef.methods.updateUser(data.fullname, data.contact,data.role, data.status, web3.utils.fromAscii(data.profile))
   .send({from:globCoinbase,to:contractRef.address})
-  .on(function(error,result){
-    if(error)
-    {
-      alert(error);
-    }
-
-    // console.log(result);
-  });  
+  .on('transactionHash',function(hash)
+        {
+            handleTransactionResponse(hash);
+        })
+        .on('receipt',function(receipt)
+        {
+            receiptMessage = "User Profile Updated Succussfully";
+            handleTransactionReceipt(receipt,receiptMessage)
+        })
+        .on('error',function(error)
+        {
+            handleGenericError(error.message);
+            return;     
+        });    
 }
 
 function getUser(contractRef,callback)

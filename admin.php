@@ -7,6 +7,7 @@
                         <h4 class="page-title">Dashboard</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                        <div id="linkOngoingTransaction"></div>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -216,7 +217,7 @@
                         <input type="text" class="form-control" id="importerName" name="importerName" placeholder="Importer Name" data-parsley-required="true">
                     </div> 
                      <div class="form-group float-right">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-primary">Submit</button>
                     </div>
                 </fieldset>
             </form>
@@ -277,8 +278,10 @@
             
 
         <script type="text/javascript">
+            var batchFormInstance, userFormInstance;
             $(document).ready(function(){
-                $("#userForm,#batchForm").parsley();
+                userFormInstance = $("#userForm").parsley();
+                batchFormInstance = $("#batchForm").parsley();
 
                 initSwitch();
             });
