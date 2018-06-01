@@ -206,7 +206,7 @@
 		$("#totalUsers").html(events.length);
 
 		$(events).each(function(index,event){
-			var role        = event.returnValues._role;
+			var role        = event.returnValues.role;
 			var userAddress = event.returnValues.user;
 
 			if(role == 'FARM_INSPECTION'){
@@ -291,6 +291,7 @@
         $("#userForm").trigger('reset');
         changeSwitchery($("#isActive"),false);
         $("#userModelTitle").html("Add User");
+        $("#imageHash").html('');
         $("#userFormModel").modal();    
     });
 
@@ -305,6 +306,10 @@
 			$("#userProfileHash").val(result.profileHash);
 			$('#userRoles').val(result.role).prop('selected', true);
 
+			var profileImageLink = 'https://ipfs.io/ipfs/'+result.profileHash;
+			var btnViewImage = '<a href="'+profileImageLink+'" target="_blank" class=" text-danger"><i class="fa fa-eye"></i> View Image</a>';
+			$("#imageHash").html(btnViewImage);
+
 			changeSwitchery($("#isActive"),result.isActive);
 			$("#userModelTitle").html("Update User");
 			stopLoader();
@@ -312,3 +317,45 @@
 		});
 	}
 
+	// ipfs = window.IpfsApi('localhost', 5001);
+	ipfs = window.IpfsApi('ipfs.infura.io', '5001', {protocol: 'https'})
+
+	function handleFileUpload(event){
+		const file = event.target.files[0];
+
+	    let reader = new window.FileReader();
+	    reader.onloadend = function () {
+	       $("#userFormBtn").prop('disabled',true);
+	       $("i.fa-spinner").show();
+	        $("#imageHash").html('Processing......');	
+	       saveToIpfs(reader)
+	    }
+
+	    reader.readAsArrayBuffer(file)
+	}
+
+	function saveToIpfs(reader){
+		let ipfsId;
+
+        const Buffer = window.IpfsApi().Buffer;
+        const buffer = Buffer.from(reader.result);
+
+        /*Upload Buffer to IPFS*/
+        ipfs.files.add(buffer, (err, result) => { 
+	        if (err) {
+		          console.error(err)
+		          return
+			}
+			
+			var imageHash = result[0].hash;		
+
+			var profileImageLink = 'https://ipfs.io/ipfs/'+imageHash;
+			var btnViewImage = '<a href="'+profileImageLink+'" target="_blank" class=" text-danger"><i class="fa fa-eye"></i> View Image</a>';
+
+	        $("#userProfileHash").val(imageHash);
+	        $("#imageHash").html(btnViewImage);
+	        
+	        $("#userFormBtn").prop('disabled',false);
+	        $("i.fa-spinner").hide();	
+	    });
+	}

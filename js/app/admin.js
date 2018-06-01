@@ -13,8 +13,7 @@ function userFormSubmit(){
 		var userContactNo     = $("#userContactNo").val();
 		var userRoles         = $("#userRoles").val();
 		var isActive          = $("#isActive").is(":checked");
-		var userImageAddress  = '0x048536';
-		/*var userImageAddress  = $("#userProfileHash").val();*/
+		var userImageAddress  = $("#userProfileHash").val();
 
 		globUserContract.methods.updateUserForAdmin(userWalletAddress,userName,userContactNo,userRoles,isActive,userImageAddress)
 		.send({from:globCoinbase, to:globUserContract._address})
@@ -89,16 +88,14 @@ function getCultivationEvents(contractRef) {
                 finalEvents.push(tmpData);
             });
         });
-        
+
         setTimeout(function()
         {
         	if(finalEvents.length > 0){
 	            var table = buildCultivationTable(finalEvents);
 	            $("#adminCultivationTable").find("tbody").html(table);
 	        }    
-        },500); 
-
-        
+        },1000); 
 
         // $("#transactions tbody").html(buildTransactionData(events));
     }).catch(error => {

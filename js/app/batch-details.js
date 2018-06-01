@@ -55,9 +55,10 @@ window.addEventListener('load', function()
 			var activityName = "DoneProcessing";
 			var built = buildProcessorBlock(result); 
 
-			populateSection(parentSection,built,activityName,batchNo);              
+			populateSection(parentSection,built,activityName,batchNo);             
 		});
 	}
+
 });
 
 function populateSection(parentSection,built,activityName,batchNo)
