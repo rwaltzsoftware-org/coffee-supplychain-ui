@@ -124,7 +124,6 @@ contract CoffeeSupplyChain is Ownable
                                                                     string shipNo,
                                                                     uint256 departureDateTime,
                                                                     uint256 estimateDateTime,
-                                                                    uint256 plantNo,
                                                                     uint256 exporterId) {
         /* Call Storage Contract */
        (quantity,
@@ -133,7 +132,6 @@ contract CoffeeSupplyChain is Ownable
         shipNo,
         departureDateTime,
         estimateDateTime,
-        plantNo,
         exporterId) =  supplyChainStorage.getExporterData(_batchNo);  
         
         return (quantity,
@@ -142,7 +140,6 @@ contract CoffeeSupplyChain is Ownable
                 shipNo,
                 departureDateTime,
                 estimateDateTime,
-                plantNo,
                 exporterId);
     }
     
@@ -154,12 +151,11 @@ contract CoffeeSupplyChain is Ownable
                                 string _shipName,
                                 string _shipNo,
                                 uint256 _estimateDateTime,
-                                uint256 _plantNo,
                                 uint256 _exporterId) 
                                 public isValidPerformer(_batchNo,'EXPORTER') returns(bool) {
                                     
         /* Call Storage Contract */
-        bool status = supplyChainStorage.setExporterData(_batchNo, _quantity, _destinationAddress, _shipName,_shipNo, _estimateDateTime,_plantNo,_exporterId);  
+        bool status = supplyChainStorage.setExporterData(_batchNo, _quantity, _destinationAddress, _shipName,_shipNo, _estimateDateTime,_exporterId);  
         
         emit DoneExporting(msg.sender, _batchNo);
         return (status);

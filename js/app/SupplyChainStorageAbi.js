@@ -34,10 +34,6 @@ var SupplyChainStorageAbi = [
 				"type": "uint256"
 			},
 			{
-				"name": "plantNo",
-				"type": "uint256"
-			},
-			{
 				"name": "exporterId",
 				"type": "uint256"
 			}
@@ -378,6 +374,49 @@ var SupplyChainStorageAbi = [
 		"type": "function"
 	},
 	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "batchNo",
+				"type": "address"
+			},
+			{
+				"name": "_quantity",
+				"type": "uint256"
+			},
+			{
+				"name": "_destinationAddress",
+				"type": "string"
+			},
+			{
+				"name": "_shipName",
+				"type": "string"
+			},
+			{
+				"name": "_shipNo",
+				"type": "string"
+			},
+			{
+				"name": "_estimateDateTime",
+				"type": "uint256"
+			},
+			{
+				"name": "_exporterId",
+				"type": "uint256"
+			}
+		],
+		"name": "setExporterData",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"constant": true,
 		"inputs": [
 			{
@@ -418,53 +457,6 @@ var SupplyChainStorageAbi = [
 		],
 		"payable": false,
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "batchNo",
-				"type": "address"
-			},
-			{
-				"name": "_quantity",
-				"type": "uint256"
-			},
-			{
-				"name": "_destinationAddress",
-				"type": "string"
-			},
-			{
-				"name": "_shipName",
-				"type": "string"
-			},
-			{
-				"name": "_shipNo",
-				"type": "string"
-			},
-			{
-				"name": "_estimateDateTime",
-				"type": "uint256"
-			},
-			{
-				"name": "_plantNo",
-				"type": "uint256"
-			},
-			{
-				"name": "_exporterId",
-				"type": "uint256"
-			}
-		],
-		"name": "setExporterData",
-		"outputs": [
-			{
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{

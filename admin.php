@@ -7,7 +7,6 @@
                         <h4 class="page-title">Dashboard</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                        <div id="linkOngoingTransaction"></div>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -63,6 +62,7 @@
                                     <thead>
                                         <tr>
                                             <th>Batch ID</th>
+                                            <th>QR-Code</th>
                                             <th>Farm Inspactor</th>
                                             <th>Harvester</th>
                                             <th>Exporter</th>
@@ -173,7 +173,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h2 class="modal-title" id="userModelTitle">Add Batch</h2>
+                            <h2 class="modal-title">Add Batch</h2>
                         </div>
                         <div class="modal-body">
                             <form id="batchForm" onsubmit="return false;">
@@ -247,14 +247,17 @@
                                         <input type="checkbox" class="js-switch" data-color="#99d683" data-secondary-color="#f96262" id="isActive" name="isActive" data-size="small"/>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label" for="userContactNo">Profile Image Hash <i class="red">*</i></label>
-                                        <input type="text" class="form-control" id="userProfileHash" name="userProfileHash" placeholder="User Profile Hash" data-parsley-required="true" >
+                                        <label class="control-label" for="userProfileHash">Profile Image <i class="red">*</i></label>
+                                        <input type="file" class="form-control" onchange="handleFileUpload(event);" />
+                                        <input type="hidden" class="form-control" id="userProfileHash" name="userProfileHash" placeholder="User Profile Hash" data-parsley-required="true" >
+                                        <span id="imageHash"></span>
                                     </div>
                                 </fieldset>
                             
                         </div>
                         <div class="modal-footer">
-                             <button type="submit" onclick="userFormSubmit();" class="btn btn-primary">Submit</button>
+                            <i style="display: none;" class="fa fa-spinner fa-spin"></i>
+                             <button type="submit" onclick="userFormSubmit();" class="btn btn-primary" id="userFormBtn">Submit</button>
                             </form>
                         </div>
                     </div>

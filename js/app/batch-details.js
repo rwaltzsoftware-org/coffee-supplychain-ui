@@ -1,7 +1,7 @@
 var batchNo;
 window.addEventListener('load', function() 
 {	
-	batchNo = $("#batchNo").val();
+  batchNo = $("#batchNo").val();
 
 	if(batchNo!="" || batchNo!=null || batchNo!=undefined){
 		
@@ -55,9 +55,10 @@ window.addEventListener('load', function()
 			var activityName = "DoneProcessing";
 			var built = buildProcessorBlock(result); 
 
-			populateSection(parentSection,built,activityName,batchNo);              
+			populateSection(parentSection,built,activityName,batchNo);             
 		});
 	}
+
 });
 
 function populateSection(parentSection,built,activityName,batchNo)

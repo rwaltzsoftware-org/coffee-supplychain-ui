@@ -276,7 +276,6 @@ contract SupplyChainStorage is SupplyChainStorageOwnable {
                               string _shipName,
                               string _shipNo,
                               uint256 _estimateDateTime,
-                              uint256 _plantNo,
                               uint256 _exporterId) public onlyAuthCaller returns(bool){
         
         exporterData.quantity = _quantity;
@@ -285,7 +284,6 @@ contract SupplyChainStorage is SupplyChainStorageOwnable {
         exporterData.shipNo = _shipNo;
         exporterData.departureDateTime = now;
         exporterData.estimateDateTime = _estimateDateTime;
-        exporterData.plantNo = _plantNo;
         exporterData.exporterId = _exporterId;
         
         batchExporter[batchNo] = exporterData;
@@ -302,7 +300,6 @@ contract SupplyChainStorage is SupplyChainStorageOwnable {
                                                                 string shipNo,
                                                                 uint256 departureDateTime,
                                                                 uint256 estimateDateTime,
-                                                                uint256 plantNo,
                                                                 uint256 exporterId){
         
         
@@ -315,7 +312,6 @@ contract SupplyChainStorage is SupplyChainStorageOwnable {
                 tmpData.shipNo, 
                 tmpData.departureDateTime, 
                 tmpData.estimateDateTime, 
-                tmpData.plantNo,
                 tmpData.exporterId);
                 
         
@@ -393,6 +389,8 @@ contract SupplyChainStorage is SupplyChainStorageOwnable {
         processorData.processorAddress = _processorAddress;
         
         batchProcessor[batchNo] = processorData;
+        
+        nextAction[batchNo] = 'DONE'; 
         
         return true;
     }
