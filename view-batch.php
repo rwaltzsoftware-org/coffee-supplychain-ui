@@ -12,10 +12,11 @@
 <div class="container-fluid">
         <div class="row bg-title">
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                <h4 class="page-title">Batch Progress</h4>
+                <h3 class="page-title">Batch Progress</h3>
+                <h4> <?php echo $_GET['batchNo'];?></h4>
             </div>
             <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                
+               
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -46,7 +47,7 @@
                             <div class="timeline-badge danger">
                                 <i class="fa fa-times"></i>
                             </div>
-                            <div class="timeline-panel">
+                            <div class="timeline-panel" id="farmInspectionSection">
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Farm-Inspector</h4>
                                     <p><small class="text-muted"></small> </p>
@@ -64,7 +65,7 @@
                            <div class="timeline-badge danger">
                                 <i class="fa fa-times"></i>
                             </div>
-                            <div class="timeline-panel">
+                            <div class="timeline-panel" id="harvesterSection">
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Harverter</h4>
                                     <p><small class="text-muted"></small> </p>
@@ -82,7 +83,7 @@
                             <div class="timeline-badge danger">
                                 <i class="fa fa-times"></i>
                             </div>
-                            <div class="timeline-panel">
+                            <div class="timeline-panel" id="exporterSection"> 
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Exporter</h4>
                                     <p><small class="text-muted"></small> </p>
@@ -100,7 +101,7 @@
                             <div class="timeline-badge danger">
                                 <i class="fa fa-times"></i>
                             </div>
-                            <div class="timeline-panel">
+                            <div class="timeline-panel" id="importerSection">
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Importer</h4>
                                     <p><small class="text-muted"></small> </p>
@@ -118,7 +119,7 @@
                             <div class="timeline-badge danger">
                                 <i class="fa fa-times"></i>
                             </div>
-                            <div class="timeline-panel">
+                            <div class="timeline-panel" id="processorSection">
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Processor</h4>
                                     <p><small class="text-muted"></small> </p>
