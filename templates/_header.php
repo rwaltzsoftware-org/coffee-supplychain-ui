@@ -32,6 +32,10 @@
 
     <link rel="stylesheet" type="text/css" href="css/parsley.css">
 
+    <link href="plugins/bower_components/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+
+
+
     <style type="text/css">
         .float-right
         {
@@ -43,7 +47,7 @@
         }
     </style>
 
-    <script src="http://www.w3schools.com/lib/w3data.js"></script>
+    <!-- <script src="http://www.w3schools.com/lib/w3data.js"></script> -->
     <!-- jQuery -->
     <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
 
