@@ -94,10 +94,13 @@ function getCultivationEvents(contractRef) {
         	if(finalEvents.length > 0){
 	            var table = buildCultivationTable(finalEvents);
 	            $("#adminCultivationTable").find("tbody").html(table);
+	            $('.qr-code-magnify').magnificPopup({
+				    type:'image',
+				    mainClass: 'mfp-zoom-in'
+				});
 	        }    
         },1000); 
 
-        // $("#transactions tbody").html(buildTransactionData(events));
     }).catch(error => {
         console.log(error)
     });
@@ -112,9 +115,15 @@ function buildCultivationTable(finalEvents)
         var elem = finalEvents[tmpDataIndex];
         var batchNo = elem.batchNo;
         var tr = "";
-        if (elem.status == "FARM_INSPECTION") {
+        var url = 'http://localhost/web3/coffee-supplychain/view-batch.php?batchNo='+batchNo;
+        var qrCode = 'https://chart.googleapis.com/chart?cht=qr&chld=H|1&chs=400x400&chl='+url;
+		
+		if (elem.status == "FARM_INSPECTION") {
             tr = `<tr>
                     <td>`+batchNo+`</td>
+                    <td><a href="`+qrCode+`" title="`+batchNo+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
+				        	<img src="`+qrCode+`" class="img-responsive" style="width:30px; height:30px;">
+				        </a></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
                     <td><span class="label label-warning font-weight-100">Processing</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
@@ -125,6 +134,9 @@ function buildCultivationTable(finalEvents)
         } else if (elem.status == "HARVESTER") {
             tr = `<tr>
                     <td>`+batchNo+`</td>
+                    <td><a href="`+qrCode+`" title="`+batchNo+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
+				        	<img src="`+qrCode+`" class="img-responsive;" style="width:30px; height:30px;">
+				        </a></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-warning font-weight-100">Processing</span> </td>
@@ -135,6 +147,9 @@ function buildCultivationTable(finalEvents)
         } else if (elem.status == "EXPORTER") {
             tr = `<tr>
                     <td>`+batchNo+`</td>
+                    <td><a href="`+qrCode+`" title="`+batchNo+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
+				        	<img src="`+qrCode+`" class="img-responsive;" style="width:30px; height:30px;">
+				        </a></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
@@ -145,6 +160,9 @@ function buildCultivationTable(finalEvents)
         } else if (elem.status == "IMPORTER") {
             tr = `<tr>
                     <td>`+batchNo+`</td>
+                    <td><a href="`+qrCode+`" title="`+batchNo+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
+				        	<img src="`+qrCode+`" class="img-responsive;" style="width:30px; height:30px;">
+				        </a></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
@@ -155,6 +173,9 @@ function buildCultivationTable(finalEvents)
         } else if (elem.status == "PROCESSOR") {
             tr = `<tr>
                     <td>`+batchNo+`</td>
+                    <td><a href="`+qrCode+`" title="`+batchNo+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
+				        	<img src="`+qrCode+`" class="img-responsive;" style="width:30px; height:30px;">
+				        </a></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>

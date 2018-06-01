@@ -46,12 +46,17 @@
     <!-- <script src="https://wzrd.in/standalone/buffer"></script> -->
     <script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js" integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB"
         crossorigin="anonymous"></script>
-    
+
     <script type="text/javascript" src="js/app/app.js"></script>
     <script type="text/javascript" src="js/app/user.js"></script>
     <script type="text/javascript" src="js/app/admin.js"></script>
     <script type="text/javascript" src="js/app/batch-details.js"></script>
-
+    <script type="text/javascript">
+        $('.qr-code-magnify').magnificPopup({
+              type:'image',
+              mainClass: 'mfp-zoom-in'
+        });
+    </script>
 
     <!--Style Switcher -->
     <script src="plugins/bower_components/switchery/dist/switchery.min.js"></script>

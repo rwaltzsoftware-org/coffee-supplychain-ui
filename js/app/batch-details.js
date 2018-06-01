@@ -1,7 +1,7 @@
 var batchNo;
 window.addEventListener('load', function() 
 {	
-	batchNo = $("#batchNo").val();
+  batchNo = $("#batchNo").val();
 
 	if(batchNo!="" || batchNo!=null || batchNo!=undefined){
 		
