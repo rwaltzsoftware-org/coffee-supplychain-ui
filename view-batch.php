@@ -1,6 +1,7 @@
 <?php include('templates/_header.php');?>
 <?php 
-     if(!isset($_GET['batchNo']) || (isset($_GET['batchNo']) && $_GET['batchNo']=='')){
+     if(!isset($_GET['batchNo']) || (isset($_GET['batchNo']) && $_GET['batchNo']=='') &&
+        !isset($_GET['txn']) || (isset($_GET['txn']) && $_GET['txn']=='')){
         echo "<script>window.location = 'index.php';</script>";
      }   
 ?>
@@ -17,10 +18,10 @@
             </div>
             <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                <?php
-                    $url = 'http://localhost/web3/coffee-supplychain/view-batch.php?batchNo='.$_GET['batchNo'];
+                    $url = 'https://rinkeby.etherscan.io/tx/'.$_GET['txn'];
                     $qrCode = 'https://chart.googleapis.com/chart?cht=qr&chld=H|1&chs=400x400&chl='.$url;
                ?>
-               <a href="<?php echo $qrCode;?>" title="<?php echo $_GET['batchNo'];?>" class="qr-code-magnify" data-effect="mfp-zoom-in"> 
+               <a href="<?php echo $qrCode;?>" title="<?php echo $_GET['txn'];?>" class="qr-code-magnify" data-effect="mfp-zoom-in"> 
                     <img src="<?php echo $qrCode;?>" class="img-responsive pull-right" style="width:100px; height:100px;">
                </a>     
             </div>

@@ -82,6 +82,7 @@ function getCultivationEvents(contractRef) {
         {
             var tmpData = {};
             tmpData.batchNo = elem.returnValues.batchNo;
+            tmpData.transactionHash = elem.transactionHash;
             getBatchStatus(contractRef, tmpData.batchNo).then(result => {
                 tmpData.status = result;
 
@@ -113,15 +114,17 @@ function buildCultivationTable(finalEvents)
     for (var tmpDataIndex in finalEvents)
     {   
         var elem = finalEvents[tmpDataIndex];
+
         var batchNo = elem.batchNo;
+        var transactionHash = elem.transactionHash;
         var tr = "";
-        var url = 'http://localhost/web3/coffee-supplychain/view-batch.php?batchNo='+batchNo;
+        var url = 'https://rinkeby.etherscan.io/tx/'+transactionHash;
         var qrCode = 'https://chart.googleapis.com/chart?cht=qr&chld=H|1&chs=400x400&chl='+url;
 		
 		if (elem.status == "FARM_INSPECTION") {
             tr = `<tr>
                     <td>`+batchNo+`</td>
-                    <td><a href="`+qrCode+`" title="`+batchNo+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
+                    <td><a href="`+qrCode+`" title="`+transactionHash+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
 				        	<img src="`+qrCode+`" class="img-responsive" style="width:30px; height:30px;">
 				        </a></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
@@ -129,12 +132,12 @@ function buildCultivationTable(finalEvents)
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                    <td><a href="view-batch.php?batchNo=`+batchNo+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                    <td><a href="view-batch.php?batchNo=`+batchNo+`&txn=`+transactionHash+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
                 </tr>`;
         } else if (elem.status == "HARVESTER") {
             tr = `<tr>
                     <td>`+batchNo+`</td>
-                    <td><a href="`+qrCode+`" title="`+batchNo+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
+                    <td><a href="`+qrCode+`" title="`+transactionHash+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
 				        	<img src="`+qrCode+`" class="img-responsive;" style="width:30px; height:30px;">
 				        </a></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
@@ -142,12 +145,12 @@ function buildCultivationTable(finalEvents)
                     <td><span class="label label-warning font-weight-100">Processing</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                    <td><a href="view-batch.php?batchNo=`+batchNo+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                    <td><a href="view-batch.php?batchNo=`+batchNo+`&txn=`+transactionHash+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
                 </tr>`;
         } else if (elem.status == "EXPORTER") {
             tr = `<tr>
                     <td>`+batchNo+`</td>
-                    <td><a href="`+qrCode+`" title="`+batchNo+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
+                    <td><a href="`+qrCode+`" title="`+transactionHash+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
 				        	<img src="`+qrCode+`" class="img-responsive;" style="width:30px; height:30px;">
 				        </a></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
@@ -155,12 +158,12 @@ function buildCultivationTable(finalEvents)
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-warning font-weight-100">Processing</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                    <td><a href="view-batch.php?batchNo=`+batchNo+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                    <td><a href="view-batch.php?batchNo=`+batchNo+`&txn=`+transactionHash+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
                 </tr>`;
         } else if (elem.status == "IMPORTER") {
             tr = `<tr>
                     <td>`+batchNo+`</td>
-                    <td><a href="`+qrCode+`" title="`+batchNo+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
+                    <td><a href="`+qrCode+`" title="`+transactionHash+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
 				        	<img src="`+qrCode+`" class="img-responsive;" style="width:30px; height:30px;">
 				        </a></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
@@ -168,12 +171,12 @@ function buildCultivationTable(finalEvents)
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-warning font-weight-100">Processing</span> </td>
-                    <td><a href="view-batch.php?batchNo=`+batchNo+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                    <td><a href="view-batch.php?batchNo=`+batchNo+`&txn=`+transactionHash+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
                 </tr>`;
         } else if (elem.status == "PROCESSOR") {
             tr = `<tr>
                     <td>`+batchNo+`</td>
-                    <td><a href="`+qrCode+`" title="`+batchNo+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
+                    <td><a href="`+qrCode+`" title="`+transactionHash+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
 				        	<img src="`+qrCode+`" class="img-responsive;" style="width:30px; height:30px;">
 				        </a></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
@@ -181,7 +184,7 @@ function buildCultivationTable(finalEvents)
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
-                    <td><a href="view-batch.php?batchNo=`+batchNo+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                    <td><a href="view-batch.php?batchNo=`+batchNo+`&txn=`+transactionHash+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
                 </tr>`;
         }
 
