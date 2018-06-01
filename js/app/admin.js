@@ -120,71 +120,63 @@ function buildCultivationTable(finalEvents)
         var tr = "";
         var url = 'https://rinkeby.etherscan.io/tx/'+transactionHash;
         var qrCode = 'https://chart.googleapis.com/chart?cht=qr&chld=H|1&chs=400x400&chl='+url;
+			
+        var commBatchTd = `<td>`+batchNo+` <a href="`+url+`" class="text-danger" target="_blank"><i class="fa fa-external-link"><i></a></td>`;
+        var commQrTd = `<td><a href="`+qrCode+`" title="`+transactionHash+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
+				        	<img src="`+qrCode+`" class="img-responsive" style="width:30px; height:30px;">
+				        </a>
+				    </td>`;
+		var commActionTd = `<td><a href="view-batch.php?batchNo=`+batchNo+`&txn=`+transactionHash+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>`;		    
 		
 		if (elem.status == "FARM_INSPECTION") {
             tr = `<tr>
-                    <td>`+batchNo+`</td>
-                    <td><a href="`+qrCode+`" title="`+transactionHash+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
-				        	<img src="`+qrCode+`" class="img-responsive" style="width:30px; height:30px;">
-				        </a></td>
+            		`+commBatchTd+commQrTd+`
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
                     <td><span class="label label-warning font-weight-100">Processing</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                    <td><a href="view-batch.php?batchNo=`+batchNo+`&txn=`+transactionHash+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                    `+commActionTd+`
                 </tr>`;
         } else if (elem.status == "HARVESTER") {
             tr = `<tr>
-                    <td>`+batchNo+`</td>
-                    <td><a href="`+qrCode+`" title="`+transactionHash+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
-				        	<img src="`+qrCode+`" class="img-responsive;" style="width:30px; height:30px;">
-				        </a></td>
+                    `+commBatchTd+commQrTd+`
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-warning font-weight-100">Processing</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                    <td><a href="view-batch.php?batchNo=`+batchNo+`&txn=`+transactionHash+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                    `+commActionTd+`
                 </tr>`;
         } else if (elem.status == "EXPORTER") {
             tr = `<tr>
-                    <td>`+batchNo+`</td>
-                    <td><a href="`+qrCode+`" title="`+transactionHash+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
-				        	<img src="`+qrCode+`" class="img-responsive;" style="width:30px; height:30px;">
-				        </a></td>
+                    `+commBatchTd+commQrTd+`
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-warning font-weight-100">Processing</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                    <td><a href="view-batch.php?batchNo=`+batchNo+`&txn=`+transactionHash+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                    `+commActionTd+`
                 </tr>`;
         } else if (elem.status == "IMPORTER") {
             tr = `<tr>
-                    <td>`+batchNo+`</td>
-                    <td><a href="`+qrCode+`" title="`+transactionHash+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
-				        	<img src="`+qrCode+`" class="img-responsive;" style="width:30px; height:30px;">
-				        </a></td>
+                    `+commBatchTd+commQrTd+`
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-warning font-weight-100">Processing</span> </td>
-                    <td><a href="view-batch.php?batchNo=`+batchNo+`&txn=`+transactionHash+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                    `+commActionTd+`
                 </tr>`;
         } else if (elem.status == "PROCESSOR") {
             tr = `<tr>
-                    <td>`+batchNo+`</td>
-                    <td><a href="`+qrCode+`" title="`+transactionHash+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
-				        	<img src="`+qrCode+`" class="img-responsive;" style="width:30px; height:30px;">
-				        </a></td>
+                    `+commBatchTd+commQrTd+`
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
-                    <td><a href="view-batch.php?batchNo=`+batchNo+`&txn=`+transactionHash+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                    `+commActionTd+`
                 </tr>`;
         }
 

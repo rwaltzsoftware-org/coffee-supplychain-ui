@@ -10,20 +10,21 @@
         color: green;
     }
 </style>
+<?php
+    $url = 'https://rinkeby.etherscan.io/tx/'.$_GET['txn'];
+    $qrCode = 'https://chart.googleapis.com/chart?cht=qr&chld=H|1&chs=400x400&chl='.$url;
+?>
 <div class="container-fluid">
         <div class="row bg-title">
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                <h3 class="page-title">Batch Progress</h3>
-                <h4> <?php echo $_GET['batchNo'];?></h4>
+                <h3 class="page-title">Batch Progress </h3>
+                <h4> <a href="<?php echo $url;?>" class="text-danger" target="_blank"><?php echo $_GET['batchNo'];?></a></h4>
             </div>
             <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-               <?php
-                    $url = 'https://rinkeby.etherscan.io/tx/'.$_GET['txn'];
-                    $qrCode = 'https://chart.googleapis.com/chart?cht=qr&chld=H|1&chs=400x400&chl='.$url;
-               ?>
                <a href="<?php echo $qrCode;?>" title="<?php echo $_GET['txn'];?>" class="qr-code-magnify" data-effect="mfp-zoom-in"> 
                     <img src="<?php echo $qrCode;?>" class="img-responsive pull-right" style="width:100px; height:100px;">
-               </a>     
+               </a>    
+
             </div>
             <!-- /.col-lg-12 -->
         </div>

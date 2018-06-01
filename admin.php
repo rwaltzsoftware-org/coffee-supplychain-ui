@@ -248,7 +248,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="userProfileHash">Profile Image <i class="red">*</i></label>
-                                        <input type="file" class="form-control" onchange="handleFileUpload(event);" data-parsley-required="true"/>
+                                        <input type="file" class="form-control" onchange="handleFileUpload(event);" />
                                         <input type="hidden" class="form-control" id="userProfileHash" name="userProfileHash" placeholder="User Profile Hash" data-parsley-required="true" >
                                         <span id="imageHash"></span>
                                     </div>
