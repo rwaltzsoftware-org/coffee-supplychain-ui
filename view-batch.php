@@ -21,9 +21,9 @@
                 <h4> <a href="<?php echo $url;?>" class="text-danger" target="_blank"><?php echo $_GET['batchNo'];?></a></h4>
             </div>
             <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-               <a href="<?php echo $qrCode;?>" title="<?php echo $_GET['txn'];?>" class="qr-code-magnify" data-effect="mfp-zoom-in"> 
+               <!-- <a href="<?php echo $qrCode;?>" title="<?php echo $_GET['txn'];?>" class="qr-code-magnify" data-effect="mfp-zoom-in"> 
                     <img src="<?php echo $qrCode;?>" class="img-responsive pull-right" style="width:100px; height:100px;">
-               </a>    
+               </a>  -->   
 
             </div>
             <!-- /.col-lg-12 -->
@@ -41,6 +41,7 @@
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Cultivation</h4>
                                     <p><small class="text-muted text-success activityDateTime"></small> </p>
+                                    <span class="activityQrCode"></span>
                                 </div>
                                 <div class="timeline-body">
                                     <table class="table activityData" >
@@ -58,10 +59,11 @@
                             <div class="timeline-panel" id="farmInspectionSection">
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Farm-Inspector</h4>
-                                    <p><small class="text-muted"></small> </p>
+                                    <p><small class="text-muted text-success activityDateTime"></small> </p>
+                                    <span class="activityQrCode"></span>
                                 </div>
                                 <div class="timeline-body">
-                                    <table class="table" id="farmInspactorData">
+                                    <table class="table activityData">
                                         <tr>
                                             <td colspan="2"><p>Information Not Avilable</p></td>
                                         </tr>
@@ -76,10 +78,11 @@
                             <div class="timeline-panel" id="harvesterSection">
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Harverter</h4>
-                                    <p><small class="text-muted"></small> </p>
+                                    <p><small class="text-muted text-success activityDateTime"></small> </p>
+                                    <span class="activityQrCode"></span>
                                 </div>
                                 <div class="timeline-body">
-                                    <table class="table" id="harvesterData">
+                                    <table class="table activityData" >
                                         <tr>
                                             <td colspan="2"><p>Information Not Avilable</p></td>
                                         </tr>
@@ -94,10 +97,11 @@
                             <div class="timeline-panel" id="exporterSection"> 
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Exporter</h4>
-                                    <p><small class="text-muted"></small> </p>
+                                    <p><small class="text-muted text-success activityDateTime"></small> </p>
+                                    <span class="activityQrCode"></span>
                                 </div>
                                 <div class="timeline-body">
-                                    <table class="table" id="exporterData">
+                                    <table class="table activityData">
                                         <tr>
                                             <td colspan="2"><p>Information Not Avilable</p></td>
                                         </tr>
@@ -112,10 +116,11 @@
                             <div class="timeline-panel" id="importerSection">
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Importer</h4>
-                                    <p><small class="text-muted"></small> </p>
+                                    <p><small class="text-muted text-success activityDateTime"></small> </p>
+                                    <span class="activityQrCode"></span>
                                 </div>
                                 <div class="timeline-body">
-                                   <table class="table" id="importerData">
+                                   <table class="table activityData" >
                                         <tr>
                                             <td colspan="2"><p>Information Not Avilable</p></td>
                                         </tr>
@@ -130,10 +135,11 @@
                             <div class="timeline-panel" id="processorSection">
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Processor</h4>
-                                    <p><small class="text-muted"></small> </p>
+                                    <p><small class="text-muted text-success activityDateTime"></small> </p>
+                                    <span class="activityQrCode"></span>
                                 </div>
                                 <div class="timeline-body">
-                                    <table class="table" id="processorData">
+                                    <table class="table activityData" >
                                         <tr>
                                             <td colspan="2"><p>Information Not Avilable</p></td>
                                         </tr>

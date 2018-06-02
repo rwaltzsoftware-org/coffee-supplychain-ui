@@ -1,6 +1,9 @@
 	var globIcoAddress = {
-		'CoffeeMain': "0x439a6ec4348e5149b5c090624cfcf2adb6fd1db4",
-		'CoffeeUser': "0xd588AB0d5EB66630B8F8fFe2aaE0eEfC132E184f"
+		'CoffeeMain': "0xfA171Cda184d815D20a318fCe9920AafdC04934e",
+		'CoffeeUser': "0x26d723acFe39f93A9702592dD9371851f81cF59F"
+
+		/*'New-CoffeeMain': "0x439a6ec4348e5149b5c090624cfcf2adb6fd1db4",
+		'New-CoffeeUser': "0xd588AB0d5EB66630B8F8fFe2aaE0eEfC132E184f"*/
 	};
 
 	var globMainContract = false;
