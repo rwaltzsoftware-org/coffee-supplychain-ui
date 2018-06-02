@@ -9,6 +9,7 @@
 	var globMainContract = false;
 	var globUserContract = false;
 	var globCoinbase = false;	
+	var globUserData = [];
 
 
 	window.addEventListener('load', function() 
@@ -209,30 +210,63 @@
 		$("#totalUsers").html(events.length);
 
 		$(events).each(function(index,event){
-			var role        = event.returnValues.role;
-			var userAddress = event.returnValues.user;
 
-			if(role == 'FARM_INSPECTION'){
-				roleClass = "info";
-			}else if(role == 'HARVESTER'){
-				roleClass = "success";	
-			}else if(role == 'EXPORTER'){
-				roleClass = "warning";
-			}else if(role == 'IMPORTER'){
-				roleClass = "danger";
-			}else if(role == 'PROCESSOR'){
-				roleClass = "primary";
+			/*filtering latest updated user record*/
+			var tmpData = {};
+			tmpData.blockNumber = event.blockNumber;
+			tmpData.role        = event.returnValues.role;
+			tmpData.user        = event.returnValues.user;
+			tmpData.name        = event.returnValues.name;
+			tmpData.contactNo   = event.returnValues.contactNo;
+
+			if(globUserData.length <= 0){
+				globUserData.push(tmpData);
+			}else{
+				$(globUserData).each(function(index,data){
+					
+					if((data.user == event.returnValues.user) && 
+					   data.blockNumber < event.blockNumber)
+					{
+						globUserData[index].blockNumber = event.blockNumber;
+						globUserData[index].user        = event.returnValues.user;
+						globUserData[index].name        = event.returnValues.name;
+						globUserData[index].role        = event.returnValues.role;
+						globUserData[index].contactNo   = event.returnValues.contactNo;
+					}
+
+					// if(data.user != event.returnValues.user){
+					// 	globUserData.push(tmpData);
+					// }
+				});
 			}
 
-			tbody += `<tr>
-	                        <td>`+userAddress+`</td>
-	                        <td>`+event.returnValues.name+`</td>
-	                        <td>`+event.returnValues.contactNo+`</td>
-	                        <td><span class="label label-`+roleClass+` font-weight-100">`+role+`</span></td>
-	                        <td><a href="javascript:void(0);" class="text-inverse p-r-10" data-toggle="tooltip" data-userAddress="`+userAddress+`" onclick="openEditUser(this);" title="Edit"><i class="ti-marker-alt"></i></a> </td>
-	                  </tr>`;
+			
+
+			// var role        = event.returnValues.role;
+			// var userAddress = event.returnValues.user;
+
+			// if(role == 'FARM_INSPECTION'){
+			// 	roleClass = "info";
+			// }else if(role == 'HARVESTER'){
+			// 	roleClass = "success";	
+			// }else if(role == 'EXPORTER'){
+			// 	roleClass = "warning";
+			// }else if(role == 'IMPORTER'){
+			// 	roleClass = "danger";
+			// }else if(role == 'PROCESSOR'){
+			// 	roleClass = "primary";
+			// }
+
+			// tbody += `<tr>
+	  //                       <td>`+userAddress+`</td>
+	  //                       <td>`+event.returnValues.name+`</td>
+	  //                       <td>`+event.returnValues.contactNo+`</td>
+	  //                       <td><span class="label label-`+roleClass+` font-weight-100">`+role+`</span></td>
+	  //                       <td><a href="javascript:void(0);" class="text-inverse p-r-10" data-toggle="tooltip" data-userAddress="`+userAddress+`" onclick="openEditUser(this);" title="Edit"><i class="ti-marker-alt"></i></a> </td>
+	  //                 </tr>`;
 		});
 
+		console.log(globUserData);
 		return tbody;
 	}
 
