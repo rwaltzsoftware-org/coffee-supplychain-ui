@@ -55,7 +55,11 @@ window.addEventListener('load', function()
 			var activityName = "DoneProcessing";
 			var built = buildProcessorBlock(result); 
 
-			populateSection(parentSection,built,activityName,batchNo);             
+			populateSection(parentSection,built,activityName,batchNo);   
+        // $('.qr-code-magnify').magnificPopup({
+        //     type:'image',
+        //     mainClass: 'mfp-zoom-in'
+        // });         
 		});
 	}
 
@@ -67,7 +71,8 @@ function populateSection(parentSection,built,activityName,batchNo)
 	{
     if(resultData.dataTime)
 		{
-			$(parentSection).find(".activityDateTime").html("<i class='fa fa-clock-o'> </i> " + resultData.dataTime.toUTCString()+ " <i class='fa fa-external-link'><i>");
+      var refLink = 'https://rinkeby.etherscan.io/tx/'+resultData.transactionHash;
+			$(parentSection).find(".activityDateTime").html("<i class='fa fa-clock-o'> </i> " + resultData.dataTime.toUTCString()+ " <a href='"+refLink+"' target='_blank'><i class='fa fa-external-link text-danger'></i></a>");
 		}
 
     if(resultData.transactionHash){

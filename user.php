@@ -10,14 +10,21 @@
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-info" id="divOngoingTransaction" style="display: none">Ongoing Transaction: <span id="linkOngoingTransaction">None</span> </div>
+                    </div>    
+                </div>
+
                 <!-- /.row -->
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
                         <div class="white-box">
-                            <div class="user-bg"> <img width="100%" alt="user" src="plugins/images/large/img1.jpg">
+                            <div class="user-bg"> <img width="100%" alt="user" src="plugins/images/heading-bg/slide3.jpg">
                                 <div class="overlay-box">
                                     <div class="user-content">
-                                        <a href="javascript:void(0)"><img src="plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img"></a>
+                                        <a href="javascript:void(0)"><img src="plugins/images/users/genu.jpg" id="userImage" class="thumb-lg img-circle" alt="img"></a>
                                         <h4 class="text-white" id="userName">--</h4>
                                         <h5 class="text-white" id="currentUserAddress">--</h5>
                                     </div>
@@ -35,7 +42,7 @@
                                 </div>
                                 <div class="col-md-4 col-sm-4 text-center">
                                     <p class="text-danger"><i class="fa fa-gears"></i> Settings</p>
-                                    <a class="btn btn-info m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light popup-with-form" id="editUser" href="#updateUserForm"  >Edit</a>
+                                    <a class="btn btn-info m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light" id="editUser" href="javascript:void(0);" >Edit</a>
                                 </div>
 
                             </div>
@@ -68,78 +75,63 @@
                                     <tbody>
                                          <tr>
                                              <td colspan="7" align="center">No Data Available</td>
-                                         </tr> 
-
-                                        <!-- <tr>
-                                            <td>#85457898as234ca3fsafa3444234223first</td>
-                                            <td>
-                                                <a href="view-batch.php"><span class="label label-success font-weight-100">View</span></a>&nbsp;
-                                                <a class="popup-with-form" href="#farmInspectionForm" ><span class="label label-success font-weight-100">Update</span></a>
-                                            </td>
-                                            <td>
-                                                <a  href="view-batch.php"><span class="label label-success font-weight-100">View</span></a>&nbsp;
-                                                <a class="popup-with-form" href="#harvesterForm"><span class="label label-success font-weight-100">Update</span></a>
-                                            </td>
-                                            <td>
-                                                <a  href="view-batch.php"><span class="label label-success font-weight-100">View</span></a>&nbsp;
-                                                <a class="popup-with-form" href="#exporterForm" ><span class="label label-success font-weight-100">Update</span></a>     
-                                            </td>
-                                            <td>
-                                                <a  href="view-batch.php"><span class="label label-success font-weight-100">View</span></a>&nbsp;
-                                                <a class="popup-with-form" href="#importerForm" ><span class="label label-success font-weight-100">Update</span></a>                                      
-                                            </td>
-                                            <td>
-                                                <a  href="view-batch.php"><span class="label label-success font-weight-100">View</span></a>&nbsp;
-                                                <a class="popup-with-form" href="#processingForm" ><span class="label label-success font-weight-100">Update</span></a> 
-                                            </td>
-                                        </tr> -->
-                                        
+                                         </tr>                                         
                                     </tbody>
                                 </table>
 
                             <!-- Update User Form -->
-                            <form id="updateUserForm" class="mfp-hide white-popup-block">
-                                <h1>Update User Profile</h1><br>
-                                <fieldset style="border:0;">
-                                    <div class="form-group">
-                                        <label class="control-label" for="fullname">Fullname</label>
-                                        <input type="text" class="form-control" id="fullname" name="fullname" placeholder="fullname" data-parsley-required="true">
-                                    </div> 
-                                    <div class="form-group">
-                                        <label class="control-label" for="contactNumber">Contact Number</label>
-                                        <input type="text" class="form-control" id="contactNumber" name="contactNumber" placeholder="contact number" data-parsley-required="true" data-parsley-type="digits" data-parsley-length="[10, 15]" maxlength="15">
-                                    </div>                              
-                                    <div class="form-group">
-                                        <label class="control-label" for="role">User Role</label>
-                                       <!--  <input type="text" class="form-control" id="role" name="role" placeholder="Select User Role" required=""> -->
-                                       <select class="form-control" id="role" name="role" data-parsley-required="true">
-                                           <option value="" disabled selected>Select User Role</option>
-                                           <option value="SUPER_ADMIN">SUPER_ADMIN</option>
-                                           <option value="FARM_INSPECTION">FARM_INSPECTION</option>
-                                           <option value="HARVESTER">HARVESTER</option>
-                                           <option value="EXPORTER">EXPORTER</option>
-                                           <option value="IMPORTER">IMPORTER</option>
-                                           <option value="PROCESSOR">PROCESSOR</option>
-                                       </select>
+                            <div id="userFormModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; padding-top: 170px;">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h2 class="modal-title" id="userModelTitle">Update Profile</h2>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="updateUserForm" onsubmit="return false;">
+                                            <fieldset style="border:0;">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="fullname">Full Name <i class="red">*</i></label>
+                                                    <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Name" data-parsley-required="true">
+                                                </div>                              
+                                                <div class="form-group">
+                                                    <label class="control-label" for="contactNumber">Contact No<i class="red">*</i></label>
+                                                    <input type="text" class="form-control" id="contactNumber" name="contactNumber" placeholder="Contact No." data-parsley-required="true" data-parsley-type="digits" data-parsley-length="[10, 15]" maxlength="15">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label" for="role">Role </label>
+                                                    <select class="form-control" id="role" disabled="true" name="role">
+                                                        <option value="">Select Role</option>
+                                                        <option value="FARM_INSPECTION">Farm Inspection</option>
+                                                        <option value="HARVESTER">Harvester</option>
+                                                        <option value="EXPORTER">Exporter</option>
+                                                        <option value="IMPORTER">Importer</option>
+                                                        <option value="PROCESSOR">Processor</option>
+                                                    </select>    
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label" for="isActive">User Status</label>
+                                                    <input type="checkbox" class="js-switch" data-color="#99d683" data-secondary-color="#f96262" id="isActive" name="isActive" data-size="small"/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label" for="userProfileHash">Profile Image <i class="red">*</i></label>
+                                                    <input type="file" class="form-control" onchange="handleFileUpload(event);" />
+                                                    <input type="hidden" class="form-control" id="userProfileHash" name="userProfileHash" placeholder="User Profile Hash" data-parsley-required="true" >
+                                                    <span id="imageHash"></span>
+                                                </div>
+                                            </fieldset>
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                        <i style="display: none;" class="fa fa-spinner fa-spin"></i>
+                                         <button type="button" class="btn btn-primary" id="userFormBtn">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                                    </div>
-                                     <div class="form-group">
-                                        <label class="control-label" for="role">User Status</label>
-                                       <!--  <input type="text" class="form-control" id="role" name="role" placeholder="Select User Role" required=""> -->&nbsp;&nbsp;&nbsp;
-                                       <input type="radio" name="status" value="true" data-parsley-required="true" 
-                                       /> TRUE &nbsp;&nbsp;
-                                       <input type="radio" name="status" value="false"/> FALSE
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label" for="profileHash">Profile Hash</label>
-                                        <input type="text" class="form-control" id="profileHash" name="profileHash" placeholder="Profile Hash" data-parsley-required="true">
-                                    </div>
-                                     <div class="form-group float-right">
-                                       <button type="reset" class="btn btn-default waves-effect">Reset</button>
-                                        <button type="button" id="updateUser" class="btn btn-primary">Submit</button>
-                                    </div>
-                                </fieldset>
-                            </form>
+                            
 
                             <!-- Farm Inspection Form -->
                             <form id="farmInspectionForm" class="mfp-hide white-popup-block">
@@ -330,7 +322,15 @@
             <!-- /.container-fluid -->
 
         <script type="text/javascript">
+            var switchery;
+            $(document).ready(function(){
+                initSwitch();
+            });
 
+            function initSwitch(){
+                /*For User Form Pop Up*/
+                switchery = new Switchery($("#isActive")[0], $("#isActive").data());    
+            }
         </script>
         
 <?php include('templates/_footer.php');?>   

@@ -278,7 +278,7 @@
 
             function initSwitch(){
                 /*For User Form Pop Up*/
-                new Switchery($("#isActive")[0], $("#isActive").data());     
+                 new Switchery($("#isActive")[0], $("#isActive").data());     
             }
         </script>
 
