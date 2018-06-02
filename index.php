@@ -31,7 +31,8 @@
             <div class="white-box">
                     <div class="form-group text-center">
                         <div class="col-xs-12">
-                             <img src="dist/images/imperialsofetch.png"/>
+                             <!-- <img src="dist/images/imperialsofetch.png"/> -->
+                             <img src="dist/images/csc1.png" style="width: 225px; height: 225px;" />
                         </div>
                     </div>
                     <div class="form-group  text-center">
