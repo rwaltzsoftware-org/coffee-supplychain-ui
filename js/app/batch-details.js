@@ -63,12 +63,22 @@ window.addEventListener('load', function()
 
 function populateSection(parentSection,built,activityName,batchNo)
 {
-	getActivityTimestamp(activityName,batchNo, function(dataTime)
+	getActivityTimestamp(activityName,batchNo, function(resultData)
 	{
-		if(dataTime)
+    if(resultData.dataTime)
 		{
-			$(parentSection).find(".activityDateTime").html("<i class='fa fa-clock-o'> </i> " + dataTime.toUTCString());
+			$(parentSection).find(".activityDateTime").html("<i class='fa fa-clock-o'> </i> " + resultData.dataTime.toUTCString()+ " <i class='fa fa-external-link'><i>");
 		}
+
+    if(resultData.transactionHash){
+      var url = 'https://rinkeby.etherscan.io/tx/'+resultData.transactionHash;
+      var qrCode = 'https://chart.googleapis.com/chart?cht=qr&chld=H|1&chs=400x400&chl='+url;
+      var qrCodeSec = `<a href="`+qrCode+`" title="`+resultData.transactionHash+`" class="qr-code-magnify pull-right" data-effect="mfp-zoom-in">
+                        <img src="`+qrCode+`" class="img-responsive" style="width:70px; height:70px; margin-top:-75px;"/>
+                      </a>`;
+
+      $(parentSection).find(".activityQrCode").html(qrCodeSec);
+    }
 	});
 
 	var tmpTimelineBadge = $(parentSection).prev(".timeline-badge");
@@ -92,14 +102,18 @@ function getActivityTimestamp(activityName, batchNo, callback)
 	{
 		try
 		{
-			web3.eth.getBlock(eventData[0].blockNumber,function(error,blockData)
+      web3.eth.getBlock(eventData[0].blockNumber,function(error,blockData)
 			{
+        var resultData = {};
 				var date = blockData.timestamp;
 				/* Convert Seconds to Miliseconds */
 			 	date = new Date(date * 1000);
 			 	// $("#cultivationDateTime").html("<i class='fa fa-clock-o'> </i> " + date.toUTCString());
 
-			 	callback(date);
+        resultData.dataTime = date;
+        resultData.transactionHash = eventData[0].transactionHash;
+
+			 	callback(resultData);
 			})	
 		}
 		catch(e)
@@ -220,10 +234,9 @@ function buildExporterBlock(result){
 	var shipNo             = result.shipNo;
 	var departureDateTime  = result.departureDateTime;
 	var estimateDateTime   = result.estimateDateTime;
-	var plantNo            = result.plantNo;
 	var exporterId         = result.exporterId;
 
-	if(quantity!='' && destinationAddress!='' && shipName!='' && shipNo!='' && departureDateTime!='' && estimateDateTime!='' && plantNo!='' && exporterId!=''){
+	if(quantity!='' && destinationAddress!='' && shipName!='' && shipNo!='' && departureDateTime!='' && estimateDateTime!='' && exporterId!=''){
 		exporterData.html =  `<tr>
                             <td><b>Quanity:</b></td>
                             <td>`+quantity+` <i class="fa fa-check-circle verified_info"></i></td>
@@ -247,10 +260,6 @@ function buildExporterBlock(result){
                           <tr>
                             <td><b>Estimate Date Time:</b></td>
                             <td>`+estimateDateTime+` <i class="fa fa-check-circle verified_info"></i></td>
-                          </tr>
-                          <tr>
-                            <td><b>Plant No:</b></td>
-                            <td>`+plantNo+` <i class="fa fa-check-circle verified_info"></i></td>
                           </tr>
                           <tr>
                             <td><b>Exporter Id:</b></td>
