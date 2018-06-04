@@ -429,138 +429,135 @@ function buildCultivationTable(finalEvents)
         var transactionHash = elem.transactionHash;
         var tr = "";
         
-        /*User can view bacth progress - according to his current logged in role*/  
-        if(globCurrentUser.role == elem.status){  
-          if (elem.status == "FARM_INSPECTION") {
-              tr = `<tr>
-                      <td>`+batchNo+`</td>
-                    `;
-                    
-                if(globCurrentUser.role == "FARM_INSPECTION")
-                {
-                  tr+=`<td>
-                            <span class="label label-inverse font-weight-100">
-                            <a class="popup-with-form" href="#farmInspectionForm" onclick="editActivity('`+batchNo+`')">
-                              <span class="label label-inverse font-weight-100">Update</span>
-                            </a>
-                        </td>`;
-                }
-                else
-                {
-                   tr+=`<td><span class="label label-warning font-weight-100">Processing</span> </td>`;
-                }
-
+        if (elem.status == "FARM_INSPECTION") {
+            tr = `<tr>
+                    <td>`+batchNo+`</td>
+                  `;
                   
-            tr+=`<td><span class="label label-danger font-weight-100">Not Available</span> </td>
+              if(globCurrentUser.role == "FARM_INSPECTION")
+              {
+                tr+=`<td>
+                          <span class="label label-inverse font-weight-100">
+                          <a class="popup-with-form" href="#farmInspectionForm" onclick="editActivity('`+batchNo+`')">
+                            <span class="label label-inverse font-weight-100">Update</span>
+                          </a>
+                      </td>`;
+              }
+              else
+              {
+                 tr+=`<td><span class="label label-warning font-weight-100">Processing</span> </td>`;
+              }
+
+                
+          tr+=`<td><span class="label label-danger font-weight-100">Not Available</span> </td>
+              <td><span class="label label-danger font-weight-100">Not Available</span> </td>
+              <td><span class="label label-danger font-weight-100">Not Available</span> </td>
+              <td><span class="label label-danger font-weight-100">Not Available</span> </td>
+              <td><a href="view-batch.php?batchNo=`+batchNo+`&txn=`+transactionHash+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+          </tr>`;
+
+        } else if (elem.status == "HARVESTER") {
+          tr = `<tr>
+                    <td>`+batchNo+`</td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span></td>
+                    `;
+                  if(globCurrentUser.role == "HARVESTER")
+                  {
+                    tr+=`<td>
+                              <span class="label label-inverse font-weight-100">
+                              <a class="popup-with-form" href="#harvesterForm" onclick="editActivity('`+batchNo+`')">
+                                <span class="label label-inverse font-weight-100">Update</span>
+                              </a>
+                          </td>`;
+                  }
+                  else
+                  {
+                     tr+=`<td><span class="label label-warning font-weight-100">Processing</span> </td>`;
+                  }        
+
+            tr+=`
                 <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                 <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                 <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                 <td><a href="view-batch.php?batchNo=`+batchNo+`&txn=`+transactionHash+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
             </tr>`;
 
-          } else if (elem.status == "HARVESTER") {
+        } else if (elem.status == "EXPORTER") {
             tr = `<tr>
-                      <td>`+batchNo+`</td>
-                      <td><span class="label label-success font-weight-100">Compeleted</span></td>
-                      `;
-                    if(globCurrentUser.role == "HARVESTER")
-                    {
-                      tr+=`<td>
-                                <span class="label label-inverse font-weight-100">
-                                <a class="popup-with-form" href="#harvesterForm" onclick="editActivity('`+batchNo+`')">
-                                  <span class="label label-inverse font-weight-100">Update</span>
-                                </a>
-                            </td>`;
-                    }
-                    else
-                    {
-                       tr+=`<td><span class="label label-warning font-weight-100">Processing</span> </td>`;
-                    }        
+                    <td>`+batchNo+`</td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span></td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                  `;
+                  
+                  if(globCurrentUser.role == "EXPORTER")
+                  {
+                    tr+=`<td>
+                              <span class="label label-inverse font-weight-100">
+                              <a class="popup-with-form" href="#exporterForm" onclick="editActivity('`+batchNo+`')">
+                                <span class="label label-inverse font-weight-100">Update</span>
+                              </a>
+                          </td>`;
+                  }
+                  else
+                  {
+                     tr+=`<td><span class="label label-warning font-weight-100">Processing</span> </td>`;
+                  } 
 
-              tr+=`
-                  <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                  <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                  <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                  <td><a href="view-batch.php?batchNo=`+batchNo+`&txn=`+transactionHash+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
-              </tr>`;
+              tr+=`  
+                    <td><span class="label label-danger font-weight-100">Not Available</span> </td>
+                    <td><span class="label label-danger font-weight-100">Not Available</span> </td>
+                    <td><a href="view-batch.php?batchNo=`+batchNo+`&txn=`+transactionHash+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                </tr>`;
+        } else if (elem.status == "IMPORTER") {
+            tr = `<tr>
+                    <td>`+batchNo+`</td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span></td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                  `;  
 
-          } else if (elem.status == "EXPORTER") {
-              tr = `<tr>
-                      <td>`+batchNo+`</td>
-                      <td><span class="label label-success font-weight-100">Compeleted</span></td>
-                      <td><span class="label label-success font-weight-100">Compeleted</span> </td>
-                    `;
-                    
-                    if(globCurrentUser.role == "EXPORTER")
-                    {
-                      tr+=`<td>
-                                <span class="label label-inverse font-weight-100">
-                                <a class="popup-with-form" href="#exporterForm" onclick="editActivity('`+batchNo+`')">
-                                  <span class="label label-inverse font-weight-100">Update</span>
-                                </a>
-                            </td>`;
-                    }
-                    else
-                    {
-                       tr+=`<td><span class="label label-warning font-weight-100">Processing</span> </td>`;
-                    } 
+                  if(globCurrentUser.role == "IMPORTER")
+                  {
+                    tr+=`<td>
+                              <span class="label label-inverse font-weight-100">
+                              <a class="popup-with-form" href="#importerForm" onclick="editActivity('`+batchNo+`')">
+                                <span class="label label-inverse font-weight-100">Update</span>
+                              </a>
+                          </td>`;
+                  }
+                  else
+                  {
+                     tr+=`<td><span class="label label-warning font-weight-100">Processing</span> </td>`;
+                  } 
 
-                tr+=`  
-                      <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                      <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                      <td><a href="view-batch.php?batchNo=`+batchNo+`&txn=`+transactionHash+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
-                  </tr>`;
-          } else if (elem.status == "IMPORTER") {
-              tr = `<tr>
-                      <td>`+batchNo+`</td>
-                      <td><span class="label label-success font-weight-100">Compeleted</span></td>
-                      <td><span class="label label-success font-weight-100">Compeleted</span> </td>
-                      <td><span class="label label-success font-weight-100">Compeleted</span> </td>
-                    `;  
-
-                    if(globCurrentUser.role == "IMPORTER")
-                    {
-                      tr+=`<td>
-                                <span class="label label-inverse font-weight-100">
-                                <a class="popup-with-form" href="#importerForm" onclick="editActivity('`+batchNo+`')">
-                                  <span class="label label-inverse font-weight-100">Update</span>
-                                </a>
-                            </td>`;
-                    }
-                    else
-                    {
-                       tr+=`<td><span class="label label-warning font-weight-100">Processing</span> </td>`;
-                    } 
-
-                tr+=` <td><span class="label label-danger font-weight-100">Not Available</span> </td>
-                      <td><a href="view-batch.php?batchNo=`+batchNo+`&txn=`+transactionHash+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
-                  </tr>`;
-          } else if (elem.status == "PROCESSOR") {
-              tr = `<tr>
-                      <td>`+batchNo+`</td>
-                      <td><span class="label label-success font-weight-100">Compeleted</span></td>
-                      <td><span class="label label-success font-weight-100">Compeleted</span> </td>
-                      <td><span class="label label-success font-weight-100">Compeleted</span> </td>
-                      <td><span class="label label-success font-weight-100">Compeleted</span> </td>
-                    `;
-                    
-                    if(globCurrentUser.role == "PROCESSOR")
-                    {
-                      tr+=`<td>
-                                <span class="label label-inverse font-weight-100">
-                                <a class="popup-with-form" href="#processingForm" onclick="editActivity('`+batchNo+`')">
-                                  <span class="label label-inverse font-weight-150">Update</span>
-                                </a>
-                            </td>`;
-                    }
-                    else
-                    {
-                       tr+=`<td><span class="label label-warning font-weight-100">Processing</span> </td>`;
-                    }  
-                  tr+=`    
-                      <td><a href="view-batch.php?batchNo=`+batchNo+`&txn=`+transactionHash+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
-                  </tr>`;
-          }
+              tr+=` <td><span class="label label-danger font-weight-100">Not Available</span> </td>
+                    <td><a href="view-batch.php?batchNo=`+batchNo+`&txn=`+transactionHash+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                </tr>`;
+        } else if (elem.status == "PROCESSOR") {
+            tr = `<tr>
+                    <td>`+batchNo+`</td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span></td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                  `;
+                  
+                  if(globCurrentUser.role == "PROCESSOR")
+                  {
+                    tr+=`<td>
+                              <span class="label label-inverse font-weight-100">
+                              <a class="popup-with-form" href="#processingForm" onclick="editActivity('`+batchNo+`')">
+                                <span class="label label-inverse font-weight-150">Update</span>
+                              </a>
+                          </td>`;
+                  }
+                  else
+                  {
+                     tr+=`<td><span class="label label-warning font-weight-100">Processing</span> </td>`;
+                  }  
+                tr+=`    
+                    <td><a href="view-batch.php?batchNo=`+batchNo+`&txn=`+transactionHash+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                </tr>`;
         }
             
         table+=tr;
