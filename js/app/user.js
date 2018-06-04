@@ -30,17 +30,37 @@ $(window).on("coinbaseReady", function ()
 
       globCurrentUser = data ;
 
-      if(data.name.trim().length <=0 && 
-         data.contactNo.trim().length <=0 && 
-         data.role.trim().length <=0 )
-      {
-        swal("Oops","Your Account was not found , Please contact Admin ","error");
-        setTimeout(function()
+      if(data.isActive == true){
+        if(data.name.trim().length <=0 && 
+           data.contactNo.trim().length <=0 && 
+           data.role.trim().length <=0 )
         {
-          window.location = "index.php";
-        },1000);
-        return ;
-      }
+          swal("Oops","Your Account was not found , Please contact Admin ","error");
+          setTimeout(function()
+          {
+            window.location = "index.php";
+          },1000);
+          return ;
+        }
+      }else{
+          swal({
+              title: "Insufficient Access",
+              text: "Your Account is blocked by Admin , Please contact to Admin",
+              type: "error",
+              showCancelButton: false,
+              confirmButtonColor: "#DD6B55",
+              confirmButtonText: "Ok",
+              closeOnConfirm: false
+            },
+            function(isConfirm)
+            {
+              if(isConfirm==true)
+              {
+               window.location = "index.php";
+              }
+            });
+          return ;
+      }  
 
       $("#userImage").attr('src','https://ipfs.io/ipfs/'+data.profileHash);
       $("#userName").html(data.name);
@@ -60,16 +80,6 @@ $("#editUser").on('click',function(){
        $("#fullname").val(data.name);
        $("#contactNumber").val(data.contactNo);
        $("#role").val(data.role);
-
-       // if(data.isActive)
-       // {
-       //    $('input:radio[name=status][value=true]').trigger("click");
-       // }else
-       // {
-       //    $('input:radio[name=status][value=false]').trigger("click");
-       // }
-
-       // $("#profileHash").val(data.profileHash);
 
        var profileImageLink = 'https://ipfs.io/ipfs/'+data.profileHash;
        var btnViewImage = '<a href="'+profileImageLink+'" target="_blank" class=" text-danger"><i class="fa fa-eye"></i> View Image</a>';
