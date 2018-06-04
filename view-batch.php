@@ -70,7 +70,7 @@
                             </div>
                             <div class="timeline-panel" id="harvesterSection">
                                 <div class="timeline-heading">
-                                    <h4 class="timeline-title">Harverter</h4>
+                                    <h4 class="timeline-title">Harvester</h4>
                                     <p><small class="text-muted text-success activityDateTime"></small> </p>
                                     <span class="activityQrCode"></span>
                                 </div>

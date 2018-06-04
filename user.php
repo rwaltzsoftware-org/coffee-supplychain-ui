@@ -63,7 +63,7 @@
                                     <thead>
                                         <tr>
                                             <th>Batch ID</th>
-                                            <th>Farm Inspactor</th>
+                                            <th>Farm Inspector</th>
                                             <th>Harvester</th>
                                             <th>Exporter</th>
                                             <th>Importer</th>

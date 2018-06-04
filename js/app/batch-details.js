@@ -78,7 +78,7 @@ function populateSection(parentSection,built,activityName,batchNo)
       } 
 
       var refLink = 'https://rinkeby.etherscan.io/tx/'+resultData.transactionHash;
-      var html = `<span class="text-info"><i class='fa fa-clock-o'> </i>
+      var html = `<span class="text-info"><i class='fa fa-user'> </i>
                       `+resultData.name+` (`+resultData.user+`) <br/>
                       `+phoneNoSec+`
                   </span>
@@ -230,17 +230,17 @@ function buildFarmInspectionBlock(result){
 function buildHarvesterBlock(result){
 	var harvesterData = {};
 	var cropVariety   = result.cropVariety;
-	var tempatureUsed = result.tempatureUsed;
+	var temperatureUsed = result.temperatureUsed;
 	var humidity      = result.humidity;
 
-	if(cropVariety!='' && tempatureUsed!='' && humidity!=''){
+	if(cropVariety!='' && temperatureUsed!='' && humidity!=''){
 		harvesterData.html =  `<tr>
-                                <td><b>Crop Veriety:</b></td>
+                                <td><b>Crop Variety:</b></td>
                                 <td>`+cropVariety+` <i class="fa fa-check-circle verified_info"></i></td>
                               </tr>
                               <tr>
-                                <td><b>Tempature Used:</b></td>
-                                <td>`+tempatureUsed+` <i class="fa fa-check-circle verified_info"></i></td>
+                                <td><b>Temperature Used:</b></td>
+                                <td>`+temperatureUsed+` <i class="fa fa-check-circle verified_info"></i></td>
                               </tr>
                               <tr>
                                 <td><b>Humidity:</b></td>
@@ -269,7 +269,7 @@ function buildExporterBlock(result){
 
 	if(quantity!='' && destinationAddress!='' && shipName!='' && shipNo!='' && departureDateTime!='' && estimateDateTime!='' && exporterId!=''){
 		exporterData.html =  `<tr>
-                            <td><b>Quanity:</b></td>
+                            <td><b>Quantity:</b></td>
                             <td>`+quantity+` <i class="fa fa-check-circle verified_info"></i></td>
                           </tr>
                           <tr>
@@ -320,7 +320,7 @@ function buildImporterBlock(result){
 
 	if(quantity!='' && shipName!='' && shipNo!='' && arrivalDateTime!='' && transportInfo!='' && warehouseName!='' && warehouseAddress!='' && importerId!=''){
 		importerData.html =  `<tr>
-                            <td><b>Quanity:</b></td>
+                            <td><b>Quantity:</b></td>
                             <td>`+quantity+` <i class="fa fa-check-circle verified_info"></i></td>
                           </tr>
                           <tr>
