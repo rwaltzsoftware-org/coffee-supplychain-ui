@@ -248,7 +248,7 @@ $("#updateExport").on('click',function(){
     if(exporterForm.validate())
     {
       var tmpDate = $("#estimateDateTime").val().trim().split("-");
-      tmpDate = tmpDate[1]+"/"+tmpDate[0]+"/"+tmpDate[2];
+      tmpDate = tmpDate[1]+"/"+tmpDate[0]+"/"+tmpDate[2];     
 
       var data = {
         batchNo : globCurrentEditingBatchNo,
@@ -268,7 +268,7 @@ $("#updateExport").on('click',function(){
 function updateExport(contractRef,data)
 {
   //contractRef.methods.updateUser("Swapnali","9578774787","HARVESTER",true,"0x74657374")
-  contractRef.methods.updateExporterData(data.batchNo, data.quantity,data.destinationAddress, data.shipName, data.shipNo, data.estimateDateTime, data.plantNo, data.exporterId)
+  contractRef.methods.updateExporterData(data.batchNo, data.quantity,data.destinationAddress, data.shipName, data.shipNo, data.estimateDateTime, data.exporterId)
   .send({from:globCoinbase,to:contractRef.address})
   .on('transactionHash',function(hash)
         {
@@ -340,13 +340,15 @@ $("#updateProcessor").on('click',function(){
       var tmpDate = $("#packageDateTime").val().trim().split("-");
       tmpDate = tmpDate[1]+"/"+tmpDate[0]+"/"+tmpDate[2];
 
+      console.log(tmpDate);
+
       var data = {
         batchNo : globCurrentEditingBatchNo,
         quantity : parseInt($("#quantity").val().trim()),
         tempature : $("#processingTemperature").val().trim(),
         rostingDuration : parseInt($("#rostingDuration").val().trim()),
         internalBatchNo : ($("#internalBatchNo").val().trim()),
-        packageDateTime : tmpDate,
+        packageDateTime : new Date(tmpDate).getTime(),
         processorName : ($("#processorName").val().trim()),
         processorAddress : ($("#processorAddress").val().trim()),
       };    
@@ -459,7 +461,7 @@ function buildCultivationTable(finalEvents)
         } else if (elem.status == "HARVESTER") {
           tr = `<tr>
                     <td>`+batchNo+`</td>
-                    <td><span class="label label-success font-weight-100">Compeleted</span></td>
+                    <td><span class="label label-success font-weight-100">Completed</span></td>
                     `;
                   if(globCurrentUser.role == "HARVESTER")
                   {
@@ -485,8 +487,8 @@ function buildCultivationTable(finalEvents)
         } else if (elem.status == "EXPORTER") {
             tr = `<tr>
                     <td>`+batchNo+`</td>
-                    <td><span class="label label-success font-weight-100">Compeleted</span></td>
-                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                    <td><span class="label label-success font-weight-100">Completed</span></td>
+                    <td><span class="label label-success font-weight-100">Completed</span> </td>
                   `;
                   
                   if(globCurrentUser.role == "EXPORTER")
@@ -511,9 +513,9 @@ function buildCultivationTable(finalEvents)
         } else if (elem.status == "IMPORTER") {
             tr = `<tr>
                     <td>`+batchNo+`</td>
-                    <td><span class="label label-success font-weight-100">Compeleted</span></td>
-                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
-                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                    <td><span class="label label-success font-weight-100">Completed</span></td>
+                    <td><span class="label label-success font-weight-100">Completed</span> </td>
+                    <td><span class="label label-success font-weight-100">Completed</span> </td>
                   `;  
 
                   if(globCurrentUser.role == "IMPORTER")
@@ -536,10 +538,10 @@ function buildCultivationTable(finalEvents)
         } else if (elem.status == "PROCESSOR") {
             tr = `<tr>
                     <td>`+batchNo+`</td>
-                    <td><span class="label label-success font-weight-100">Compeleted</span></td>
-                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
-                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
-                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                    <td><span class="label label-success font-weight-100">Completed</span></td>
+                    <td><span class="label label-success font-weight-100">Completed</span> </td>
+                    <td><span class="label label-success font-weight-100">Completed</span> </td>
+                    <td><span class="label label-success font-weight-100">Completed</span> </td>
                   `;
                   
                   if(globCurrentUser.role == "PROCESSOR")
