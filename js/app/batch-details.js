@@ -55,59 +55,63 @@ window.addEventListener('load', function()
 			var activityName = "DoneProcessing";
 			var built = buildProcessorBlock(result); 
 
-			populateSection(parentSection,built,activityName,batchNo);   
-        // $('.qr-code-magnify').magnificPopup({
-        //     type:'image',
-        //     mainClass: 'mfp-zoom-in'
-        // });         
+			populateSection(parentSection,built,activityName,batchNo);         
 		});
 	}
+
+  setTimeout(function(){
+    $('.qr-code-magnify').magnificPopup({
+        type:'image',
+        mainClass: 'mfp-zoom-in'
+    });
+  },1000);
 
 });
 
 function populateSection(parentSection,built,activityName,batchNo)
 {
-	getActivityTimestamp(activityName,batchNo, function(resultData)
-	{
-   
-    if(resultData.dataTime)
-		{
-      var phoneNoSec = '';
-      if(resultData.contactNo!='-'){
-        phoneNoSec = `<i class="fa fa-phone"></i> `+resultData.contactNo+`<br/>`;  
-      } 
+  if(built.isDataAvail==true)
+  {
+  	getActivityTimestamp(activityName,batchNo, function(resultData)
+  	{
+     
+      if(resultData.dataTime)
+  		{
+        var phoneNoSec = '';
+        if(resultData.contactNo!='-'){
+          phoneNoSec = `<i class="fa fa-phone"></i> `+resultData.contactNo+`<br/>`;  
+        } 
 
-      var userAddress = resultData.user;
-      if($(window).width() <= 565){
-        userAddress = userAddress.substring(0,15)+'...';
+        var userAddress = resultData.user;
+        if($(window).width() <= 565){
+          userAddress = userAddress.substring(0,15)+'...';
+        }
+
+        var refLink = 'https://rinkeby.etherscan.io/tx/'+resultData.transactionHash;
+        var html = `<span class="text-info"><i class='fa fa-user'> </i>
+                        `+resultData.name+` (`+userAddress+`) <br/>
+                        `+phoneNoSec+`
+                    </span>
+                    <i class='fa fa-clock-o'> </i> `+resultData.dataTime.toUTCString()+`
+                    <a href='`+refLink+`' target='_blank'><i class='fa fa-external-link text-danger'></i></a>
+                   `;
+  			$(parentSection).find(".activityDateTime").html(html);
+  		}
+
+      if(resultData.transactionHash){
+        var url = 'https://rinkeby.etherscan.io/tx/'+resultData.transactionHash;
+        var qrCode = 'https://chart.googleapis.com/chart?cht=qr&chld=H|1&chs=400x400&chl='+url;
+        var qrCodeSec = `<a href="`+qrCode+`" title="`+resultData.transactionHash+`" class="qr-code-magnify pull-right" data-effect="mfp-zoom-in">
+                          <img src="`+qrCode+`" class="img-responsive" style="width:70px; height:70px; margin-top:-75px;"/>
+                        </a>`;
+
+        $(parentSection).find(".activityQrCode").html(qrCodeSec);
       }
+  	});
 
-      var refLink = 'https://rinkeby.etherscan.io/tx/'+resultData.transactionHash;
-      var html = `<span class="text-info"><i class='fa fa-user'> </i>
-                      `+resultData.name+` (`+userAddress+`) <br/>
-                      `+phoneNoSec+`
-                  </span>
-                  <i class='fa fa-clock-o'> </i> `+resultData.dataTime.toUTCString()+`
-                  <a href='`+refLink+`' target='_blank'><i class='fa fa-external-link text-danger'></i></a>
-                 `;
-			$(parentSection).find(".activityDateTime").html(html);
-		}
+	  var tmpTimelineBadge = $(parentSection).prev(".timeline-badge");
 
-    if(resultData.transactionHash){
-      var url = 'https://rinkeby.etherscan.io/tx/'+resultData.transactionHash;
-      var qrCode = 'https://chart.googleapis.com/chart?cht=qr&chld=H|1&chs=400x400&chl='+url;
-      var qrCodeSec = `<a href="`+qrCode+`" title="`+resultData.transactionHash+`" class="qr-code-magnify pull-right" data-effect="mfp-zoom-in">
-                        <img src="`+qrCode+`" class="img-responsive" style="width:70px; height:70px; margin-top:-75px;"/>
-                      </a>`;
-
-      $(parentSection).find(".activityQrCode").html(qrCodeSec);
-    }
-	});
-
-	var tmpTimelineBadge = $(parentSection).prev(".timeline-badge");
-
-	if(built.isDataAvail==true)
-	{
+	
 		$(tmpTimelineBadge).removeClass("danger").addClass("success");
 		$(tmpTimelineBadge).find("i").removeClass().addClass("fa fa-check");
 	}
