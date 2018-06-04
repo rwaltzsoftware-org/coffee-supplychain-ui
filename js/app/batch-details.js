@@ -230,7 +230,7 @@ function buildFarmInspectionBlock(result){
 function buildHarvesterBlock(result){
 	var harvesterData = {};
 	var cropVariety   = result.cropVariety;
-	var temperatureUsed = result.temperatureUsed;
+	var temperatureUsed = result.tempatureUsed;
 	var humidity      = result.humidity;
 
 	if(cropVariety!='' && temperatureUsed!='' && humidity!=''){
@@ -240,11 +240,11 @@ function buildHarvesterBlock(result){
                               </tr>
                               <tr>
                                 <td><b>Temperature Used:</b></td>
-                                <td>`+temperatureUsed+` <i class="fa fa-check-circle verified_info"></i></td>
+                                <td>`+temperatureUsed+`&#x2109; <i class="fa fa-check-circle verified_info"></i></td>
                               </tr>
                               <tr>
                                 <td><b>Humidity:</b></td>
-                                <td>`+humidity+` <i class="fa fa-check-circle verified_info"></i></td>
+                                <td>`+humidity+`% <i class="fa fa-check-circle verified_info"></i></td>
                               </tr>`;
         harvesterData.isDataAvail = true;                      
     }else{
@@ -374,16 +374,16 @@ function buildProcessorBlock(result){
 
 	if(quantity!='' && tempature!='' && rostingDuration!='' && internalBatchNo!='' && packageDateTime!='' && processorName!='' && processorAddress!=''){
 		processorData.html =  `<tr>
-                            <td><b>Quanity:</b></td>
+                            <td><b>Quantity:</b></td>
                             <td>`+result.quantity+` <i class="fa fa-check-circle verified_info"></i></td>
                           </tr>
                           <tr>
                             <td><b>Tempature:</b></td>
-                            <td>`+result.tempature+` <i class="fa fa-check-circle verified_info"></i></td>
+                            <td>`+result.tempature+`&#x2109; <i class="fa fa-check-circle verified_info"></i></td>
                           </tr>
                           <tr>
                             <td><b>Rosting Duration:</b></td>
-                            <td>`+result.rostingDuration+` <i class="fa fa-check-circle verified_info"></i></td>
+                            <td>`+result.rostingDuration+` in seconds <i class="fa fa-check-circle verified_info"></i></td>
                           </tr>
                           <tr>
                             <td><b>Processed Batch No:</b></td>
