@@ -558,6 +558,18 @@ function buildCultivationTable(finalEvents)
                 tr+=`    
                     <td><a href="view-batch.php?batchNo=`+batchNo+`&txn=`+transactionHash+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
                 </tr>`;
+        } else if (elem.status == "DONE") {
+            tr = `<tr>
+                    <td>`+batchNo+`</td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span></td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                  `;  
+                tr+=`    
+                    <td><a href="view-batch.php?batchNo=`+batchNo+`&txn=`+transactionHash+`" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
+                </tr>`;
         }
             
         table+=tr;

@@ -178,6 +178,16 @@ function buildCultivationTable(finalEvents)
                     <td><span class="label label-warning font-weight-100">Processing</span> </td>
                     `+commActionTd+`
                 </tr>`;
+        } else if (elem.status == "DONE") {
+            tr = `<tr>
+                    `+commBatchTd+commQrTd+`
+                    <td><span class="label label-success font-weight-100">Completed</span></td>
+                    <td><span class="label label-success font-weight-100">Completed</span> </td>
+                    <td><span class="label label-success font-weight-100">Completed</span> </td>
+                    <td><span class="label label-success font-weight-100">Completed</span> </td>
+                    <td><span class="label label-success font-weight-100">Completed</span> </td>
+                    `+commActionTd+`
+                </tr>`;
         }
 
         table+=tr;
