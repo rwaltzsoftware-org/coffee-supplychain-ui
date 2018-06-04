@@ -131,8 +131,8 @@ function buildCultivationTable(finalEvents)
 		if (elem.status == "FARM_INSPECTION") {
             tr = `<tr>
             		`+commBatchTd+commQrTd+`
-                    <td><span class="label label-success font-weight-100">Compeleted</span></td>
-                    <td><span class="label label-warning font-weight-100">Processing</span> </td>
+                    <td><span class="label label-warning font-weight-100">Processing</span></td>
+                    <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
@@ -142,8 +142,8 @@ function buildCultivationTable(finalEvents)
             tr = `<tr>
                     `+commBatchTd+commQrTd+`
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
-                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-warning font-weight-100">Processing</span> </td>
+                    <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     `+commActionTd+`
@@ -153,8 +153,8 @@ function buildCultivationTable(finalEvents)
                     `+commBatchTd+commQrTd+`
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
-                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-warning font-weight-100">Processing</span> </td>
+                    <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     `+commActionTd+`
                 </tr>`;
@@ -164,8 +164,8 @@ function buildCultivationTable(finalEvents)
                     <td><span class="label label-success font-weight-100">Compeleted</span></td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
-                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-warning font-weight-100">Processing</span> </td>
+                    <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     `+commActionTd+`
                 </tr>`;
         } else if (elem.status == "PROCESSOR") {
@@ -175,7 +175,7 @@ function buildCultivationTable(finalEvents)
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
                     <td><span class="label label-success font-weight-100">Compeleted</span> </td>
-                    <td><span class="label label-success font-weight-100">Compeleted</span> </td>
+                    <td><span class="label label-warning font-weight-100">Processing</span> </td>
                     `+commActionTd+`
                 </tr>`;
         }
