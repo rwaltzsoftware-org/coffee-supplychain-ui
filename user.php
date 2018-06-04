@@ -220,7 +220,7 @@
 
                                      <div class="form-group">
                                         <label class="control-label" for="exporterId">Exporter ID</label>
-                                        <input type="text" class="form-control" id="exporterId" name="exporterId" placeholder="Exporter ID" data-parsley-required="true">
+                                        <input type="number" class="form-control" id="exporterId" name="exporterId" placeholder="Exporter ID" data-parsley-required="true">
                                     </div>
 
 

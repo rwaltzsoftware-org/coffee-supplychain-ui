@@ -273,7 +273,10 @@ function buildExporterBlock(result){
 	var exporterId         = result.exporterId;
 
 	if(quantity!='' && destinationAddress!='' && shipName!='' && shipNo!='' && departureDateTime!='' && estimateDateTime!='' && exporterId!=''){
-		exporterData.html =  `<tr>
+		
+    var departureDateTime = new Date(result.departureDateTime * 1000).toUTCString();
+    var estimateDateTime = new Date(result.estimateDateTime * 1000).toUTCString();
+    exporterData.html =  `<tr>
                             <td><b>Quantity:</b></td>
                             <td>`+quantity+` <i class="fa fa-check-circle verified_info"></i></td>
                           </tr>
@@ -324,7 +327,9 @@ function buildImporterBlock(result){
 	var importerId       = result.importerId;
 
 	if(quantity!='' && shipName!='' && shipNo!='' && arrivalDateTime!='' && transportInfo!='' && warehouseName!='' && warehouseAddress!='' && importerId!=''){
-		importerData.html =  `<tr>
+		
+    var arrivalDateTime = new Date(result.arrivalDateTime * 1000).toUTCString();
+    importerData.html =  `<tr>
                             <td><b>Quantity:</b></td>
                             <td>`+quantity+` <i class="fa fa-check-circle verified_info"></i></td>
                           </tr>
@@ -378,7 +383,10 @@ function buildProcessorBlock(result){
 	var processorAddress = result.processorAddress;
 
 	if(quantity!='' && tempature!='' && rostingDuration!='' && internalBatchNo!='' && packageDateTime!='' && processorName!='' && processorAddress!=''){
-		processorData.html =  `<tr>
+		
+    var packageDateTime = new Date(result.packageDateTime * 1000).toUTCString();
+
+    processorData.html =  `<tr>
                             <td><b>Quantity:</b></td>
                             <td>`+result.quantity+` <i class="fa fa-check-circle verified_info"></i></td>
                           </tr>
@@ -396,7 +404,7 @@ function buildProcessorBlock(result){
                           </tr>
                           <tr>
                             <td><b>Package Date Time:</b></td>
-                            <td>`+result.packageDateTime+` <i class="fa fa-check-circle verified_info"></i></td>
+                            <td>`+new Date(result.packageDateTime * 1000).toUTCString() +` <i class="fa fa-check-circle verified_info"></i></td>
                           </tr>
                           <tr>
                             <td><b>Processor Name:</b></td>
@@ -415,5 +423,5 @@ function buildProcessorBlock(result){
         processorData.isDataAvail = false;                
     }    
     
-    return processorData;
+    return processorData; 
 }

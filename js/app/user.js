@@ -256,7 +256,7 @@ $("#updateExport").on('click',function(){
         destinationAddress : $("#destinationAddress").val().trim(),
         shipName : $("#shipName").val().trim(),
         shipNo : $("#shipNo").val().trim(),
-        estimateDateTime : new Date(tmpDate).getTime(),
+        estimateDateTime : new Date(tmpDate).getTime() / 1000,
         plantNo : 0,
         exporterId : parseInt($("#exporterId").val().trim()),
       };    
@@ -348,7 +348,7 @@ $("#updateProcessor").on('click',function(){
         tempature : $("#processingTemperature").val().trim(),
         rostingDuration : parseInt($("#rostingDuration").val().trim()),
         internalBatchNo : ($("#internalBatchNo").val().trim()),
-        packageDateTime : new Date(tmpDate).getTime(),
+        packageDateTime : new Date(tmpDate).getTime() / 1000 ,
         processorName : ($("#processorName").val().trim()),
         processorAddress : ($("#processorAddress").val().trim()),
       };    
@@ -491,19 +491,19 @@ function buildCultivationTable(finalEvents)
                     <td><span class="label label-success font-weight-100">Completed</span> </td>
                   `;
                   
-                  if(globCurrentUser.role == "EXPORTER")
-                  {
+                  // if(globCurrentUser.role == "EXPORTER")
+                  // {
                     tr+=`<td>
                               <span class="label label-inverse font-weight-100">
                               <a class="popup-with-form" href="#exporterForm" onclick="editActivity('`+batchNo+`')">
                                 <span class="label label-inverse font-weight-100">Update</span>
                               </a>
                           </td>`;
-                  }
-                  else
-                  {
-                     tr+=`<td><span class="label label-warning font-weight-100">Processing</span> </td>`;
-                  } 
+                  // }
+                  // else
+                  // {
+                  //    tr+=`<td><span class="label label-warning font-weight-100">Processing</span> </td>`;
+                  // } 
 
               tr+=`  
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
