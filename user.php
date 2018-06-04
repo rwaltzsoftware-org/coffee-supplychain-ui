@@ -288,7 +288,7 @@
                                         <input type="text" class="form-control" id="processingTemperature" name="temperature" placeholder="Temperature" data-parsley-required="true">
                                     </div>                              
                                     <div class="form-group">
-                                        <label class="control-label" for="rostingDuration">Time for Roasting</label>
+                                        <label class="control-label" for="rostingDuration">Time for Roasting (in Seconds)</label>
                                         <input type="number" min="1" class="form-control" id="rostingDuration" name="rostingDuration" placeholder="Time for roasting" data-parsley-required="true" >
                                     </div>
                                
