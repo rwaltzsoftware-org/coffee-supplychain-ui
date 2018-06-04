@@ -106,7 +106,7 @@ $(document).ready(function() {
 		type: 'inline',
 		preloader: false,
 		focus: '#name',
-
+		key: 'popup-with-form',
 		// When elemened is focused, some mobile browsers in some cases zoom in
 		// It looks not nice, so we disable it:
 		callbacks: {

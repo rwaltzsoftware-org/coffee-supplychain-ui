@@ -113,12 +113,15 @@ Morris.Area({
 
  
  $('.vcarousel').carousel({
-            interval: 3000
-         })
-$(".counter").counterUp({
+    interval: 3000
+ })
+
+function counterInit(){
+    $(".counter").counterUp({
         delay: 100,
         time: 1200
-    });
+    });    
+}
 
 $(document).ready(function() {
     

@@ -1,9 +1,13 @@
 	var globIcoAddress = {
-		// 'CoffeeMain': "0x8072e44fb7528e8f54907da93c318402c959eb7f",
-		'CoffeeMain': "0xa5d0a05561261e41dbe4931cb5fb6a7ec51c9c9b",
+		'CoffeeMain': "0xfA171Cda184d815D20a318fCe9920AafdC04934e",
+		'CoffeeUser': "0x26d723acFe39f93A9702592dD9371851f81cF59F"
+
+		/*'New-CoffeeMain': "0x439a6ec4348e5149b5c090624cfcf2adb6fd1db4",
+		'New-CoffeeUser': "0xd588AB0d5EB66630B8F8fFe2aaE0eEfC132E184f"*/
 	};
 
 	var globMainContract = false;
+	var globUserContract = false;
 	var globCoinbase = false;	
 
 
@@ -26,7 +30,7 @@
 
 			if(currentPanel == "admin.php")
 			{
-				if (address != 0x36fEfe201706E2056fd01844030415F78840B2D8) {
+				if(address != 0xab0874cB61D83F6B67Dc08141568868102233bef){
 					window.location = "index.php";
 				}
 			}
@@ -45,6 +49,9 @@
 	{
 		globMainContract = new web3.eth.Contract(CoffeeSupplyChainAbi,globIcoAddress.CoffeeMain);	
 		$(window).trigger("mainContractReady");
+
+		globUserContract = new web3.eth.Contract(SupplyChainUserAbi,globIcoAddress.CoffeeUser);	
+		$(window).trigger("userContractReady");
 	}
 
 	function updateLoginAccountStatus(){
@@ -68,15 +75,11 @@
 		*/
 		getCurrentAccountAddress((address)=>{
 			globCoinbase = address;	
-			$("#userAddress").html(globCoinbase);	
-			
+			$("#currentUserAddress").html(globCoinbase);	
 			$(window).trigger("coinbaseReady");		
 		});
 	}
 
-
-
-/*Vikas - Start*/
 
 	function getCurrentAccountAddress(callback){
 		callback = callback || false;
@@ -92,18 +95,145 @@
 		})
 	}
 
-	function getAllEvents(contractRef)
+	function getUserDetails(contractRef,userAddress,callback){
+		callback = callback || false;
+
+		contractRef.methods.getUser(userAddress).call()
+		.then((result)=>{
+			callback(result);
+		})
+		.catch((error)=>{
+			sweetAlert("Error","Unabale to get User Details","error");
+			callback(0);
+		});
+	}
+
+	function getCultivationData(contractRef,batchNo,callback){
+		callback = callback || false;
+
+		contractRef.methods.getBasicDetails(batchNo).call()
+		.then((result)=>{
+			callback(result);
+		})
+		.catch((error)=>{
+			sweetAlert("Error","Unabale to get Cultivation Details","error");
+			callback(0);
+		});
+	}
+
+	function getFarmInspectorData(contractRef,batchNo,callback){
+		callback = callback || false;
+
+		contractRef.methods.getFarmInspectorData(batchNo).call()
+		.then((result)=>{
+			callback(result);
+		})
+		.catch((error)=>{
+			sweetAlert("Error","Unabale to get Farm Inspection Details","error");
+			callback(0);
+		});
+	}
+
+	function getHarvesterData(contractRef,batchNo,callback){
+		callback = callback || false;
+
+		contractRef.methods.getHarvesterData(batchNo).call()
+		.then((result)=>{
+			callback(result);
+		})
+		.catch((error)=>{
+			sweetAlert("Error","Unabale to get Harvesting Details","error");
+			callback(0);
+		});
+	}
+
+	function getExporterData(contractRef,batchNo,callback){
+		callback = callback || false;
+
+		contractRef.methods.getExporterData(batchNo).call()
+		.then((result)=>{
+			callback(result);
+		})
+		.catch((error)=>{
+			sweetAlert("Error","Unabale to get Exporting Details","error");
+			callback(0);
+		});
+	}
+
+	function getImporterData(contractRef,batchNo,callback){
+		callback = callback || false;
+
+		contractRef.methods.getImporterData(batchNo).call()
+		.then((result)=>{
+			callback(result);
+		})
+		.catch((error)=>{
+			sweetAlert("Error","Unabale to get Importing Details","error");
+			callback(0);
+		});
+	}
+
+	function getProcessorData(contractRef,batchNo,callback){
+		callback = callback || false;
+
+		contractRef.methods.getProcessorData(batchNo).call()
+		.then((result)=>{
+			callback(result);
+		})
+		.catch((error)=>{
+			sweetAlert("Error","Unabale to get Processing Details","error");
+			callback(0);
+		});
+	}
+
+	function getUserEvents(contractRef)
 	{
 	    contractRef.getPastEvents('UserUpdate',{
-	        fromBlock:0,  
+	        fromBlock: 0 
 	    }).then(function (events){
-	        console.log(events);
-	        	
-	        // $("#transactions tbody").html(buildTransactionData(events));
-	        // $("#transactions").DataTable();
+	        $("#tblUser").DataTable().destroy();
+	        $("#tblUser tbody").html(buildUserDetails(events));
+	        $("#tblUser").DataTable({
+	        	"displayLength": 3,
+	        	"order": [[ 1, "asc" ]]
+	        });
 	    }).catch((err)=>{
 	    	console.log(err);
 	    });
+	}
+
+	function buildUserDetails(events){
+		var tbody = "";
+		var roleClass = "";
+
+		$("#totalUsers").html(events.length);
+
+		$(events).each(function(index,event){
+			var role        = event.returnValues.role;
+			var userAddress = event.returnValues.user;
+
+			if(role == 'FARM_INSPECTION'){
+				roleClass = "info";
+			}else if(role == 'HARVESTER'){
+				roleClass = "success";	
+			}else if(role == 'EXPORTER'){
+				roleClass = "warning";
+			}else if(role == 'IMPORTER'){
+				roleClass = "danger";
+			}else if(role == 'PROCESSOR'){
+				roleClass = "primary";
+			}
+
+			tbody += `<tr>
+	                        <td>`+userAddress+`</td>
+	                        <td>`+event.returnValues.name+`</td>
+	                        <td>`+event.returnValues.contactNo+`</td>
+	                        <td><span class="label label-`+roleClass+` font-weight-100">`+role+`</span></td>
+	                        <td><a href="javascript:void(0);" class="text-inverse p-r-10" data-toggle="tooltip" data-userAddress="`+userAddress+`" onclick="openEditUser(this);" title="Edit"><i class="ti-marker-alt"></i></a> </td>
+	                  </tr>`;
+		});
+
+		return tbody;
 	}
 
 	function handleTransactionResponse(txHash,finalMessage)
@@ -115,6 +245,8 @@
 
 	    $("#linkOngoingTransaction").html(txLinkHref);
 	    $("#divOngoingTransaction").fadeIn();
+	    /*scroll to top*/
+	    $('html, body').animate({ scrollTop: 0 }, 'slow', function () {});
 	}
 
 	function handleTransactionReceipt(receipt,finalMessage)
@@ -140,4 +272,93 @@
 
 	}
 
-/*Vikas -End*/
+
+	function changeSwitchery(element, checked) {
+	  if ( ( element.is(':checked') && checked == false ) || ( !element.is(':checked') && checked == true ) ) {
+	    element.parent().find('.switchery').trigger('click');
+	  }
+	}
+
+	/*==================================Bootstrap Model Start=========================================*/
+
+	function startLoader(){
+		$(".preloader").fadeIn();
+	}
+
+	function stopLoader(){
+		$(".preloader").fadeOut();
+	}
+
+	/*Set Default inactive*/
+    $("#userFormClick").click(function(){
+        $("#userForm").trigger('reset');
+        changeSwitchery($("#isActive"),false);
+        $("#userModelTitle").html("Add User");
+        $("#imageHash").html('');
+        $("#userFormModel").modal();    
+    });
+
+    /*Edit User Model Form*/
+    function openEditUser(ref){
+		var userAddress = $(ref).attr("data-userAddress");
+		startLoader();
+		getUserDetails(globUserContract,userAddress,function(result){
+			$("#userWalletAddress").val(userAddress);
+			$("#userName").val(result.name);
+			$("#userContactNo").val(result.contactNo);
+			$("#userProfileHash").val(result.profileHash);
+			$('#userRoles').val(result.role).prop('selected', true);
+
+			var profileImageLink = 'https://ipfs.io/ipfs/'+result.profileHash;
+			var btnViewImage = '<a href="'+profileImageLink+'" target="_blank" class=" text-danger"><i class="fa fa-eye"></i> View Image</a>';
+			$("#imageHash").html(btnViewImage);
+
+			changeSwitchery($("#isActive"),result.isActive);
+			$("#userModelTitle").html("Update User");
+			stopLoader();
+			$("#userFormModel").modal();
+		});
+	}
+
+	// ipfs = window.IpfsApi('localhost', 5001);
+	ipfs = window.IpfsApi('ipfs.infura.io', '5001', {protocol: 'https'})
+
+	function handleFileUpload(event){
+		const file = event.target.files[0];
+
+	    let reader = new window.FileReader();
+	    reader.onloadend = function () {
+	       $("#userFormBtn").prop('disabled',true);
+	       $("i.fa-spinner").show();
+	        $("#imageHash").html('Processing......');	
+	       saveToIpfs(reader)
+	    }
+
+	    reader.readAsArrayBuffer(file)
+	}
+
+	function saveToIpfs(reader){
+		let ipfsId;
+
+        const Buffer = window.IpfsApi().Buffer;
+        const buffer = Buffer.from(reader.result);
+
+        /*Upload Buffer to IPFS*/
+        ipfs.files.add(buffer, (err, result) => { 
+	        if (err) {
+		          console.error(err)
+		          return
+			}
+			
+			var imageHash = result[0].hash;		
+
+			var profileImageLink = 'https://ipfs.io/ipfs/'+imageHash;
+			var btnViewImage = '<a href="'+profileImageLink+'" target="_blank" class=" text-danger"><i class="fa fa-eye"></i> View Image</a>';
+
+	        $("#userProfileHash").val(imageHash);
+	        $("#imageHash").html(btnViewImage);
+	        
+	        $("#userFormBtn").prop('disabled',false);
+	        $("i.fa-spinner").hide();	
+	    });
+	}
