@@ -45,9 +45,6 @@
 
 
     <!-- ipfs  -->
-    <script type="text/javascript" src="js/app/app.js"></script>
-    <script type="text/javascript" src="js/app/user.js"></script>
-    <script type="text/javascript" src="js/app/admin.js"></script>
 
     <!-- <script src="https://wzrd.in/standalone/buffer"></script> -->
     <script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js" integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB"
