@@ -77,9 +77,14 @@ function populateSection(parentSection,built,activityName,batchNo)
         phoneNoSec = `<i class="fa fa-phone"></i> `+resultData.contactNo+`<br/>`;  
       } 
 
+      var userAddress = resultData.user;
+      if($(window).width() <= 565){
+        userAddress = userAddress.substring(0,15)+'...';
+      }
+
       var refLink = 'https://rinkeby.etherscan.io/tx/'+resultData.transactionHash;
       var html = `<span class="text-info"><i class='fa fa-user'> </i>
-                      `+resultData.name+` (`+resultData.user+`) <br/>
+                      `+resultData.name+` (`+userAddress+`) <br/>
                       `+phoneNoSec+`
                   </span>
                   <i class='fa fa-clock-o'> </i> `+resultData.dataTime.toUTCString()+`
