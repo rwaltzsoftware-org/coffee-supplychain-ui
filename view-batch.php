@@ -37,7 +37,7 @@
                                     <span class="activityQrCode"></span>
                                 </div>
                                 <div class="timeline-body">
-                                    <table class="table activityData" >
+                                    <table class="table activityData table-responsive" >
                                         <tr>
                                             <td colspan="2"><p>Information Not Avilable</p></td>
                                         </tr>
@@ -56,7 +56,7 @@
                                     <span class="activityQrCode"></span>
                                 </div>
                                 <div class="timeline-body">
-                                    <table class="table activityData">
+                                    <table class="table activityData table-responsive">
                                         <tr>
                                             <td colspan="2"><p>Information Not Avilable</p></td>
                                         </tr>
@@ -75,7 +75,7 @@
                                     <span class="activityQrCode"></span>
                                 </div>
                                 <div class="timeline-body">
-                                    <table class="table activityData" >
+                                    <table class="table activityData table-responsive" >
                                         <tr>
                                             <td colspan="2"><p>Information Not Avilable</p></td>
                                         </tr>
@@ -94,7 +94,7 @@
                                     <span class="activityQrCode"></span>
                                 </div>
                                 <div class="timeline-body">
-                                    <table class="table activityData">
+                                    <table class="table activityData table-responsive">
                                         <tr>
                                             <td colspan="2"><p>Information Not Avilable</p></td>
                                         </tr>
@@ -113,7 +113,7 @@
                                     <span class="activityQrCode"></span>
                                 </div>
                                 <div class="timeline-body">
-                                   <table class="table activityData" >
+                                   <table class="table activityData table-responsive" >
                                         <tr>
                                             <td colspan="2"><p>Information Not Avilable</p></td>
                                         </tr>
@@ -132,7 +132,7 @@
                                     <span class="activityQrCode"></span>
                                 </div>
                                 <div class="timeline-body">
-                                    <table class="table activityData" >
+                                    <table class="table activityData table-responsive" >
                                         <tr>
                                             <td colspan="2"><p>Information Not Avilable</p></td>
                                         </tr>
