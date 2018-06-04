@@ -87,6 +87,7 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                         <h2 class="modal-title" id="userModelTitle">Update Profile</h2>
                                     </div>
+
                                     <div class="modal-body">
                                         <form id="updateUserForm" onsubmit="return false;">
                                             <fieldset style="border:0;">

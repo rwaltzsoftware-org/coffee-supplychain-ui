@@ -22,15 +22,11 @@ $(document).ready(function(){
         todayHighlight: true,
         format:"dd-mm-yyyy"
     });
-
-
 });
-
 
 $(window).on("coinbaseReady", function ()
 {
-    getUser(globUserContract, function(data){
-      
+    getUser(globUserContract, function(data){      
 
       globCurrentUser = data ;
 
@@ -121,8 +117,6 @@ function getUser(contractRef,callback)
         }        
     });
 }
-
-
 
 function updateUser(contractRef,data)
 {
@@ -373,11 +367,6 @@ function updateProcessor(contractRef,data)
         });    
 }
 
-
-
-
-
-
 function getCultivationEvents(contractRef) {
     contractRef.getPastEvents('PerformCultivation', {
         fromBlock: 0
@@ -416,8 +405,6 @@ function getCultivationEvents(contractRef) {
         console.log(error)
     });
 }
-
-
 
 function buildCultivationTable(finalEvents)
 {
