@@ -7,6 +7,7 @@
 		'Storage': "0x51A72858aB3e62C6Fb9a26A1159E33a582399BFF"
 	};
 
+	var globAdminAddress = 0xab0874cB61D83F6B67Dc08141568868102233bef;
 	var globMainContract = false;
 	var globUserContract = false;
 	var globCoinbase = false;	
@@ -37,7 +38,7 @@
 
 			if(currentPanel == "admin.php")
 			{
-				if(address != 0xab0874cB61D83F6B67Dc08141568868102233bef){
+				if(address != globAdminAddress){
 					window.location = "index.php";
 				}
 			}

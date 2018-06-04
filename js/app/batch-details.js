@@ -69,10 +69,23 @@ function populateSection(parentSection,built,activityName,batchNo)
 {
 	getActivityTimestamp(activityName,batchNo, function(resultData)
 	{
+   
     if(resultData.dataTime)
 		{
+      var phoneNoSec = '';
+      if(resultData.contactNo!='-'){
+        phoneNoSec = `<i class="fa fa-phone"></i> `+resultData.contactNo+`<br/>`;  
+      } 
+
       var refLink = 'https://rinkeby.etherscan.io/tx/'+resultData.transactionHash;
-			$(parentSection).find(".activityDateTime").html("<i class='fa fa-clock-o'> </i> " + resultData.dataTime.toUTCString()+ " <a href='"+refLink+"' target='_blank'><i class='fa fa-external-link text-danger'></i></a>");
+      var html = `<span class="text-info"><i class='fa fa-clock-o'> </i>
+                      `+resultData.name+` (`+resultData.user+`) <br/>
+                      `+phoneNoSec+`
+                  </span>
+                  <i class='fa fa-clock-o'> </i> `+resultData.dataTime.toUTCString()+`
+                  <a href='`+refLink+`' target='_blank'><i class='fa fa-external-link text-danger'></i></a>
+                 `;
+			$(parentSection).find(".activityDateTime").html(html);
 		}
 
     if(resultData.transactionHash){
@@ -118,7 +131,20 @@ function getActivityTimestamp(activityName, batchNo, callback)
         resultData.dataTime = date;
         resultData.transactionHash = eventData[0].transactionHash;
 
-			 	callback(resultData);
+        var userAddress = eventData[0].returnValues.user;
+        getUserDetails(globUserContract,userAddress,function(result){
+            if(userAddress == globAdminAddress){
+                resultData.name      = 'Admin';
+                resultData.contactNo = '-';
+            }else{
+                resultData.name      = result.name;
+                resultData.contactNo = result.contactNo;
+            }  
+            
+            resultData.user      = userAddress;
+
+            callback(resultData);
+        });
 			})	
 		}
 		catch(e)
