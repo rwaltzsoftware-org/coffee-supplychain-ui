@@ -1,9 +1,10 @@
 	var globIcoAddress = {
-		'CoffeeMain': "0xfA171Cda184d815D20a318fCe9920AafdC04934e",
-		'CoffeeUser': "0x26d723acFe39f93A9702592dD9371851f81cF59F"
+		/*'old-CoffeeMain': "0xfA171Cda184d815D20a318fCe9920AafdC04934e",
+		'old-CoffeeUser': "0x26d723acFe39f93A9702592dD9371851f81cF59F",*/
 
-		/*'New-CoffeeMain': "0x439a6ec4348e5149b5c090624cfcf2adb6fd1db4",
-		'New-CoffeeUser': "0xd588AB0d5EB66630B8F8fFe2aaE0eEfC132E184f"*/
+		'CoffeeMain': "0x439a6ec4348e5149b5c090624cfcf2adb6fd1db4",
+		'CoffeeUser': "0xd588AB0d5EB66630B8F8fFe2aaE0eEfC132E184f",
+		'Storage': "0x51A72858aB3e62C6Fb9a26A1159E33a582399BFF"
 	};
 
 	var globMainContract = false;
@@ -14,6 +15,11 @@
 
 	window.addEventListener('load', function() 
 	{  
+		$("#storageContractAddress").html(globIcoAddress.Storage);
+		$("#coffeeSupplychainContractAddress").html(globIcoAddress.CoffeeMain);
+		$("#userContractAddress").html(globIcoAddress.CoffeeUser);
+
+
 		if (typeof web3 !== 'undefined') 
 		{
 		  web3 = new Web3(web3.currentProvider);
@@ -204,14 +210,12 @@
 	}
 
 	function buildUserDetails(events){
-		var tbody = "";
-		var roleClass = "";
-
+		
+		var isNewUser = false;
 		$("#totalUsers").html(events.length);
 
+		/*filtering latest updated user record*/
 		$(events).each(function(index,event){
-
-			/*filtering latest updated user record*/
 			var tmpData = {};
 			tmpData.blockNumber = event.blockNumber;
 			tmpData.role        = event.returnValues.role;
@@ -222,6 +226,7 @@
 			if(globUserData.length <= 0){
 				globUserData.push(tmpData);
 			}else{
+				
 				$(globUserData).each(function(index,data){
 					
 					if((data.user == event.returnValues.user) && 
@@ -233,40 +238,50 @@
 						globUserData[index].role        = event.returnValues.role;
 						globUserData[index].contactNo   = event.returnValues.contactNo;
 					}
-
-					// if(data.user != event.returnValues.user){
-					// 	globUserData.push(tmpData);
-					// }
+		
+					if((data.user != event.returnValues.user) &&
+						(isNewUser==false)){
+						
+						globUserData.push(tmpData);
+						isNewUser = true;
+					}
 				});
 			}
-
-			
-
-			// var role        = event.returnValues.role;
-			// var userAddress = event.returnValues.user;
-
-			// if(role == 'FARM_INSPECTION'){
-			// 	roleClass = "info";
-			// }else if(role == 'HARVESTER'){
-			// 	roleClass = "success";	
-			// }else if(role == 'EXPORTER'){
-			// 	roleClass = "warning";
-			// }else if(role == 'IMPORTER'){
-			// 	roleClass = "danger";
-			// }else if(role == 'PROCESSOR'){
-			// 	roleClass = "primary";
-			// }
-
-			// tbody += `<tr>
-	  //                       <td>`+userAddress+`</td>
-	  //                       <td>`+event.returnValues.name+`</td>
-	  //                       <td>`+event.returnValues.contactNo+`</td>
-	  //                       <td><span class="label label-`+roleClass+` font-weight-100">`+role+`</span></td>
-	  //                       <td><a href="javascript:void(0);" class="text-inverse p-r-10" data-toggle="tooltip" data-userAddress="`+userAddress+`" onclick="openEditUser(this);" title="Edit"><i class="ti-marker-alt"></i></a> </td>
-	  //                 </tr>`;
 		});
 
-		console.log(globUserData);
+		/*build user Table*/
+		$("#totalUsers").html(globUserData.length);
+		return buildUserTable(globUserData);
+	}
+
+	function buildUserTable(globUserData){
+		var tbody = "";
+		var roleClass = "";
+
+		$(globUserData).each(function(index,data){
+			var role = data.role;	
+
+			if(role == 'FARM_INSPECTION'){
+				roleClass = "info";
+			}else if(role == 'HARVESTER'){
+				roleClass = "success";	
+			}else if(role == 'EXPORTER'){
+				roleClass = "warning";
+			}else if(role == 'IMPORTER'){
+				roleClass = "danger";
+			}else if(role == 'PROCESSOR'){
+				roleClass = "primary";
+			}
+
+			tbody += `<tr>
+	                        <td>`+data.user+`</td>
+	                        <td>`+data.name+`</td>
+	                        <td>`+data.contactNo+`</td>
+	                        <td><span class="label label-`+roleClass+` font-weight-100">`+role+`</span></td>
+	                        <td><a href="javascript:void(0);" class="text-inverse p-r-10" data-toggle="tooltip" data-userAddress="`+data.user+`" onclick="openEditUser(this);" title="Edit"><i class="ti-marker-alt"></i></a> </td>
+	                  </tr>`;
+		});	
+
 		return tbody;
 	}
 
