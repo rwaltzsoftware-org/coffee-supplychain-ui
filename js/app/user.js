@@ -209,7 +209,7 @@ $("#updateHarvest").on('click',function(){
       var data = {
         batchNo : globCurrentEditingBatchNo,
         cropVariety : $("#cropVariety").val().trim(),
-        tempatureUsed : $("#tempatureUsed").val().trim(),
+        temperatureUsed : $("#temperatureUsed").val().trim(),
         humidity : $("#humidity").val().trim(),
       };    
 
@@ -220,7 +220,7 @@ $("#updateHarvest").on('click',function(){
 function updateHarvest(contractRef,data)
 {
   //contractRef.methods.updateUser("Swapnali","9578774787","HARVESTER",true,"0x74657374")
-  contractRef.methods.updateHarvesterData(data.batchNo, data.cropVariety,data.tempatureUsed, data.humidity)
+  contractRef.methods.updateHarvesterData(data.batchNo, data.cropVariety,data.temperatureUsed, data.humidity)
   .send({from:globCoinbase,to:contractRef.address})
   .on('transactionHash',function(hash)
         {
@@ -345,7 +345,7 @@ $("#updateProcessor").on('click',function(){
       var data = {
         batchNo : globCurrentEditingBatchNo,
         quantity : parseInt($("#quantity").val().trim()),
-        tempature : $("#processingTemperature").val().trim(),
+        temperature : $("#processingTemperature").val().trim(),
         rostingDuration : parseInt($("#rostingDuration").val().trim()),
         internalBatchNo : ($("#internalBatchNo").val().trim()),
         packageDateTime : new Date(tmpDate).getTime() / 1000 ,
@@ -360,7 +360,7 @@ $("#updateProcessor").on('click',function(){
 function updateProcessor(contractRef,data)
 {
   //contractRef.methods.updateUser("Swapnali","9578774787","HARVESTER",true,"0x74657374")
-  contractRef.methods.updateProcessorData(data.batchNo, data.quantity, data.tempature, data.rostingDuration, data.internalBatchNo, data.packageDateTime, data.processorName,data.processorAddress)
+  contractRef.methods.updateProcessorData(data.batchNo, data.quantity, data.temperature, data.rostingDuration, data.internalBatchNo, data.packageDateTime, data.processorName,data.processorAddress)
   .send({from:globCoinbase,to:contractRef.address})
   .on('transactionHash',function(hash)
         {

@@ -171,8 +171,8 @@
                                         <input type="text" class="form-control" id="cropVariety" name="cropVariety" placeholder="coffee variety" data-parsley-required="true">
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label" for="tempatureUsed">Temperature (in Fahrenheit)</label>
-                                        <input type="text" class="form-control" id="tempatureUsed" name="tempatureUsed" placeholder="temperature" data-parsley-required="true">
+                                        <label class="control-label" for="temperatureUsed">Temperature (in Fahrenheit)</label>
+                                        <input type="text" class="form-control" id="temperatureUsed" name="temperatureUsed" placeholder="temperature" data-parsley-required="true">
                                     </div>
                                      <div class="form-group">
                                         <label class="control-label" for="humidity">Humidity</label>

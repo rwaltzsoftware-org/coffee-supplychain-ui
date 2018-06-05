@@ -239,7 +239,7 @@ function buildFarmInspectionBlock(result){
 function buildHarvesterBlock(result){
 	var harvesterData = {};
 	var cropVariety   = result.cropVariety;
-	var temperatureUsed = result.tempatureUsed;
+	var temperatureUsed = result.temperatureUsed;
 	var humidity      = result.humidity;
 
 	if(cropVariety!='' && temperatureUsed!='' && humidity!=''){
@@ -379,14 +379,14 @@ function buildImporterBlock(result){
 function buildProcessorBlock(result){
 	var processorData = {};
 	var quantity         = result.quantity;
-	var tempature        = result.tempature;
+	var temperature        = result.temperature;
 	var rostingDuration  = result.rostingDuration;
 	var internalBatchNo  = result.internalBatchNo;
 	var packageDateTime  = result.packageDateTime;
 	var processorName    = result.processorName;
 	var processorAddress = result.processorAddress;
 
-	if(quantity!='' && tempature!='' && rostingDuration!='' && internalBatchNo!='' && packageDateTime!='' && processorName!='' && processorAddress!=''){
+	if(quantity!='' && temperature!='' && rostingDuration!='' && internalBatchNo!='' && packageDateTime!='' && processorName!='' && processorAddress!=''){
 		
     var packageDateTime = new Date(result.packageDateTime * 1000).toUTCString();
 
@@ -395,8 +395,8 @@ function buildProcessorBlock(result){
                             <td>`+result.quantity+` <i class="fa fa-check-circle verified_info"></i></td>
                           </tr>
                           <tr>
-                            <td><b>Tempature:</b></td>
-                            <td>`+result.tempature+`&#x2109; <i class="fa fa-check-circle verified_info"></i></td>
+                            <td><b>Temperature:</b></td>
+                            <td>`+result.temperature+`&#x2109; <i class="fa fa-check-circle verified_info"></i></td>
                           </tr>
                           <tr>
                             <td><b>Rosting Duration:</b></td>
