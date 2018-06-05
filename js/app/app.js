@@ -111,7 +111,7 @@
 			callback(result);
 		})
 		.catch((error)=>{
-			sweetAlert("Error","Unabale to get User Details","error");
+			sweetAlert("Error","Unable to get User Details","error");
 			callback(0);
 		});
 	}
@@ -124,7 +124,7 @@
 			callback(result);
 		})
 		.catch((error)=>{
-			sweetAlert("Error","Unabale to get Cultivation Details","error");
+			sweetAlert("Error","Unable to get Cultivation Details","error");
 			callback(0);
 		});
 	}
@@ -137,7 +137,7 @@
 			callback(result);
 		})
 		.catch((error)=>{
-			sweetAlert("Error","Unabale to get Farm Inspection Details","error");
+			sweetAlert("Error","Unable to get Farm Inspection Details","error");
 			callback(0);
 		});
 	}
@@ -150,7 +150,7 @@
 			callback(result);
 		})
 		.catch((error)=>{
-			sweetAlert("Error","Unabale to get Harvesting Details","error");
+			sweetAlert("Error","Unable to get Harvesting Details","error");
 			callback(0);
 		});
 	}
@@ -163,7 +163,7 @@
 			callback(result);
 		})
 		.catch((error)=>{
-			sweetAlert("Error","Unabale to get Exporting Details","error");
+			sweetAlert("Error","Unable to get Exporting Details","error");
 			callback(0);
 		});
 	}
@@ -176,7 +176,7 @@
 			callback(result);
 		})
 		.catch((error)=>{
-			sweetAlert("Error","Unabale to get Importing Details","error");
+			sweetAlert("Error","Unable to get Importing Details","error");
 			callback(0);
 		});
 	}
@@ -189,7 +189,7 @@
 			callback(result);
 		})
 		.catch((error)=>{
-			sweetAlert("Error","Unabale to get Processing Details","error");
+			sweetAlert("Error","Unable to get Processing Details","error");
 			callback(0);
 		});
 	}
@@ -199,6 +199,8 @@
 	    contractRef.getPastEvents('UserUpdate',{
 	        fromBlock: 0 
 	    }).then(function (events){
+
+	    	console.log(contractRef);
 	        $("#tblUser").DataTable().destroy();
 	        $("#tblUser tbody").html(buildUserDetails(events));
 	        $("#tblUser").DataTable({

@@ -12,9 +12,7 @@ $(document).ready(function(){
   
   userForm =  $("#updateUserForm").parsley();
   farmInspectionForm =  $("#farmInspectionForm").parsley();
-  harvesterForm =  $("#harvesterForm").parsley();
-  exporterForm =  $("#exporterForm").parsley();
-  importerForm =  $("#importerForm").parsley();
+  harvesterForm =  $("#harvesterForm").parsley(); exporterForm =  $("#exporterForm").parsley(); importerForm =  $("#importerForm").parsley();
   processingForm =  $("#processingForm").parsley();
 
   $('.datepicker-autoclose').datepicker({
