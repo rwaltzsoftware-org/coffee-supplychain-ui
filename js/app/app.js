@@ -117,6 +117,13 @@
 	}
 
 	function getCultivationData(contractRef,batchNo,callback){
+
+		if(batchNo == undefined)
+		{
+			callback(0);
+			return;
+		}
+
 		callback = callback || false;
 
 		contractRef.methods.getBasicDetails(batchNo).call()
@@ -130,6 +137,14 @@
 	}
 
 	function getFarmInspectorData(contractRef,batchNo,callback){
+
+		if(batchNo == undefined)
+		{
+			callback(0);
+			return;
+		}
+
+
 		callback = callback || false;
 
 		contractRef.methods.getFarmInspectorData(batchNo).call()
@@ -143,6 +158,14 @@
 	}
 
 	function getHarvesterData(contractRef,batchNo,callback){
+
+		if(batchNo == undefined)
+		{
+			callback(0);
+			return;
+		}
+
+
 		callback = callback || false;
 
 		contractRef.methods.getHarvesterData(batchNo).call()
@@ -156,6 +179,13 @@
 	}
 
 	function getExporterData(contractRef,batchNo,callback){
+
+		if(batchNo == undefined)
+		{
+			callback(0);
+			return;
+		}
+
 		callback = callback || false;
 
 		contractRef.methods.getExporterData(batchNo).call()
@@ -169,6 +199,14 @@
 	}
 
 	function getImporterData(contractRef,batchNo,callback){
+
+		if(batchNo == undefined)
+		{
+			callback(0);
+			return;
+		}
+
+
 		callback = callback || false;
 
 		contractRef.methods.getImporterData(batchNo).call()
@@ -182,6 +220,13 @@
 	}
 
 	function getProcessorData(contractRef,batchNo,callback){
+
+		if(batchNo == undefined)
+		{
+			callback(0);
+			return;
+		}
+
 		callback = callback || false;
 
 		contractRef.methods.getProcessorData(batchNo).call()
@@ -200,7 +245,6 @@
 	        fromBlock: 0 
 	    }).then(function (events){
 
-	    	console.log(contractRef);
 	        $("#tblUser").DataTable().destroy();
 	        $("#tblUser tbody").html(buildUserDetails(events));
 	        $("#tblUser").DataTable({
@@ -214,54 +258,61 @@
 
 	function buildUserDetails(events){
 		
+		var filteredUser = {};
 		var isNewUser = false;
 		$("#totalUsers").html(events.length);
 
 		/*filtering latest updated user record*/
 		$(events).each(function(index,event){
-			var tmpData = {};
-			tmpData.blockNumber = event.blockNumber;
-			tmpData.role        = event.returnValues.role;
-			tmpData.user        = event.returnValues.user;
-			tmpData.name        = event.returnValues.name;
-			tmpData.contactNo   = event.returnValues.contactNo;
 
-			if(globUserData.length <= 0){
-				globUserData.push(tmpData);
-			}else{
-				
-				$(globUserData).each(function(index,data){
-					
-					if((data.user == event.returnValues.user) && 
-					   data.blockNumber < event.blockNumber)
-					{
-						globUserData[index].blockNumber = event.blockNumber;
-						globUserData[index].user        = event.returnValues.user;
-						globUserData[index].name        = event.returnValues.name;
-						globUserData[index].role        = event.returnValues.role;
-						globUserData[index].contactNo   = event.returnValues.contactNo;
-					}
-		
-					if((data.user != event.returnValues.user) &&
-						(isNewUser==false)){
-						
-						globUserData.push(tmpData);
-						isNewUser = true;
-					}
-				});
+			if(filteredUser[event.returnValues.user] == undefined)
+			{
+				filteredUser[event.returnValues.user] = {};
+				filteredUser[event.returnValues.user].address = event.address;
+				filteredUser[event.returnValues.user].role = event.returnValues.role;
+				filteredUser[event.returnValues.user].user = event.returnValues.user;
+				filteredUser[event.returnValues.user].name = event.returnValues.name;
+				filteredUser[event.returnValues.user].contactNo = event.returnValues.contactNo;
+				filteredUser[event.returnValues.user].blockNumber = event.blockNumber;
+			}
+			else if(filteredUser[event.returnValues.user].blockNumber < event.blockNumber)
+			{
+				filteredUser[event.returnValues.user].address = event.address;
+				filteredUser[event.returnValues.user].role = event.returnValues.role;
+				filteredUser[event.returnValues.user].user = event.returnValues.user;
+				filteredUser[event.returnValues.user].name = event.returnValues.name;
+				filteredUser[event.returnValues.user].contactNo = event.returnValues.contactNo;
+				filteredUser[event.returnValues.user].blockNumber = event.blockNumber;
 			}
 		});
 
+		/*var filteredUser = Object.keys(filteredUser).map(function(key) {
+		  return [Number(key), filteredUser[key]];
+		});
+
+		*/
+
+		// console.log(filteredUser);
+		// return;
+
+		var builtUser = [];
+		for(tmpUser in filteredUser)
+		{
+			builtUser.push(filteredUser[tmpUser]);
+		}
+
 		/*build user Table*/
-		$("#totalUsers").html(globUserData.length);
-		return buildUserTable(globUserData);
+		$("#totalUsers").html(builtUser);
+		return buildUserTable(builtUser);
 	}
 
 	function buildUserTable(globUserData){
+
 		var tbody = "";
 		var roleClass = "";
 
 		$(globUserData).each(function(index,data){
+
 			var role = data.role;	
 
 			if(role == 'FARM_INSPECTION'){
