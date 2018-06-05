@@ -2,9 +2,9 @@
 		/*'old-CoffeeMain': "0xfA171Cda184d815D20a318fCe9920AafdC04934e",
 		'old-CoffeeUser': "0x26d723acFe39f93A9702592dD9371851f81cF59F",*/
 		
-		'CoffeeMain': "0x2c7f950d5471c9e196eb65f1c576b7543ab3e65e",
-		'CoffeeUser': "0xd588AB0d5EB66630B8F8fFe2aaE0eEfC132E184f",
-		'Storage': "0x0c6b932ac3f8c2451c826dac95d8226b41a46a8b"
+		'CoffeeMain': "0x8b8d530a2dc78092fb2275d8c5cdf97c3e46120e",
+		'CoffeeUser': "0xe4e7bce4bdaf8cebddd76ccb0ab9fce2fc706e62",
+		'Storage': "0x4b1d9f8be5347ae962b62b1f7499c50a6a598331"
 	};
 
 	var globAdminAddress = 0xab0874cB61D83F6B67Dc08141568868102233bef;
@@ -286,15 +286,6 @@
 			}
 		});
 
-		/*var filteredUser = Object.keys(filteredUser).map(function(key) {
-		  return [Number(key), filteredUser[key]];
-		});
-
-		*/
-
-		// console.log(filteredUser);
-		// return;
-
 		var builtUser = [];
 		for(tmpUser in filteredUser)
 		{
@@ -302,7 +293,7 @@
 		}
 
 		/*build user Table*/
-		$("#totalUsers").html(builtUser);
+		$("#totalUsers").html(builtUser.length);
 		return buildUserTable(builtUser);
 	}
 

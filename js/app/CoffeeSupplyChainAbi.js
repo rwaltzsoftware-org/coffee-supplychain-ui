@@ -47,53 +47,6 @@ var CoffeeSupplyChainAbi = [
 		"type": "function"
 	},
 	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_batchNo",
-				"type": "address"
-			},
-			{
-				"name": "_quantity",
-				"type": "uint256"
-			},
-			{
-				"name": "_destinationAddress",
-				"type": "string"
-			},
-			{
-				"name": "_shipName",
-				"type": "string"
-			},
-			{
-				"name": "_shipNo",
-				"type": "string"
-			},
-			{
-				"name": "_estimateDateTime",
-				"type": "uint256"
-			},
-			{
-				"name": "_plantNo",
-				"type": "uint256"
-			},
-			{
-				"name": "_exporterId",
-				"type": "uint256"
-			}
-		],
-		"name": "updateExporterData",
-		"outputs": [
-			{
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"constant": true,
 		"inputs": [
 			{
@@ -128,10 +81,6 @@ var CoffeeSupplyChainAbi = [
 				"type": "uint256"
 			},
 			{
-				"name": "plantNo",
-				"type": "uint256"
-			},
-			{
 				"name": "exporterId",
 				"type": "uint256"
 			}
@@ -141,46 +90,46 @@ var CoffeeSupplyChainAbi = [
 		"type": "function"
 	},
 	{
-		"constant": true,
+		"constant": false,
 		"inputs": [
 			{
 				"name": "_batchNo",
 				"type": "address"
+			},
+			{
+				"name": "_quantity",
+				"type": "uint256"
+			},
+			{
+				"name": "_destinationAddress",
+				"type": "string"
+			},
+			{
+				"name": "_shipName",
+				"type": "string"
+			},
+			{
+				"name": "_shipNo",
+				"type": "string"
+			},
+			{
+				"name": "_estimateDateTime",
+				"type": "uint256"
+			},
+			{
+				"name": "_exporterId",
+				"type": "uint256"
 			}
 		],
-		"name": "getProccesorData",
+		"name": "updateExporterData",
 		"outputs": [
 			{
-				"name": "quantity",
-				"type": "uint256"
-			},
-			{
-				"name": "tempature",
-				"type": "string"
-			},
-			{
-				"name": "rostingDuration",
-				"type": "uint256"
-			},
-			{
-				"name": "internalBatchNo",
-				"type": "string"
-			},
-			{
-				"name": "packageDateTime",
-				"type": "uint256"
-			},
-			{
-				"name": "processorName",
-				"type": "string"
-			},
-			{
-				"name": "processorAddress",
-				"type": "string"
+				"name": "",
+				"type": "bool"
 			}
 		],
 		"payable": false,
-		"stateMutability": "view",
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -316,7 +265,7 @@ var CoffeeSupplyChainAbi = [
 				"type": "uint256"
 			},
 			{
-				"name": "_tempature",
+				"name": "_temperature",
 				"type": "string"
 			},
 			{
@@ -373,6 +322,49 @@ var CoffeeSupplyChainAbi = [
 				"type": "address"
 			}
 		],
+		"name": "getProcessorData",
+		"outputs": [
+			{
+				"name": "quantity",
+				"type": "uint256"
+			},
+			{
+				"name": "temperature",
+				"type": "string"
+			},
+			{
+				"name": "rostingDuration",
+				"type": "uint256"
+			},
+			{
+				"name": "internalBatchNo",
+				"type": "string"
+			},
+			{
+				"name": "packageDateTime",
+				"type": "uint256"
+			},
+			{
+				"name": "processorName",
+				"type": "string"
+			},
+			{
+				"name": "processorAddress",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_batchNo",
+				"type": "address"
+			}
+		],
 		"name": "getHarvesterData",
 		"outputs": [
 			{
@@ -404,7 +396,7 @@ var CoffeeSupplyChainAbi = [
 				"type": "string"
 			},
 			{
-				"name": "_tempatureUsed",
+				"name": "_temperatureUsed",
 				"type": "string"
 			},
 			{
@@ -421,6 +413,41 @@ var CoffeeSupplyChainAbi = [
 		],
 		"payable": false,
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_batchNo",
+				"type": "address"
+			}
+		],
+		"name": "getBasicDetails",
+		"outputs": [
+			{
+				"name": "registrationNo",
+				"type": "string"
+			},
+			{
+				"name": "farmerName",
+				"type": "string"
+			},
+			{
+				"name": "farmAddress",
+				"type": "string"
+			},
+			{
+				"name": "exporterName",
+				"type": "string"
+			},
+			{
+				"name": "importerName",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
