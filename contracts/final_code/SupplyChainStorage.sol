@@ -79,7 +79,7 @@ contract SupplyChainStorage is SupplyChainStorageOwnable {
     
     struct harvester {
         string cropVariety;
-        string tempatureUsed;
+        string temperatureUsed;
         string humidity;
     }    
     
@@ -202,7 +202,7 @@ contract SupplyChainStorage is SupplyChainStorageOwnable {
                              
                             ) public onlyAuthCaller returns(address) {
         
-        uint tmpData = uint(keccak256(msg.sender, now));
+        uint tmpData = uint(keccak256(now));
         address batchNo = address(tmpData);
         
         basicDetailsData.registrationNo = _registrationNo;
@@ -250,7 +250,7 @@ contract SupplyChainStorage is SupplyChainStorageOwnable {
                               string _tempatureUsed,
                               string _humidity) public onlyAuthCaller returns(bool){
         harvesterData.cropVariety = _cropVariety;
-        harvesterData.tempatureUsed = _tempatureUsed;
+        harvesterData.temperatureUsed = _tempatureUsed;
         harvesterData.humidity = _humidity;
         
         batchHarvester[batchNo] = harvesterData;
@@ -262,11 +262,11 @@ contract SupplyChainStorage is SupplyChainStorageOwnable {
     
     /*get farm Harvester data*/
     function getHarvesterData(address batchNo) public onlyAuthCaller view returns(string cropVariety,
-                                                                                           string tempatureUsed,
+                                                                                           string temperatureUsed,
                                                                                            string humidity){
         
         harvester memory tmpData = batchHarvester[batchNo];
-        return (tmpData.cropVariety, tmpData.tempatureUsed, tmpData.humidity);
+        return (tmpData.cropVariety, tmpData.temperatureUsed, tmpData.humidity);
     }
     
     /*set Exporter data*/
@@ -276,6 +276,7 @@ contract SupplyChainStorage is SupplyChainStorageOwnable {
                               string _shipName,
                               string _shipNo,
                               uint256 _estimateDateTime,
+                              uint256 _plantNo,
                               uint256 _exporterId) public onlyAuthCaller returns(bool){
         
         exporterData.quantity = _quantity;
@@ -284,6 +285,7 @@ contract SupplyChainStorage is SupplyChainStorageOwnable {
         exporterData.shipNo = _shipNo;
         exporterData.departureDateTime = now;
         exporterData.estimateDateTime = _estimateDateTime;
+        exporterData.plantNo = _plantNo;
         exporterData.exporterId = _exporterId;
         
         batchExporter[batchNo] = exporterData;
@@ -300,6 +302,7 @@ contract SupplyChainStorage is SupplyChainStorageOwnable {
                                                                 string shipNo,
                                                                 uint256 departureDateTime,
                                                                 uint256 estimateDateTime,
+                                                                uint256 plantNo,
                                                                 uint256 exporterId){
         
         
@@ -312,6 +315,7 @@ contract SupplyChainStorage is SupplyChainStorageOwnable {
                 tmpData.shipNo, 
                 tmpData.departureDateTime, 
                 tmpData.estimateDateTime, 
+                tmpData.plantNo,
                 tmpData.exporterId);
                 
         
@@ -390,14 +394,12 @@ contract SupplyChainStorage is SupplyChainStorageOwnable {
         
         batchProcessor[batchNo] = processorData;
         
-        nextAction[batchNo] = 'DONE'; 
-        
         return true;
     }
     
     
-    /*get Processor data*/
-    function getProcessorData( address batchNo) public onlyAuthCaller view returns(
+    /*get Proccessor data*/
+    function getProccesorData( address batchNo) public onlyAuthCaller view returns(
                                                                                         uint256 quantity,
                                                                                         string tempature,
                                                                                         uint256 rostingDuration,
