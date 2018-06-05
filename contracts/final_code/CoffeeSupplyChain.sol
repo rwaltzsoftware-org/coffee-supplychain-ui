@@ -11,7 +11,7 @@ contract CoffeeSupplyChain is Ownable
     event DoneExporting(address indexed user, address indexed batchNo);
     event DoneImporting(address indexed user, address indexed batchNo);
     event DoneProcessing(address indexed user, address indexedbatchNo);
-
+    
     
     /*Modifier*/
     modifier isValidPerformer(address batchNo, string role) {
@@ -30,26 +30,12 @@ contract CoffeeSupplyChain is Ownable
     
     
     /* Get Next Action  */    
-
     function getNextAction(address _batchNo) public view returns(string action)
     {
        (action) = supplyChainStorage.getNextAction(_batchNo);
        return (action);
     }
     
-
-    /* get Basic Details */
-    
-    function getBasicDetails(address _batchNo) public view returns (string registrationNo,
-                                                                     string farmerName,
-                                                                     string farmAddress,
-                                                                     string exporterName,
-                                                                     string importerName) {
-        /* Call Storage Contract */
-        (registrationNo, farmerName, farmAddress, exporterName, importerName) = supplyChainStorage.getBasicDetails(_batchNo);  
-        return (registrationNo, farmerName, farmAddress, exporterName, importerName);
-    }
-
     /* perform Basic Cultivation */
     
     function addBasicDetails(string _registrationNo,
@@ -95,10 +81,10 @@ contract CoffeeSupplyChain is Ownable
     
     /* get Harvest */
     
-    function getHarvesterData(address _batchNo) public view returns (string cropVariety, string tempatureUsed, string humidity) {
+    function getHarvesterData(address _batchNo) public view returns (string cropVariety, string temperatureUsed, string humidity) {
         /* Call Storage Contract */
-        (cropVariety, tempatureUsed, humidity) =  supplyChainStorage.getHarvesterData(_batchNo);  
-        return (cropVariety, tempatureUsed, humidity);
+        (cropVariety, temperatureUsed, humidity) =  supplyChainStorage.getHarvesterData(_batchNo);  
+        return (cropVariety, temperatureUsed, humidity);
     }
     
     /* perform Harvest */
@@ -124,6 +110,7 @@ contract CoffeeSupplyChain is Ownable
                                                                     string shipNo,
                                                                     uint256 departureDateTime,
                                                                     uint256 estimateDateTime,
+                                                                    uint256 plantNo,
                                                                     uint256 exporterId) {
         /* Call Storage Contract */
        (quantity,
@@ -132,6 +119,7 @@ contract CoffeeSupplyChain is Ownable
         shipNo,
         departureDateTime,
         estimateDateTime,
+        plantNo,
         exporterId) =  supplyChainStorage.getExporterData(_batchNo);  
         
         return (quantity,
@@ -140,6 +128,7 @@ contract CoffeeSupplyChain is Ownable
                 shipNo,
                 departureDateTime,
                 estimateDateTime,
+                plantNo,
                 exporterId);
     }
     
@@ -151,11 +140,12 @@ contract CoffeeSupplyChain is Ownable
                                 string _shipName,
                                 string _shipNo,
                                 uint256 _estimateDateTime,
+                                uint256 _plantNo,
                                 uint256 _exporterId) 
                                 public isValidPerformer(_batchNo,'EXPORTER') returns(bool) {
                                     
         /* Call Storage Contract */
-        bool status = supplyChainStorage.setExporterData(_batchNo, _quantity, _destinationAddress, _shipName,_shipNo, _estimateDateTime,_exporterId);  
+        bool status = supplyChainStorage.setExporterData(_batchNo, _quantity, _destinationAddress, _shipName,_shipNo, _estimateDateTime,_plantNo,_exporterId);  
         
         emit DoneExporting(msg.sender, _batchNo);
         return (status);
@@ -214,7 +204,7 @@ contract CoffeeSupplyChain is Ownable
     
     /* get Processor */
     
-    function getProcessorData(address _batchNo) public view returns (uint256 quantity,
+    function getProccesorData(address _batchNo) public view returns (uint256 quantity,
                                                                     string tempature,
                                                                     uint256 rostingDuration,
                                                                     string internalBatchNo,
@@ -228,7 +218,7 @@ contract CoffeeSupplyChain is Ownable
          internalBatchNo,
          packageDateTime,
          processorName,
-         processorAddress) =  supplyChainStorage.getProcessorData(_batchNo);  
+         processorAddress) =  supplyChainStorage.getProccesorData(_batchNo);  
          
          return (quantity,
                  tempature,
