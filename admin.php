@@ -163,7 +163,7 @@
                              <a href="javascript:void(0);" id="userFormClick" class="btn btn-info pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Create User</a>
                             <h3 class="box-title">Users</h3> 
                             <div class="table-responsive">
-                                <table class="table product-overview" id="tblUser">
+                                <table class="table product-overview table-responsive" id="tblUser">
                                     <thead>
                                         <tr>
                                             <th>User Address</th>
@@ -220,7 +220,7 @@
                             
                         </div>
                         <div class="modal-footer">
-                             <button type="submit" onclick="addCultivationBatch();" class="btn btn-primary">Submit</button>
+                             <button type="submit" onclick="addCultivationBatch();" class="fcbtn btn btn-primary btn-outline btn-1f">Submit</button>
                             </form>
                         </div>
                     </div>
@@ -275,7 +275,7 @@
                         </div>
                         <div class="modal-footer">
                             <i style="display: none;" class="fa fa-spinner fa-spin"></i>
-                             <button type="submit" onclick="userFormSubmit();" class="btn btn-primary" id="userFormBtn">Submit</button>
+                             <button type="submit" onclick="userFormSubmit();" class="fcbtn btn btn-primary btn-outline btn-1f" id="userFormBtn">Submit</button>
                             </form>
                         </div>
                     </div>

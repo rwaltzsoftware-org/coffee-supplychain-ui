@@ -75,8 +75,7 @@ function getCultivationEvents(contractRef) {
     }).then(function (events) 
     {
     	$("#totalBatch").html(events.length);
-    	counterInit();
-
+        
         var finalEvents = [];
         $.each(events,function(index,elem)
         {
@@ -100,6 +99,8 @@ function getCultivationEvents(contractRef) {
 				    mainClass: 'mfp-zoom-in'
 				});
 	        }    
+
+            counterInit();
         },1000); 
 
     }).catch(error => {

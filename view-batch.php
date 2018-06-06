@@ -13,7 +13,7 @@
 <div class="container-fluid">
         <div class="row bg-title">
             <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12">
-                <h3 class="page-title">Batch Progress </h3>
+                <h3 class="page-title">Batch Progress <a href="javascript:void(0);" onclick="javascript:window.print();" class="text-info" title="Print Page Report"><i class="fa fa-print"></i> Print</a></h3> 
                 <h4><b>Batch No: </b><?php echo $_GET['batchNo'];?></h4>
             </div>
             <div class="col-lg-6 col-sm-8 col-md-8 col-xs-12">

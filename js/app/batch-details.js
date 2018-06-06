@@ -55,16 +55,15 @@ window.addEventListener('load', function()
 			var activityName = "DoneProcessing";
 			var built = buildProcessorBlock(result); 
 
-			populateSection(parentSection,built,activityName,batchNo);         
+			populateSection(parentSection,built,activityName,batchNo);   
+
+      $('.qr-code-magnify').magnificPopup({
+          type:'image',
+          mainClass: 'mfp-zoom-in'
+      });
+
 		});
 	}
-
-  setTimeout(function(){
-    $('.qr-code-magnify').magnificPopup({
-        type:'image',
-        mainClass: 'mfp-zoom-in'
-    });
-  },1000);
 
 });
 

@@ -260,7 +260,6 @@
 		
 		var filteredUser = {};
 		var isNewUser = false;
-		$("#totalUsers").html(events.length);
 
 		/*filtering latest updated user record*/
 		$(events).each(function(index,event){
