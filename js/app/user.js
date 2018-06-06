@@ -338,8 +338,6 @@ $("#updateProcessor").on('click',function(){
       var tmpDate = $("#packageDateTime").val().trim().split("-");
       tmpDate = tmpDate[1]+"/"+tmpDate[0]+"/"+tmpDate[2];
 
-      console.log(tmpDate);
-
       var data = {
         batchNo : globCurrentEditingBatchNo,
         quantity : parseInt($("#quantity").val().trim()),
@@ -489,19 +487,19 @@ function buildCultivationTable(finalEvents)
                     <td><span class="label label-success font-weight-100">Completed</span> </td>
                   `;
                   
-                  // if(globCurrentUser.role == "EXPORTER")
-                  // {
+                  if(globCurrentUser.role == "EXPORTER")
+                  {
                     tr+=`<td>
                               <span class="label label-inverse font-weight-100">
                               <a class="popup-with-form" href="#exporterForm" onclick="editActivity('`+batchNo+`')">
                                 <span class="label label-inverse font-weight-100">Update</span>
                               </a>
                           </td>`;
-                  // }
-                  // else
-                  // {
-                  //    tr+=`<td><span class="label label-warning font-weight-100">Processing</span> </td>`;
-                  // } 
+                  }
+                  else
+                  {
+                     tr+=`<td><span class="label label-warning font-weight-100">Processing</span> </td>`;
+                  } 
 
               tr+=`  
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>

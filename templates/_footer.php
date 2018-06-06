@@ -11,6 +11,9 @@
     <script src="bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 
+    <script type="text/javascript" src="plugins/bower_components/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="plugins/bower_components/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+
     <script src="plugins/bower_components/bootstrap-extension/js/bootstrap-extension.min.js"></script>
     <!-- Menu Plugin JavaScript -->
     <script src="plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>

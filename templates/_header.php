@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="css/parsley.css">
 
     <link href="plugins/bower_components/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
-
+    <link href="plugins/bower_components/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 
 
     <style type="text/css">
