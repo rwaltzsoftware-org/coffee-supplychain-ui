@@ -191,7 +191,7 @@
                                 <fieldset style="border:0;">
 
                                     <div class="form-group">
-                                        <label class="control-label" for="quantity">Quantity</label>
+                                        <label class="control-label" for="quantity">Quantity (in Kg)</label>
                                         <input type="number" min="1" class="form-control" id="quantity" name="quantity" placeholder="Quantity" data-parsley-required="true">
                                     </div> 
 
@@ -212,8 +212,8 @@
                                     </div> 
 
                                     <div class="form-group">
-                                        <label class="control-label datepicker-autoclose" for="estimateDateTime">Estimate Datetime</label>
-                                        <input type="text" class="form-control datepicker-autoclose" id="estimateDateTime" name="estimateDateTime" placeholder="Estimate Datetime" data-parsley-required="true">
+                                        <label class="control-label" for="estimateDateTime">Estimate Datetime</label>
+                                        <input type="text" class="form-control datepicker-master" id="estimateDateTime" name="estimateDateTime" placeholder="Estimate Datetime" data-parsley-required="true">
                                     </div>
 
                                     
@@ -226,7 +226,7 @@
 
                                      <div class="form-group float-right">
                                         <button type="reset" class="btn btn-default waves-effect">Reset</button>
-                                        <button type="button" id="updateExport"class="btn btn-primary">Submit</button>
+                                        <button type="button" id="updateExport" class="btn btn-primary">Submit</button>
                                     </div>
                                 </fieldset>
                             </form>
@@ -280,7 +280,7 @@
                                 <h1>Processing</h1><br>
                                 <fieldset style="border:0;">
                                     <div class="form-group">
-                                        <label class="control-label" for="quantity">Quantity</label>
+                                        <label class="control-label" for="quantity">Quantity (in Kg)</label>
                                         <input type="number" min="1" class="form-control" id="quantity" name="quantity" placeholder="Quantity" data-parsley-required="true">
                                     </div> 
                                     <div class="form-group">
@@ -298,8 +298,8 @@
                                     </div>
                            
                                     <div class="form-group">
-                                        <label class="control-label" for="packageDateTime">Packaging Date</label>
-                                        <input type="text" class="form-control datepicker-autoclose" id="packageDateTime" name="packageDateTime" placeholder="Packaging Date" data-parsley-required="true">
+                                        <label class="control-label" for="packageDateTime">Packaging Date & Time</label>
+                                        <input type="text" class="form-control datepicker-master" id="packageDateTime" name="packageDateTime" placeholder="Packaging Date" data-parsley-required="true">
                                     </div> 
                                     <div class="form-group">
                                         <label class="control-label" for="processorName">Processor Name</label>
@@ -326,11 +326,26 @@
             var switchery;
             $(document).ready(function(){
                 initSwitch();
+                initDateTimePicker();
             });
 
             function initSwitch(){
                 /*For User Form Pop Up*/
                 switchery = new Switchery($("#isActive")[0], $("#isActive").data());    
+            }
+
+            function initDateTimePicker(){
+                $('.datepicker-master').datetimepicker({
+                    format: 'dd-mm-yyyy hh:ii:ss',
+                    weekStart: 1,
+                    todayBtn:  1,
+                    autoclose: 1,
+                    todayHighlight: 1,
+                    startView: 2,
+                    forceParse: 0,
+                    showMeridian: 1,
+                    minuteStep: 1
+                });
             }
         </script>
         

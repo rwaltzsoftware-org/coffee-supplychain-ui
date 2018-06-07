@@ -55,16 +55,15 @@ window.addEventListener('load', function()
 			var activityName = "DoneProcessing";
 			var built = buildProcessorBlock(result); 
 
-			populateSection(parentSection,built,activityName,batchNo);         
+			populateSection(parentSection,built,activityName,batchNo);   
+
+      $('.qr-code-magnify').magnificPopup({
+          type:'image',
+          mainClass: 'mfp-zoom-in'
+      });
+
 		});
 	}
-
-  setTimeout(function(){
-    $('.qr-code-magnify').magnificPopup({
-        type:'image',
-        mainClass: 'mfp-zoom-in'
-    });
-  },1000);
 
 });
 
@@ -92,7 +91,7 @@ function populateSection(parentSection,built,activityName,batchNo)
                         `+resultData.name+` (`+userAddress+`) <br/>
                         `+phoneNoSec+`
                     </span>
-                    <i class='fa fa-clock-o'> </i> `+resultData.dataTime.toUTCString()+`
+                    <i class='fa fa-clock-o'> </i> `+resultData.dataTime.toLocaleString()+`
                     <a href='`+refLink+`' target='_blank'><i class='fa fa-external-link text-danger'></i></a>
                    `;
   			$(parentSection).find(".activityDateTime").html(html);
@@ -135,7 +134,7 @@ function getActivityTimestamp(activityName, batchNo, callback)
 				var date = blockData.timestamp;
 				/* Convert Seconds to Miliseconds */
 			 	date = new Date(date * 1000);
-			 	// $("#cultivationDateTime").html("<i class='fa fa-clock-o'> </i> " + date.toUTCString());
+			 	// $("#cultivationDateTime").html("<i class='fa fa-clock-o'> </i> " + date.toLocaleString());
 
         resultData.dataTime = date;
         resultData.transactionHash = eventData[0].transactionHash;
@@ -278,11 +277,11 @@ function buildExporterBlock(result){
 
 	if(quantity!='' && destinationAddress!='' && shipName!='' && shipNo!='' && departureDateTime!='' && estimateDateTime!='' && exporterId!=''){
 		
-    var departureDateTime = new Date(result.departureDateTime * 1000).toUTCString();
-    var estimateDateTime = new Date(result.estimateDateTime * 1000).toUTCString();
+    var departureDateTime = new Date(result.departureDateTime * 1000).toLocaleString();
+    var estimateDateTime = new Date(result.estimateDateTime * 1000).toLocaleString();
     exporterData.html =  `<tr>
                             <td><b>Quantity:</b></td>
-                            <td>`+quantity+` <i class="fa fa-check-circle verified_info"></i></td>
+                            <td>`+quantity+` (in Kg) <i class="fa fa-check-circle verified_info"></i></td>
                           </tr>
                           <tr>
                             <td><b>Destination Address:</b></td>
@@ -332,10 +331,10 @@ function buildImporterBlock(result){
 
 	if(quantity!='' && shipName!='' && shipNo!='' && arrivalDateTime!='' && transportInfo!='' && warehouseName!='' && warehouseAddress!='' && importerId!=''){
 		
-    var arrivalDateTime = new Date(result.arrivalDateTime * 1000).toUTCString();
+    var arrivalDateTime = new Date(result.arrivalDateTime * 1000).toLocaleString();
     importerData.html =  `<tr>
                             <td><b>Quantity:</b></td>
-                            <td>`+quantity+` <i class="fa fa-check-circle verified_info"></i></td>
+                            <td>`+quantity+` (in Kg) <i class="fa fa-check-circle verified_info"></i></td>
                           </tr>
                           <tr>
                             <td><b>Ship Name:</b></td>
@@ -388,11 +387,11 @@ function buildProcessorBlock(result){
 
 	if(quantity!='' && temperature!='' && rostingDuration!='' && internalBatchNo!='' && packageDateTime!='' && processorName!='' && processorAddress!=''){
 		
-    var packageDateTime = new Date(result.packageDateTime * 1000).toUTCString();
+    var packageDateTime = new Date(result.packageDateTime * 1000).toLocaleString();
 
     processorData.html =  `<tr>
                             <td><b>Quantity:</b></td>
-                            <td>`+result.quantity+` <i class="fa fa-check-circle verified_info"></i></td>
+                            <td>`+result.quantity+` (in Kg) <i class="fa fa-check-circle verified_info"></i></td>
                           </tr>
                           <tr>
                             <td><b>Temperature:</b></td>
@@ -408,7 +407,7 @@ function buildProcessorBlock(result){
                           </tr>
                           <tr>
                             <td><b>Package Date Time:</b></td>
-                            <td>`+new Date(result.packageDateTime * 1000).toUTCString() +` <i class="fa fa-check-circle verified_info"></i></td>
+                            <td>`+new Date(result.packageDateTime * 1000).toLocaleString() +` <i class="fa fa-check-circle verified_info"></i></td>
                           </tr>
                           <tr>
                             <td><b>Processor Name:</b></td>

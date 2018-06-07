@@ -34,10 +34,6 @@ var SupplyChainStorageAbi = [
 				"type": "uint256"
 			},
 			{
-				"name": "plantNo",
-				"type": "uint256"
-			},
-			{
 				"name": "exporterId",
 				"type": "uint256"
 			}
@@ -58,7 +54,7 @@ var SupplyChainStorageAbi = [
 				"type": "string"
 			},
 			{
-				"name": "_tempatureUsed",
+				"name": "_temperatureUsed",
 				"type": "string"
 			},
 			{
@@ -167,49 +163,6 @@ var SupplyChainStorageAbi = [
 	},
 	{
 		"constant": true,
-		"inputs": [
-			{
-				"name": "batchNo",
-				"type": "address"
-			}
-		],
-		"name": "getProccesorData",
-		"outputs": [
-			{
-				"name": "quantity",
-				"type": "uint256"
-			},
-			{
-				"name": "tempature",
-				"type": "string"
-			},
-			{
-				"name": "rostingDuration",
-				"type": "uint256"
-			},
-			{
-				"name": "internalBatchNo",
-				"type": "string"
-			},
-			{
-				"name": "packageDateTime",
-				"type": "uint256"
-			},
-			{
-				"name": "processorName",
-				"type": "string"
-			},
-			{
-				"name": "processorAddress",
-				"type": "string"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
 		"inputs": [],
 		"name": "lastAccess",
 		"outputs": [
@@ -253,7 +206,7 @@ var SupplyChainStorageAbi = [
 				"type": "uint256"
 			},
 			{
-				"name": "_tempature",
+				"name": "_temperature",
 				"type": "string"
 			},
 			{
@@ -448,10 +401,6 @@ var SupplyChainStorageAbi = [
 				"type": "uint256"
 			},
 			{
-				"name": "_plantNo",
-				"type": "uint256"
-			},
-			{
 				"name": "_exporterId",
 				"type": "uint256"
 			}
@@ -465,6 +414,49 @@ var SupplyChainStorageAbi = [
 		],
 		"payable": false,
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "batchNo",
+				"type": "address"
+			}
+		],
+		"name": "getProcessorData",
+		"outputs": [
+			{
+				"name": "quantity",
+				"type": "uint256"
+			},
+			{
+				"name": "temperature",
+				"type": "string"
+			},
+			{
+				"name": "rostingDuration",
+				"type": "uint256"
+			},
+			{
+				"name": "internalBatchNo",
+				"type": "string"
+			},
+			{
+				"name": "packageDateTime",
+				"type": "uint256"
+			},
+			{
+				"name": "processorName",
+				"type": "string"
+			},
+			{
+				"name": "processorAddress",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
