@@ -94,7 +94,8 @@ function populateSection(parentSection,built,activityName,batchNo)
                     <i class='fa fa-clock-o'> </i> `+resultData.dataTime.toLocaleString()+`
                     <a href='`+refLink+`' target='_blank'><i class='fa fa-external-link text-danger'></i></a>
                    `;
-  			$(parentSection).find(".activityDateTime").html(html);
+        $(parentSection).find(".activityDateTime").html(html);
+  			$(parentSection).find(".timeline-body .activityData").append('<img src="plugins/images/verified.jpg" alt="user-img" style="width:80px;height:80px" class="img-circle pull-right">');
   		}
 
       if(resultData.transactionHash){
