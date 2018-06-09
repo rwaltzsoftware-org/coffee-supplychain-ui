@@ -1,6 +1,6 @@
-<footer class="footer text-center"> 
-    © <?php echo date('Y');?> Coffee SupplyChain by <a href="http://www.imperialsoftech.com/" target="_blank">imperialsoftech.com</a> 
-</footer>
+        <footer class="footer text-center"> 
+            © <?php echo date('Y');?> Coffee SupplyChain by <a href="http://www.imperialsoftech.com/" target="_blank">imperialsoftech.com</a> 
+        </footer>
         </div>
         <!-- /#page-wrapper -->
     </div>
@@ -43,15 +43,14 @@
 
     <!--  contract abi  -->
     <script type="text/javascript" src="js/web3.min.js"></script>
-    <script type="text/javascript" src="js/app/CoffeeSupplyChainAbi.js"></script>
-    <script type="text/javascript" src="js/app/SupplyChainUserAbi.js"></script>
+    <script type="text/javascript" src="js/abi/CoffeeSupplyChainAbi.js"></script>
+    <script type="text/javascript" src="js/abi/SupplyChainUserAbi.js"></script>
 
 
     <!-- ipfs  -->
 
     <!-- <script src="https://wzrd.in/standalone/buffer"></script> -->
-    <script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js" integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB"
-        crossorigin="anonymous"></script>
+    <script aync defer src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js" integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB" crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="js/app/app.js"></script>
 
