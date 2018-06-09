@@ -7,7 +7,7 @@
 		'Storage': "0x4b1d9f8be5347ae962b62b1f7499c50a6a598331"
 	};
 
-	var globAdminAddress = 0xab0874cB61D83F6B67Dc08141568868102233bef;
+	var globAdminAddress = "0xab0874cB61D83F6B67Dc08141568868102233bef";
 	var globMainContract = false;
 	var globUserContract = false;
 	var globCoinbase = false;	
