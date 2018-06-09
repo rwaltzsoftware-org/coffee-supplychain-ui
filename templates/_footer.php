@@ -7,8 +7,8 @@
     <!-- /#wrapper -->
     
     <!-- Bootstrap Core JavaScript -->
-    <script src="bootstrap/dist/js/tether.min.js"></script>
-    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="plugins/bower_components/bootstrap/dist/js/tether.min.js"></script>
+    <script src="plugins/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 
     <script type="text/javascript" src="plugins/bower_components/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>

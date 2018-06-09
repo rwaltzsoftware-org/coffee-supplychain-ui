@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/imperialsofetch.png">
     <title>Imperial Softech</title>
     <!-- Bootstrap Core CSS -->
-    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="plugins/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css" rel="stylesheet">   
 
     <link href="plugins/bower_components/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
