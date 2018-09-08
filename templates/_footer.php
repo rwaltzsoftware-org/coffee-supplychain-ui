@@ -50,7 +50,8 @@
     <!-- ipfs  -->
 
     <!-- <script src="https://wzrd.in/standalone/buffer"></script> -->
-    <script aync defer src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js" integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js" integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB"
+        crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="js/app/app.js"></script>
 
