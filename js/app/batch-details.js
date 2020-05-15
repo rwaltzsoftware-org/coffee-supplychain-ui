@@ -87,22 +87,22 @@ function populateSection(parentSection,built,activityName,batchNo)
         }
 
         var refLink = 'https://rinkeby.etherscan.io/tx/'+resultData.transactionHash;
-        var html = `<span class="text-info"><i class='fa fa-user'> </i>
+        var html = `<div class="text-info"><i class='fa fa-user'> </i>
                         `+resultData.name+` (`+userAddress+`) <br/>
                         `+phoneNoSec+`
-                    </span>
+                    </div>
                     <i class='fa fa-clock-o'> </i> `+resultData.dataTime.toLocaleString()+`
                     <a href='`+refLink+`' target='_blank'><i class='fa fa-external-link text-danger'></i></a>
                    `;
         $(parentSection).find(".activityDateTime").html(html);
-  			$(parentSection).find(".timeline-body .activityData").append('<img src="plugins/images/verified.jpg" alt="user-img" style="width:80px;height:80px" class="img-circle pull-right">');
+  			$(parentSection).find(".verify-information").html('<img src="plugins/images/verified.jpg" alt="user-img" style="width:80px;height:80px" class="img-circle">');
   		}
 
       if(resultData.transactionHash){
         var url = 'https://rinkeby.etherscan.io/tx/'+resultData.transactionHash;
         var qrCode = 'https://chart.googleapis.com/chart?cht=qr&chld=H|1&chs=400x400&chl='+url;
-        var qrCodeSec = `<a href="`+url+`" title="`+resultData.transactionHash+`" class="qr-code-magnify pull-right" data-effect="mfp-zoom-in">
-                          <img src="`+qrCode+`" class="img-responsive" style="width:70px; height:70px; margin-top:-75px;"/>
+        var qrCodeSec = `<a href="`+url+`" title="`+resultData.transactionHash+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
+                          <img src="`+qrCode+`" style="width:150px; height:150px;"/>
                         </a>`;
 
         $(parentSection).find(".activityQrCode").html(qrCodeSec);
