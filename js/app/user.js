@@ -28,37 +28,39 @@ $(window).on("coinbaseReady", function ()
 
       globCurrentUser = data ;
 
-      if(data.isActive == true){
-        if(data.name.trim().length <=0 && 
-           data.contactNo.trim().length <=0 && 
-           data.role.trim().length <=0 )
-        {
-          swal("Oops","Your Account was not found , Please contact Admin ","error");
-          setTimeout(function()
-          {
-            window.location = "index.php";
-          },1000);
-          return ;
-        }
-      }else{
-          swal({
-              title: "Insufficient Access",
-              text: "Your Account is blocked by Admin , Please contact to Admin",
-              type: "error",
-              showCancelButton: false,
-              confirmButtonColor: "#DD6B55",
-              confirmButtonText: "Ok",
-              closeOnConfirm: false
-            },
-            function(isConfirm)
-            {
-              if(isConfirm==true)
-              {
-               window.location = "index.php";
-              }
-            });
-          return ;
-      }  
+      console.log(data);
+
+      // if(data.isActive == true){
+      //   if(data.name.trim().length <=0 && 
+      //      data.contactNo.trim().length <=0 && 
+      //      data.role.trim().length <=0 )
+      //   {
+      //     swal("Oops","Your Account was not found , Please contact Admin ","error");
+      //     setTimeout(function()
+      //     {
+      //       window.location = "index.php";
+      //     },1000);
+      //     return ;
+      //   }
+      // }else{
+      //     swal({
+      //         title: "Insufficient Access",
+      //         text: "Your Account is blocked by Admin , Please contact to Admin",
+      //         type: "error",
+      //         showCancelButton: false,
+      //         confirmButtonColor: "#DD6B55",
+      //         confirmButtonText: "Ok",
+      //         closeOnConfirm: false
+      //       },
+      //       function(isConfirm)
+      //       {
+      //         if(isConfirm==true)
+      //         {
+      //          window.location = "index.php";
+      //         }
+      //       });
+      //     return ;
+      // }  
 
       $("#userImage").attr('src','https://ipfs.io/ipfs/'+data.profileHash);
       $("#userName").html(data.name);

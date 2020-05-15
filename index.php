@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/imperialsofetch.png">
-    <title>Imperial Softech</title>
+    <title>sourcetrack.co</title>
     <!-- Bootstrap Core CSS -->
     <link href="plugins/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css" rel="stylesheet">

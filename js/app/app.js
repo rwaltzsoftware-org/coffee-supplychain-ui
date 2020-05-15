@@ -38,9 +38,9 @@
 
 			if(currentPanel == "admin.php")
 			{
-				if(address != globAdminAddress){
-					window.location = "index.php";
-				}
+				// if(address != globAdminAddress){
+				// 	window.location = "index.php";
+				// }
 			}
 		});
 

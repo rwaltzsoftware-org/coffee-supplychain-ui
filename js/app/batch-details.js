@@ -101,7 +101,7 @@ function populateSection(parentSection,built,activityName,batchNo)
       if(resultData.transactionHash){
         var url = 'https://rinkeby.etherscan.io/tx/'+resultData.transactionHash;
         var qrCode = 'https://chart.googleapis.com/chart?cht=qr&chld=H|1&chs=400x400&chl='+url;
-        var qrCodeSec = `<a href="`+qrCode+`" title="`+resultData.transactionHash+`" class="qr-code-magnify pull-right" data-effect="mfp-zoom-in">
+        var qrCodeSec = `<a href="`+url+`" title="`+resultData.transactionHash+`" class="qr-code-magnify pull-right" data-effect="mfp-zoom-in">
                           <img src="`+qrCode+`" class="img-responsive" style="width:70px; height:70px; margin-top:-75px;"/>
                         </a>`;
 

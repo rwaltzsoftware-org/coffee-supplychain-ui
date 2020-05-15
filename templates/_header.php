@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/imperialsofetch.png">
-    <title>Imperial Softech</title>
+    <title>sourcetrack.co</title>
     <!-- Bootstrap Core CSS -->
     <link href="plugins/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css" rel="stylesheet">   
@@ -50,6 +50,15 @@
     <!-- <script src="http://www.w3schools.com/lib/w3data.js"></script> -->
     <!-- jQuery -->
     <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <style>
+        body .navbar-header {
+            background:#fff;
+        }
+        body .navbar-header .logo {
+            color:#252525;
+        }
+
+    </style>
 
 </head>
 
@@ -62,7 +71,7 @@
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top m-b-0 sidebar">
             <div class="navbar-header"> 
-                <div class="top-left-part"><a class="logo" href="index.php"><b><img src="plugins/images/imperialsofetch.png" alt="home" /></b><span class="hidden-xs"> Imperial Softech</span></a></div>
+                <div class="top-left-part"><a class="logo" href="index.php"><b><img width="30" src="plugins/images/logo.png" alt="home" /></b><span class="hidden-xs"> sourcetrack.co</span></a></div>
             </div>
         </nav>
         <!-- Left navbar-header -->

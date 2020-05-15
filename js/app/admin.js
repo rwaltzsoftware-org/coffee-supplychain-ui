@@ -123,7 +123,7 @@ function buildCultivationTable(finalEvents)
         var qrCode = 'https://chart.googleapis.com/chart?cht=qr&chld=H|1&chs=400x400&chl='+url;
 			
         var commBatchTd = `<td>`+batchNo+` <a href="`+url+`" class="text-danger" target="_blank"><i class="fa fa-external-link"></i></a></td>`;
-        var commQrTd = `<td><a href="`+qrCode+`" title="`+transactionHash+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
+        var commQrTd = `<td><a href="`+url+`" title="`+transactionHash+`" class="qr-code-magnify" data-effect="mfp-zoom-in">
 				        	<img src="`+qrCode+`" class="img-responsive" style="width:30px; height:30px;">
 				        </a>
 				    </td>`;
